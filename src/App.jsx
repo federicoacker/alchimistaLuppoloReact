@@ -1,7 +1,18 @@
-
+import MainLayout from "./layouts/MainLayout"
+import Home from "./pages/Home"
+import { BrowserRouter, Routes, Route } from 'react-router'
 function App() {
   return (
-    <div>App</div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route  element= {<MainLayout/>}>
+          <Route path="/" element={<Home />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
+    </>
   )
 }
 
