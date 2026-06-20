@@ -1,6 +1,5 @@
 .heroSection {
-    min-height: 80vh;
-
+    min-height: 60vh;
     background:
         radial-gradient(circle at 75% 40%,
             rgba(200, 155, 60, .08),
@@ -12,7 +11,38 @@
 
     display: flex;
     align-items: center;
-    padding: 60px 0;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    position:relative;
+    overflow: hidden;
+}
+
+.heroSection::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 75% 40%,
+            rgba(200,155,60,.12),
+            transparent 45%
+        ),
+        url("/imgs/sfondo.png");
+
+    background-size:
+        auto,
+        cover;
+    background-position:
+        center,
+        center;
+    opacity: .30;
+    pointer-events: none;
+}
+
+.heroSection > * {
+    position: relative;
+    z-index: 1;
 }
 
 .heroSubtitle {
@@ -57,7 +87,7 @@
     letter-spacing: 2px;
     cursor: pointer;
     transition: all .3s ease;
-  
+
 }
 
 .buttonAction:hover {
@@ -72,8 +102,8 @@
 
 .logoGlow {
     position: absolute;
-    width: 550px;
-    height: 550px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
     background:
         radial-gradient(circle,
@@ -83,24 +113,16 @@
 
     filter: blur(40px);
     z-index: 1;
-: 20px;
+   
 }
 
 .heroLogo {
     position: relative;
-
-    width: 100%;
+    width: min(100%, 750px);
     max-width: 500px;
-
     border-radius: 50%;
-
     filter:
         drop-shadow(0 0 10px rgba(200, 155, 60, .25)) drop-shadow(0 0 25px rgba(200, 155, 60, .15));
 
     z-index: 2;
-}
-
-.heroCaption {
-
-  
 }
