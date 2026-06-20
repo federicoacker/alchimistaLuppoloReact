@@ -1,6 +1,9 @@
 import MainLayout from "./layouts/MainLayout"
 import Home from "./pages/Home"
+import ProductInfo from "./pages/ProductInfo"
 import { BrowserRouter, Routes, Route } from 'react-router'
+
+
 function App() {
   return (
     <>

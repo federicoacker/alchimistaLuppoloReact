@@ -1,64 +1,80 @@
 :root {
 
-  /* COLORI */
+    /* COLORI */
 
-  --color-bg: #0a0908;
-  --color-bg-light: #171311;
+    --color-bg: #17120f;
+    --color-bg-light: #221a14;
+    --color-bg-card: #2a211b;
 
-  --color-gold: #c89b3c;
-  --color-gold-light: #e0bb68;
 
-  --color-cream: #f3ecd7;
-  --color-text: #d8cfbc;
+    --color-gold: #c89b3c;
+    --color-gold-light: #e0bb68;
+    --color-gold-dark: #8f6926;
 
-  --color-border: rgba(200, 155, 60, 0.25);
+    --color-cream: #f3ecd7;
+    --color-text: #e9e3d5;
+    --color-text-muted: #a6957f;
 
-  /* GRADIENTS */
+    --color-border: rgba(200, 155, 60, 0.25);
 
-  --gradient-main:
-    linear-gradient(
-      90deg,
-      #090807 0%,
-      #1a120c 50%,
-      #090807 100%
-    );
+    /* GRADIENTS */
 
-  /* FONTS*/
+    --gradient-main:
+        linear-gradient(90deg,
+            #090807 0%,
+            #1a120c 50%,
+            #090807 100%);
+    /* FONTS*/
 
-  --font-title: "Cormorant Garamond", serif;
-  --font-body: "Inter", sans-serif;
+    --font-title: "Cormorant Garamond", serif;
+    --font-body: "Inter", sans-serif;
 
-  /* SPAZIATURE */
 
-  --section-padding: 8rem;
-  --container-width: 1280px;
+    /* EFFETTI */
 
-  /* EFFETTI */
+    --shadow-gold:
+        0 0 25px rgba(200, 155, 60, 0.15);
 
-  --shadow-gold:
-    0 0 25px rgba(200, 155, 60, 0.15);
-
-  --transition:
-    all 0.3s ease;
+    --transition:
+        all 0.3s ease;
 }
 
-.section {
-  padding: var(--section-padding) 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-  max-width: var(--container-width);
-  margin: 0 auto;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-main);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
 }
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 
 .section-dark {
-  background: var(--color-bg);
+    background: var(--color-bg);
 }
 
 .section-gold {
-  background: var(--gradient-main);
+    background: var(--gradient-main);
 }
 
 .section-light {
-  background: var(--color-cream);
+    background: var(--color-cream);
 }
