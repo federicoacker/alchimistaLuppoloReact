@@ -25,15 +25,23 @@ function Header() {
                                 active={active === "home"}
                                 className={active === "home" ? styles.activeLink : ''} onClick={() => setActive("home")}>
                                 Home</Nav.Link>
+                            <span className={styles.alchemySeparator}>🜂</span>
+
                             <Nav.Link href="#birre" active={active === "birre"}
                                 className={active === "birre" ? styles.activeLink : ''} onClick={() => setActive("birre")}>
                                 Birre</Nav.Link>
+                            <span className={styles.alchemySeparator}>🜄</span>
+
                             <Nav.Link href="#novità" active={active === "novità"}
                                 className={active === "novità" ? styles.activeLink : ''} onClick={() => setActive("novità")}>
                                 Novità</Nav.Link>
+                            <span className={styles.alchemySeparator}>🜁</span>
+
                             <Nav.Link href='#contatti' active={active === "contatti"}
                                 className={active === "contatti" ? styles.activeLink : ''} onClick={() => setActive("contatti")}>
                                 Contatti</Nav.Link>
+                            <span className={styles.alchemySeparator}>🜃</span>
+
                         </Nav>
                         <a href="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></a>
                     </Navbar.Collapse>
