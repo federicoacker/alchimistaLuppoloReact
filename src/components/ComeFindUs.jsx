@@ -18,7 +18,6 @@ function ComeFindUs() {
                             <li className="text-center"><i className="bi bi-envelope-fill"></i> info@alchimistadelluppolo.it</li>
                         </ul>
                     </div>
-
                 </Col>
             </Row>
         </Container>
