@@ -155,3 +155,28 @@
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
+
+.contactInfo h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-title);
+    color: var(--color-gold-dark);
+}
+
+.contactList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contactList li {
+    cursor: default;
+    color: var(--color-text);
+}
+
+.contactList i {
+    color: var(--color-gold-dark);
+    font-size: 1.5rem;
+    margin-top: 0.15rem;
+}

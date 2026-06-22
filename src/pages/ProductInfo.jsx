@@ -2,12 +2,15 @@
 import { useParams } from "react-router";
 import styles from "./ProductInfo.module.css";
 import useProduct from "../hooks/useProduct";
+import { Navigate } from "react-router";
 
 function ProductInfo() {
     const { slug } = useParams();
 
     const {product, loading, error} = useProduct(slug);
-
+    if(error){
+        return <Navigate to="/404"/>
+    }
     return (
         !loading && !error &&
         <div className={styles.productInfo}>
