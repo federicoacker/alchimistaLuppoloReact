@@ -1,13 +1,16 @@
 
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import styles from "./ProductInfo.module.css";
 import useProduct from "../hooks/useProduct";
 
 function ProductInfo() {
     const { slug } = useParams();
+    const navigate = useNavigate();
 
     const {product, loading, error} = useProduct(slug);
-
+    if(error){
+        navigate("/404");
+    }
     return (
         !loading && !error &&
         <div className={styles.productInfo}>
