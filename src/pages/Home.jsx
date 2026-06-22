@@ -1,5 +1,5 @@
-import Card from 'react-bootstrap/Card';
 import HeroSection from "../components/HeroSection";
+import Beers from "../components/Beers";
 
 
 function Home() {
@@ -10,6 +10,7 @@ function Home() {
             <p>Benvenuti nella pagina Alchimista del luppolo</p>
 
             <HeroSection />
+            <Beers />
         </>
     )
 
