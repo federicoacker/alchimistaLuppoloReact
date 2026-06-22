@@ -1,6 +1,7 @@
 import Section from "./Section";
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from "./HeroSection.module.css";
+import { Link } from "react-router";
 
 function HeroSection() {
 
@@ -17,8 +18,8 @@ function HeroSection() {
                             degne dei migliori alchimisti.
                         </p>
                         <div className={styles.heroActions}>
-                            <button className={styles.buttonAction}>Esplora le Birre </button>
-                            <button className={styles.buttonAction}>Nuove Formule</button>
+                            <Link to="/products" className={styles.buttonAction}>Esplora le Birre </Link>
+                            <a href="#new-beers"className={styles.buttonAction}>Nuove Formule</a>
                         </div>
                     </Col>
                     <Col xs={12} lg={5}>
