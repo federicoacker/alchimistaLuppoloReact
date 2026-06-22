@@ -42,7 +42,7 @@ function Header() {
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
-                                Novità
+                                Le Cronache Della Birra
                             </NavLink>
                             <span className={styles.alchemySeparator}> ✦</span>
 

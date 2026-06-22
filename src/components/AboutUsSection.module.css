@@ -14,9 +14,7 @@
   padding-right: 5vw;
   position: relative;
   overflow: hidden;
-}
 
-.about-us-section {
   --radius: 30px;
 
   mask-image: radial-gradient(

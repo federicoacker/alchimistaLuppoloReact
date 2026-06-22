@@ -4,7 +4,7 @@ import styles from "./AboutUsSection.module.css";
 import Section from "./Section";
 function AboutUsSection() {
     return (
-        <Section className={styles["about-us-section"]}>
+        <Section className={styles["heroSection"]}>
             <Container fluid>
                 <Row className="align-items-center">
                     <Col xs={12} lg={7}>
