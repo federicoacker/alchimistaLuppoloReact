@@ -9,7 +9,7 @@ function AboutUsSection() {
                 <Row className="align-items-center">
                     <Col xs={12} lg={7}>
                         <h5 className={styles.heroSubtitle}>La nostra missione</h5>
-                        <h1 className={styles.heroTitle}>Una passione che nasce <br /> dalla tradizione</h1>
+                        <h2 className={styles.heroTitle}>Una passione che nasce <br /> dalla tradizione</h2>
                         <p className={styles.heroDescription}>
                             La nostra passione per le birre artigianali
                             è ancorata alla tradizione. Vieni a scoprire di più
