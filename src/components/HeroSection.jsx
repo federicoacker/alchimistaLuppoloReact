@@ -18,7 +18,7 @@ function HeroSection() {
                             degne dei migliori alchimisti.
                         </p>
                         <div className={styles.heroActions}>
-                            <Link to="/products" className={styles.buttonAction}>Esplora le Birre </Link>
+                            <Link to="/birre" className={styles.buttonAction}>Esplora le Birre </Link>
                             <a href="#new-beers"className={styles.buttonAction}>Nuove Formule</a>
                         </div>
                     </Col>
