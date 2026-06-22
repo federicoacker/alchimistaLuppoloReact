@@ -6,7 +6,7 @@ function BeerCard({ product }) {
     return (
         <Col md={6} lg={4} xl={3} xxl={2}>
             <Card className={styles["beer-card"]}>
-                <Card.Header className="d-flex flex-column align-items-center">
+                <Card.Header className={`d-flex flex-column align-items-center ${styles["beer-card-header"]}`}>
                     <Card.Img variant="top" src={product.image} className={styles["beer-img"]} />
                     <Card.Title className={styles["beer-title"]}>
                         {product.name}

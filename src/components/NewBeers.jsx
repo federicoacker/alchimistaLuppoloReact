@@ -7,7 +7,7 @@ import styles from "./NewBeers.module.css";
 
 
 function NewBeers() {
-    const { products, loading, error } = useProducts("?limit=6")
+    const { products, loading, error } = useProducts("?limit=6&orderBy=created_at&excluded-brewery=L'Alchimista%20Del%20Luppolo")
     console.log(products);
     console.log(error);
     return (

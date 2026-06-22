@@ -16,8 +16,13 @@
 .beer-card-body{
     color:var(--color-cream) !important;
 }
+.beer-card-header{
+    border-color:var(--color-border) !important;
+}
 .beer-description{
-    height:100px;
+    height:150px;
+    overflow-y:scroll;
+    scrollbar-width:none;
 }
 .beer-card-footer{
     color:var(--color-cream) !important;
