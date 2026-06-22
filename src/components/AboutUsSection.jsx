@@ -24,7 +24,7 @@ function AboutUsSection() {
                     <Col xs={12} lg={5}>
                         <div className={styles.heroSealPanel}>
                             <div className={styles.logoGlow}></div>
-                            <img className={styles.heroLogo} src="/imgs/logo.png" alt="logo pagina" />
+                            <img className={styles.heroLogo} src="/imgs/about-us-1.png" alt="logo pagina" />
 
                         </div>
                     </Col>
