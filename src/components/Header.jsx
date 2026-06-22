@@ -1,12 +1,11 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import styles from './Header.module.css';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 function Header() {
-    
+
     return (
         <>
 
@@ -38,12 +37,12 @@ function Header() {
                             </NavLink>
                             <span className={styles.alchemySeparator}> ✦</span>
 
-                           <NavLink
+                            <NavLink
                                 to="/novita"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
-                                Novità
+                                Le Cronache Della Birra
                             </NavLink>
                             <span className={styles.alchemySeparator}> ✦</span>
 
@@ -54,9 +53,19 @@ function Header() {
                             >
                                 Contatti
                             </NavLink>
+                            <span className={styles.alchemySeparator}> ✦</span>
+
+                            <NavLink
+                                to="/chi-siamo"
+                                end
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                La nostra missione
+                            </NavLink>
+
 
                         </Nav>
-                        <a href="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></a>
+                        <Link to="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></Link>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

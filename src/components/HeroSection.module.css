@@ -1,4 +1,5 @@
 .heroSection {
+
     min-height: 80vh;
     background:
         radial-gradient(circle at 75% 40%,
@@ -15,6 +16,18 @@
     padding-right: 5vw;
     position: relative;
     overflow: hidden;
+    --radius: 30px;
+
+  mask-image: radial-gradient(
+    var(--radius) at var(--radius) var(--radius),
+    transparent 98%,
+    black 100%
+  );
+  mask-position: calc(-1 * var(--radius)) calc(-1 * var(--radius));
+  mask-size: 100%;
+  mask-repeat: repeat;
+}
+
 }
 
 .heroSection::before {
@@ -41,61 +54,65 @@
 .heroSection>* {
     position: relative;
     z-index: 1;
+
 }
 
 .heroSubtitle {
-    font-family: var(--font-body);
-    color: var(--color-gold);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
+  font-family: var(--font-body);
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
 }
 
 .heroTitle {
-    font-family: var(--font-title);
-    font-size: clamp(3rem, 5vw, 5rem);
-    color: var(--color-cream);
-    margin-bottom: 1.5rem;
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 5vw, 5rem);
+  color: var(--color-cream);
+  margin-bottom: 1.5rem;
 }
 
 .heroDescription {
-    max-width: 600px;
-    font-family: var(--font-body);
-    color: var(--color-text);
-    margin-bottom: 2rem;
+  max-width: 600px;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  margin-bottom: 2rem;
 }
 
 .heroActions {
-    display: flex;
-    gap: 1.25rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+
+  display: flex;
+  gap: 1.25rem;
+  margin: 2rem;
+  flex-wrap: wrap;
+
 }
 
 .buttonAction {
-    background: transparent;
-    color: var(--color-gold);
-    border: 1px solid var(--color-gold);
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all .3s ease;
-
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .buttonAction:hover {
-    background: linear-gradient(135deg,
-            var(--color-gold-light),
-            var(--color-gold));
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
 
-    color: #1a120c;
-    box-shadow:
-        0 0 20px rgba(200, 155, 60, .25);
+  color: #1a120c;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.25);
 }
 
 .heroSealPanel {

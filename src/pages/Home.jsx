@@ -1,18 +1,29 @@
 
+import AboutUsSection from "../components/AboutUsSection";
 import HeroSection from "../components/HeroSection";
-import useProducts from "../hooks/useProducts.js";
-import Beers from "../components/Beers";
+import NewBeers from "../components/NewBeers";
+import OurBeers from "../components/OurBeers";
+import Section from "../components/Section";
+import { Container } from "react-bootstrap";
 
 
 
 function Home() {
-    const {products, loading, error} = useProducts("?limit=6&brewery=L'Alchimista del Luppolo")
-    console.log(products);
-    console.log(error);
+
     return (
         <>
             <HeroSection />
-            <Beers />
+            <Section>
+                <Container fluid="md">
+                    <OurBeers />
+                </Container>
+            </Section>
+            <AboutUsSection/>
+            <Section>
+                <Container fluid="md">
+                    <NewBeers />
+                </Container>
+            </Section>
         </>
     )
 
