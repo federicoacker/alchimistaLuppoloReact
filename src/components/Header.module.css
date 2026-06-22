@@ -61,12 +61,11 @@
 }
 
 .customNavbar :global(.nav-link:hover){
-    color: var(--color-gold-dark); 
+    color: var(--color-gold-dark) !important; 
 }
 
-.activeLink {
-    color: var(--color-gold-dark) !important;
-    font-family: var(--font-title);
+.customNavbar :global(.nav-link.active) {
+    color: var(--color-gold);
 }
 
 /* Linea animata sotto */

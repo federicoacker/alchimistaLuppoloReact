@@ -3,17 +3,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import styles from './Header.module.css';
-import { useState } from 'react';
+import { NavLink } from 'react-router';
 
 function Header() {
-    const [active, setActive] = useState("home");
-
+    
     return (
         <>
 
             <Navbar expand="lg" className={styles.customNavbar} variant="dark">
                 <Container>
-                    <Navbar.Brand href="/" className={styles.logoContainer}>
+                    <Navbar.Brand as={NavLink} to="/" className={styles.logoContainer}>
                         <div className={styles.logoGlow}></div>
                         <img src="/imgs/logo-semplice.png" alt="L'Alchimista del Luppolo" className={styles.navbarLogo} />
                     </Navbar.Brand>
@@ -21,25 +20,40 @@ function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home"
-                                active={active === "home"}
-                                className={active === "home" ? styles.activeLink : ''} onClick={() => setActive("home")}>
-                                Home</Nav.Link>
+                            <NavLink
+                                to="/"
+                                end
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                Home
+                            </NavLink>
                             <span className={styles.alchemySeparator}>🜂</span>
 
-                            <Nav.Link href="#birre" active={active === "birre"}
-                                className={active === "birre" ? styles.activeLink : ''} onClick={() => setActive("birre")}>
-                                Birre</Nav.Link>
+                            <NavLink
+                                to="/birre"
+                                end
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                Birre
+                            </NavLink>
                             <span className={styles.alchemySeparator}>🜄</span>
 
-                            <Nav.Link href="#novità" active={active === "novità"}
-                                className={active === "novità" ? styles.activeLink : ''} onClick={() => setActive("novità")}>
-                                Novità</Nav.Link>
+                           <NavLink
+                                to="/novita"
+                                end
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                Novità
+                            </NavLink>
                             <span className={styles.alchemySeparator}>🜁</span>
 
-                            <Nav.Link href='#contatti' active={active === "contatti"}
-                                className={active === "contatti" ? styles.activeLink : ''} onClick={() => setActive("contatti")}>
-                                Contatti</Nav.Link>
+                            <NavLink
+                                to="/contatti"
+                                end
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                Contatti
+                            </NavLink>
                             <span className={styles.alchemySeparator}>🜃</span>
 
                         </Nav>
