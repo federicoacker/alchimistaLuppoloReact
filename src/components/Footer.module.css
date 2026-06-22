@@ -10,12 +10,14 @@
     gap: 1rem;
     margin-bottom: 2rem;
     color: var(--color-gold-dark);
+    font-size: 1.5rem;
 }
 
 .footerDivider::before,
 .footerDivider::after {
     content: "";
-    width: 120px;
+    flex: 1;
+    max-width: 300px;
     height: 1px;
     background: rgba(212, 175, 55, 0.4);
 }
@@ -24,7 +26,46 @@
     font-size: 1.2rem;
 }
 
-.footerContent h5 {
+.footerLogoContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.footerLogo {
+    position: relative;
+    z-index: 2;
+    width: 180px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.logoGlow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(185, 140, 30, 0.35) 0%,
+            rgba(185, 140, 30, 0.15) 45%,
+            transparent 75%);
+
+    filter: blur(35px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.footerContent {
+    align-items: center;
+}
+
+.footerLink h5 {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -32,7 +73,89 @@
     color: var(--color-gold-dark);
 }
 
-.footerContent p {
-    font-size: 0.9rem;
+.footerLink ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footerLink a {
     color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footerLink a:hover {
+    color: var(--color-gold-dark);
+}
+
+.footerLink :global(.active) {
+    color: var(--color-gold-dark);
+}
+
+.contactInfo h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-title);
+    color: var(--color-gold-dark);
+}
+
+.contactList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contactList li {
+    cursor: default;
+    color: var(--color-text);
+}
+
+.social {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-title);
+    color: var(--color-gold-dark);
+}
+
+.socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.contactList i {
+    color: var(--color-gold-dark);
+    font-size: 1rem;
+    margin-top: 0.15rem;
+}
+
+.socialIcons a {
+    color: var(--color-gold-dark);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.socialIcons a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+
+.quote {
+    font-family: var(--font-title);
+    font-style: italic;
+    color: var(--color-gold-dark);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.copyright {
+    font-family: var(--font-title);
+    font-style: italic;
+    color: var(--color-gold-dark);
+    margin-bottom: 1rem;
 }
