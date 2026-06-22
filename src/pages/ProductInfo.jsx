@@ -1,34 +1,15 @@
-import { useEffect, useState } from "react";
+
 import { useParams } from "react-router";
 import styles from "./ProductInfo.module.css";
+import useProduct from "../hooks/useProduct";
 
 function ProductInfo() {
     const { slug } = useParams();
 
-    const [product, setProduct] = useState(null);
-
-    useEffect(() => {
-        async function fetchProduct() {
-            try {
-                const response = await fetch(`http://localhost:3000/products/${slug}`);
-                const data = await response.json();
-
-                console.log(data.result);
-
-                setProduct(data.result);
-            } catch (error) {
-                console.error("Errore nel recupero del prodotto:", error);
-            }
-        }
-
-        fetchProduct();
-    }, [slug]);
-
-    if (!product) {
-        return null;
-    }
+    const {product, loading, error} = useProduct(slug);
 
     return (
+        !loading && !error &&
         <div className={styles.productInfo}>
             <div className={styles.productImageBox}>
                 <img
