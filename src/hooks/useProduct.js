@@ -25,7 +25,7 @@ function useProduct(slug) {
         .finally(()=>{
             setLoading(false);
         });
-    });
+    }, [slug]);
 
     return {
         product,
