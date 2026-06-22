@@ -26,8 +26,8 @@ function Footer() {
                         <h5>Esplora</h5>
                         <ul>
                             <li> <NavLink to="/birre">Birre</NavLink></li>
-                            <li><NavLink to="/novita">Novità</NavLink></li>
-                            <li> <NavLink to="/cronache">Cronache</NavLink></li>
+                            <li><NavLink to="/missione">La Nostra Missione</NavLink></li>
+                            <li> <NavLink to="/cronache">Le Cronache della Birra</NavLink></li>
                         </ul>
                     </Col>
 
@@ -54,7 +54,7 @@ function Footer() {
                             </a>
 
                             <a href="#" aria-label="Untappd">
-                                <i class="bi bi-bookmark-heart"></i>
+                                <i className="bi bi-bookmark-heart"></i>
                             </a>
                         </div>
                     </Col>
