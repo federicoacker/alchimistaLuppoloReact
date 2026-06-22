@@ -1,10 +1,12 @@
 
-function Section({ children, className }) {
+function Section({ children, className = "", theme = "dark" }) {
 
     return (
 
-        <section className={className}>
-            {children}
+        <section className={`section section-${theme} section-frame ${className}`}>
+           
+                {children}
+           
         </section>
 
     )

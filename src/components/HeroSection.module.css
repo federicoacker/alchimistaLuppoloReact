@@ -1,0 +1,128 @@
+.heroSection {
+    min-height: 80vh;
+    background:
+        radial-gradient(circle at 75% 40%,
+            rgba(200, 155, 60, .08),
+            transparent 35%),
+        linear-gradient(135deg,
+            #17120f,
+            #241b15,
+            #17120f);
+
+    display: flex;
+    align-items: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    position:relative;
+    overflow: hidden;
+}
+
+.heroSection::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 75% 40%,
+            rgba(200,155,60,.12),
+            transparent 45%
+        ),
+        url("/imgs/sfondo.png");
+
+    background-size:
+        auto,
+        cover;
+    background-position:
+        center,
+        center;
+    opacity: .30;
+    pointer-events: none;
+}
+
+.heroSection > * {
+    position: relative;
+    z-index: 1;
+}
+
+.heroSubtitle {
+    font-family: var(--font-body);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.heroTitle {
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 5vw, 5rem);
+    color: var(--color-cream);
+    margin-bottom: 1.5rem;
+}
+
+.heroDescription {
+    max-width: 600px;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    margin-bottom: 2rem;
+}
+
+.heroActions {
+    display: flex;
+    gap: 1.25rem;
+    margin: 2rem;
+    flex-wrap: wrap;
+}
+
+.buttonAction {
+    background: transparent;
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all .3s ease;
+
+}
+
+.buttonAction:hover {
+    background: linear-gradient(135deg,
+            var(--color-gold-light),
+            var(--color-gold));
+
+    color: #1a120c;
+    box-shadow:
+        0 0 20px rgba(200, 155, 60, .25);
+}
+
+.logoGlow {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle,
+            rgba(200, 155, 60, 0.18) 0%,
+            rgba(200, 155, 60, 0.08) 40%,
+            transparent 75%);
+
+    filter: blur(40px);
+    z-index: 1;
+   
+}
+
+.heroLogo {
+    position: relative;
+    width: min(100%, 750px);
+    max-width: 500px;
+    border-radius: 50%;
+    filter:
+        drop-shadow(0 0 10px rgba(200, 155, 60, .25)) drop-shadow(0 0 25px rgba(200, 155, 60, .15));
+
+    z-index: 2;
+}
