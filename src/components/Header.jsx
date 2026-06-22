@@ -29,7 +29,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/birre"
+                                to="/products"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -38,7 +38,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/novita"
+                                to="/news"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -47,7 +47,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/contatti"
+                                to="/contacts"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -56,7 +56,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/chi-siamo"
+                                to="/about-us"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -65,7 +65,7 @@ function Header() {
 
 
                         </Nav>
-                        <Link to="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></Link>
+                        <Link to="/cart" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></Link>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
