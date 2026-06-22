@@ -65,7 +65,7 @@
 }
 
 .customNavbar :global(.nav-link.active) {
-    color: var(--color-gold);
+    color: var(--color-gold) !important;
 }
 
 /* Linea animata sotto */
