@@ -33,7 +33,7 @@ function ProductInfo() {
             <div className={styles.productImageBox}>
                 <img
                     className={styles.productImage}
-                    src={`http://localhost:3000/imgs/${product.image.split("/").pop()}`}
+                    src={product.image}
                     alt={product.name}
                 />
             </div>
@@ -52,18 +52,18 @@ function ProductInfo() {
                 </p>
 
                 <p className={styles.price}>
-                    € {Number(product.price).toFixed(2)}
+                    &euro; {Number(product.price).toFixed(2)}
                 </p>
 
                 <div className={styles.productDetails}>
                     <p><strong>Origine:</strong> {product.origin}</p>
                     <p><strong>Birrificio:</strong> {product.brewery}</p>
                     <p><strong>Tipologia:</strong> {product.subtype}</p>
-                    <p><strong>Colore:</strong> {product.colour}</p>
+                    <p className={styles.colour}><strong>Colore:</strong> {product.colour}</p>
                     <p><strong>Gradazione:</strong> {product.abv}%</p>
                     <p><strong>IBU:</strong> {product.ibu}</p>
                     <p><strong>Temperatura:</strong> {product.serving_temp}</p>
-                    <p><strong>Formato:</strong> {product.size}</p>
+                    <p><strong>Formato:</strong> {product.size}cl</p>
                     <p><strong>Bicchiere:</strong> {product.suggested_glass}</p>
                     <p><strong>Ingredienti:</strong> {product.ingredients}</p>
                     <p><strong>Abbinamenti:</strong> {product.pairs_with}</p>

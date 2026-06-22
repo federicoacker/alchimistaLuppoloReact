@@ -52,10 +52,9 @@
 }
 
 .productImage {
-    max-width: 320px;
-    width: 100%;
-    height: auto;
-
+    width: auto;
+    height: 600px;
+    object-fit: fill;
     filter:
         drop-shadow(0 0 14px rgba(200, 155, 60, .30)) 
         drop-shadow(0 0 35px rgba(200, 155, 60, .15));
@@ -158,6 +157,9 @@
     color: #1a120c;
     box-shadow: 0 0 20px rgba(200, 155, 60, .25);
 }
+.colour{
+    text-transform:capitalize;
+}
 
 @media (max-width: 991px) {
     .productInfo {
@@ -167,7 +169,9 @@
     }
 
     .productImage {
-        max-width: 260px;
+        width: 260px;
+        height: auto;
+        object-fit: fill;
     }
 
     .productContent {
