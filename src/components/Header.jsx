@@ -27,7 +27,7 @@ function Header() {
                             >
                                 Home
                             </NavLink>
-                            <span className={styles.alchemySeparator}>🜂</span>
+                            <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
                                 to="/birre"
@@ -36,7 +36,7 @@ function Header() {
                             >
                                 Birre
                             </NavLink>
-                            <span className={styles.alchemySeparator}>🜄</span>
+                            <span className={styles.alchemySeparator}> ✦</span>
 
                            <NavLink
                                 to="/novita"
@@ -45,7 +45,7 @@ function Header() {
                             >
                                 Novità
                             </NavLink>
-                            <span className={styles.alchemySeparator}>🜁</span>
+                            <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
                                 to="/contatti"
@@ -54,7 +54,6 @@ function Header() {
                             >
                                 Contatti
                             </NavLink>
-                            <span className={styles.alchemySeparator}>🜃</span>
 
                         </Nav>
                         <a href="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></a>
