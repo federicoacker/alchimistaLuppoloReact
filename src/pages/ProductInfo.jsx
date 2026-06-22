@@ -33,7 +33,7 @@ function ProductInfo() {
                 </p>
 
                 <p className={styles.price}>
-                    &euro; {Number(product.price).toFixed(2)}
+                    &euro; {Number(product.price).toFixed(2).replace(".",",")}
                 </p>
 
                 <div className={styles.productDetails}>

@@ -53,6 +53,16 @@ function Header() {
                             >
                                 Contatti
                             </NavLink>
+                            <span className={styles.alchemySeparator}> ✦</span>
+
+                            <NavLink
+                                to="/chi-siamo"
+                                end
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                La nostra missione
+                            </NavLink>
+
 
                         </Nav>
                         <Link to="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></Link>

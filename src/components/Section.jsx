@@ -4,9 +4,9 @@ function Section({ children, className = "", theme = "dark" }) {
     return (
 
         <section className={`section section-${theme} section-frame ${className}`}>
-           
-                {children}
-           
+
+            {children}
+
         </section>
 
     )

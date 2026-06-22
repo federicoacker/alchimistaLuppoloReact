@@ -19,7 +19,7 @@ function BeerCard({ product }) {
                 </Card.Body>
                 <Card.Footer className={styles["beer-card-footer"]}>
                     <Card.Text className={styles["beer-card-text"]}>
-                        Prezzo: {product.price.toFixed(2)} &euro;
+                        Prezzo: {product.price.toFixed(2).replace(".",",")} &euro;
                     </Card.Text>
                     <Card.Text className={styles["beer-card-text"]}>
                         IBU: {product.ibu}

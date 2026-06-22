@@ -1,4 +1,5 @@
 
+import AboutUsSection from "../components/AboutUsSection";
 import HeroSection from "../components/HeroSection";
 import NewBeers from "../components/NewBeers";
 import OurBeers from "../components/OurBeers";
@@ -17,6 +18,7 @@ function Home() {
                     <OurBeers />
                 </Container>
             </Section>
+            <AboutUsSection/>
             <Section>
                 <Container fluid="md">
                     <NewBeers />
