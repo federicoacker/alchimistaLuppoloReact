@@ -25,9 +25,9 @@ function Footer() {
                     <Col md={3} className={styles.footerLink}>
                         <h5>Esplora</h5>
                         <ul>
-                            <li> <NavLink to="/birre">Birre</NavLink></li>
-                            <li><NavLink to="/missione">La Nostra Missione</NavLink></li>
-                            <li> <NavLink to="/cronache">Le Cronache della Birra</NavLink></li>
+                            <li> <NavLink to="/products">Birre</NavLink></li>
+                            <li><NavLink to="/about-us">La Nostra Missione</NavLink></li>
+                            <li> <NavLink to="/news">Le Cronache della Birra</NavLink></li>
                         </ul>
                     </Col>
 
