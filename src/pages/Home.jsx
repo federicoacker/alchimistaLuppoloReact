@@ -1,6 +1,8 @@
 
 import HeroSection from "../components/HeroSection";
 import useProducts from "../hooks/useProducts.js";
+import Beers from "../components/Beers";
+
 
 
 function Home() {
@@ -10,6 +12,7 @@ function Home() {
     return (
         <>
             <HeroSection />
+            <Beers />
         </>
     )
 
