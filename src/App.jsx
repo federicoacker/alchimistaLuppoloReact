@@ -1,3 +1,4 @@
+import ScrollToTop from "./components/scrollToTop"
 import MainLayout from "./layouts/MainLayout"
 import Home from "./pages/Home"
 import ProductInfo from "./pages/ProductInfo"
@@ -9,13 +10,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/products/:slug" element={<ProductInfo />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+
+      <ScrollToTop />
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/products/:slug" element={<ProductInfo />} />
+                <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+
       </BrowserRouter>
 
     </>
