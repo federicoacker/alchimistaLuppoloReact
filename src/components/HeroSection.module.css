@@ -13,7 +13,7 @@
     align-items: center;
     padding-left: 5vw;
     padding-right: 5vw;
-    position:relative;
+    position: relative;
     overflow: hidden;
 }
 
@@ -23,11 +23,9 @@
     inset: 0;
 
     background:
-        radial-gradient(
-            circle at 75% 40%,
-            rgba(200,155,60,.12),
-            transparent 45%
-        ),
+        radial-gradient(circle at 75% 40%,
+            rgba(200, 155, 60, .12),
+            transparent 45%),
         url("/imgs/sfondo.png");
 
     background-size:
@@ -40,7 +38,7 @@
     pointer-events: none;
 }
 
-.heroSection > * {
+.heroSection>* {
     position: relative;
     z-index: 1;
 }
@@ -70,7 +68,7 @@
 .heroActions {
     display: flex;
     gap: 1.25rem;
-    margin: 2rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
 }
 
@@ -100,6 +98,13 @@
         0 0 20px rgba(200, 155, 60, .25);
 }
 
+.heroSealPanel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .logoGlow {
     position: absolute;
     width: 800px;
@@ -113,16 +118,53 @@
 
     filter: blur(40px);
     z-index: 1;
-   
+
 }
 
 .heroLogo {
     position: relative;
     width: min(100%, 750px);
-    max-width: 500px;
+    max-width: 450px;
     border-radius: 50%;
     filter:
         drop-shadow(0 0 10px rgba(200, 155, 60, .25)) drop-shadow(0 0 25px rgba(200, 155, 60, .15));
 
     z-index: 2;
+}
+
+
+
+@media (max-width: 1200px) {
+    .heroSection {
+        text-align: center;
+    }
+
+    .heroActions {
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .heroSealPanel {
+        margin-top: 3rem;
+    }
+
+    .heroLogo {
+        width: min(100%, 300px);
+    }
+
+    .logoGlow {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 576px) {
+    .heroLogo {
+        width: min(100%, 220px);
+    }
+
+    .logoGlow {
+        width: 350px;
+        height: 350px;
+    }
 }
