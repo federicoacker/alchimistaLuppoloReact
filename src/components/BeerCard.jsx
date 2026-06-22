@@ -28,10 +28,10 @@ function BeerCard({ product }) {
                         ABV: {product.abv.toFixed(2)}%
                     </Card.Text>
                     <Row className="g-2 justify-content-around">
-                        <Col md={6} className="text-center">
+                        <Col xs={12} md={4} xxl={6} className="text-center">
                             <Button className={styles["beer-button"]}>Ordina</Button>
                         </Col>
-                        <Col md={6} className="text-center">
+                        <Col xs={12} md={4} xxl={6} className="text-center">
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]}`}>Dettagli</Link>
                         </Col>
                     </Row>
