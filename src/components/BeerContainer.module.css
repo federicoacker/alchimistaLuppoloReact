@@ -1,0 +1,81 @@
+.category-pill {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+.category-pill-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+}
+
+.category-pill-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 1000px;
+    background-color: var(--color-gold);
+    color: var(--color-cream);
+    font-weight: 600;
+    line-height: 1;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-pill:hover .category-pill-chip {
+    transform: translateY(-1px);
+    background-color: var(--color-gold-light);
+}
+
+.category-pill-input:checked+.category-pill-chip {
+    background-color: var(--color-bg-light);
+    color: var(--color-cream);
+    border-color: var(--color-border);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.category-pill-input:focus-visible+.category-pill-chip {
+    outline: 2px solid var(--color-cream);
+    outline-offset: 2px;
+}
+
+.category-pill-input:active+.category-pill-chip {
+    transform: scale(0.98);
+}
+
+.buttonAction {
+    margin-top:1rem;
+    margin-bottom:1rem;
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.buttonAction:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+
+  color: #1a120c;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.25);
+}
+
+.search-section{
+    margin-bottom:2rem;
+}
