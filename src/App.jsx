@@ -6,25 +6,27 @@ import NotFound from "./pages/NotFound"
 import { BrowserRouter, Routes, Route } from 'react-router'
 import Contacts from "./pages/Contacts"
 import Checkout from "./components/Checkout"
+import { CartProvider } from "./contexts/CartContext"
 
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
 
-      <ScrollToTop />
+          <ScrollToTop />
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/products/:slug" element={<ProductInfo />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/checkout" element={<Checkout />} />
-                <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
-
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartProvider>
 
     </>
   )

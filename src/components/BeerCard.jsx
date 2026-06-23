@@ -1,8 +1,12 @@
 import { Card, Button, Col, Row } from "react-bootstrap";
 import styles from "./BeerCard.module.css";
 import { Link } from "react-router";
+import useCart from "../hooks/useCart";
 
 function BeerCard({ product }) {
+    const {cartItems, addToCart} = useCart();
+    console.log(cartItems);
+    
     return (
         <Col md={6} lg={4} xl={3} xxl={2}>
             <Card className={styles["beer-card"]}>
@@ -29,7 +33,7 @@ function BeerCard({ product }) {
                     </Card.Text>
                     <Row className="g-2 justify-content-around">
                         <Col xs={12} md={4} xxl={6} className="text-center">
-                            <Button className={styles["beer-button"]}>Ordina</Button>
+                            <Button className={styles["beer-button"]} onClick={event =>{addToCart(product)}}>Ordina</Button>
                         </Col>
                         <Col xs={12} md={4} xxl={6} className="text-center">
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]}`}>Dettagli</Link>
