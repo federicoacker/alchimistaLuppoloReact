@@ -5,6 +5,7 @@ import ProductInfo from "./pages/ProductInfo"
 import NotFound from "./pages/NotFound"
 import { BrowserRouter, Routes, Route } from 'react-router'
 import Contacts from "./pages/Contacts"
+import Beers from "./pages/Beers"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products/:slug" element={<ProductInfo />} />
               <Route path="/contacts" element={<Contacts />} />
+              <Route path="/products" element={<Beers />}/>
                 <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
