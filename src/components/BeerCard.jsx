@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import useCart from "../hooks/useCart";
 
 function BeerCard({ product }) {
-    const {cartItems, addToCart} = useCart();
+    const {cartItems, addToCart, removeFromCart} = useCart();
     console.log(cartItems);
     
     return (
@@ -37,6 +37,7 @@ function BeerCard({ product }) {
                         </Col>
                         <Col xs={12} md={4} xxl={6} className="text-center">
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]}`}>Dettagli</Link>
+                             <Button className={styles["beer-button"]} onClick={event =>removeFromCart(product)}>Rimuovi</Button>
                         </Col>
                     </Row>
                 </Card.Footer>
