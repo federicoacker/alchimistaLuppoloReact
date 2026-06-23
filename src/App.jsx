@@ -5,6 +5,8 @@ import ProductInfo from "./pages/ProductInfo"
 import NotFound from "./pages/NotFound"
 import { BrowserRouter, Routes, Route } from 'react-router'
 import Contacts from "./pages/Contacts"
+import CheckoutPage from "./pages/CheckoutPage"
+
 import Beers from "./pages/Beers"
 import Checkout from "./components/Checkout"
 import { CartProvider } from "./contexts/CartContext"
@@ -17,19 +19,18 @@ function App() {
       <CartProvider>
         <BrowserRouter>
 
-          <ScrollToTop />
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/products/:slug" element={<ProductInfo />} />
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/products" element={<Beers />}/>
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
+        <ScrollToTop />
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/products/:slug" element={<ProductInfo />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+
+      </BrowserRouter>
 
     </>
   )
