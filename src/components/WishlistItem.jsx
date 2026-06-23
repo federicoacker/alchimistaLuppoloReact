@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useWishlist } from "../contexts/WishlistContext";
+import styles from "./WishlistItem.module.css";
 
 function WishlistItem({ product }) {
 

@@ -1,8 +1,8 @@
-import useProducts from "../hooks/useProducts.js";
 import { useWishlist } from "../contexts/WishlistContext.jsx";
 import styles from "./Wishlist.module.css";
 import Section from "../components/Section.jsx";
 import WishlistItem from "../components/WishlistItem.jsx";
+import useWishlistProducts from "../hooks/useWishlistProducts.js"
 
 function WishlistPage() {
 
@@ -12,11 +12,8 @@ function WishlistPage() {
         products,
         loading,
         error
-    } = useProducts("");
+    } = useWishlistProducts(wishlist);
 
-    const wishlistProducts = products.filter(product =>
-        wishlist.includes(product.slug)
-    );
 
     if (loading) {
         return <p>Caricamento...</p>;
@@ -48,10 +45,10 @@ function WishlistPage() {
                 </header>
 
                 {
-                    wishlistProducts.length === 0 ? (
+                    products.length === 0 ? (
                         <p className={styles.empty}>La tua wishlist è vuota.</p>
                     ) : (
-                        wishlistProducts.map(product => (
+                        products.map(product => (
                             <WishlistItem
                                 key={product.slug}
                                 product={product}

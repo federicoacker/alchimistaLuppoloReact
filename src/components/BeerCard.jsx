@@ -1,8 +1,15 @@
 import { Card, Button, Col, Row } from "react-bootstrap";
 import styles from "./BeerCard.module.css";
 import { Link } from "react-router";
+import { useWishlist } from "../contexts/WishlistContext.jsx"
 
 function BeerCard({ product }) {
+    const {
+        toggleWishlist,
+        isInWishlist
+    } = useWishlist();
+    const favorite = isInWishlist(product.slug);
+
     return (
         <Col md={6} lg={4} xl={3} xxl={2}>
             <Card className={styles["beer-card"]}>
@@ -28,13 +35,17 @@ function BeerCard({ product }) {
                         ABV: {product.abv.toFixed(2)}%
                     </Card.Text>
                     <Row className="g-2 justify-content-center">
-                        <Col   xs="auto" className="text-center">
+                        <Col xs="auto" className="text-center">
                             <Button className={styles["beer-button"]}><i className="bi bi-cart-fill"></i></Button>
                         </Col>
-                        <Col   xs="auto" className="text-center">
-                            <Button className={styles["beer-button"]}><i className="bi bi-heart-fill"></i></Button>
+                        <Col xs="auto" className="text-center">
+                            <Button className={styles["beer-button"]}
+                                onClick={() => toggleWishlist(product.slug)}>
+                                { favorite ? ( <i className="bi bi-heart-fill"></i>)
+                                         : ( <i className="bi bi-heart"></i>)}
+                            </Button>
                         </Col>
-                        <Col   xs="auto" className="text-center">
+                        <Col xs="auto" className="text-center">
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]}`}>Dettagli</Link>
                         </Col>
                     </Row>
