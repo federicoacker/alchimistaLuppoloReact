@@ -7,11 +7,17 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import Contacts from "./pages/Contacts"
 import CheckoutPage from "./pages/CheckoutPage"
 
+import Beers from "./pages/Beers"
+import Checkout from "./components/Checkout"
+import { CartProvider } from "./contexts/CartContext"
+
+
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
 
         <ScrollToTop />
         <Routes>
