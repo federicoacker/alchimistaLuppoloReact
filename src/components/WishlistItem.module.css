@@ -1,12 +1,18 @@
 .item {
   display: grid;
   grid-template-columns:
-    40px /* X */
-    0.5fr /* immagine */
-    0.5fr /* nome */
-    2.3fr /* birrificio */
-    0.5fr /* prezzo */
-    0.3fr; /* carrello */
+    40px
+    /* X */
+    0.5fr
+    /* immagine */
+    0.5fr
+    /* nome */
+    2.3fr
+    /* birrificio */
+    0.5fr
+    /* prezzo */
+    0.3fr;
+  /* carrello */
   align-items: center;
   gap: 1.5rem;
   padding: 1.5rem;
@@ -28,15 +34,25 @@
 .imageWrapper {
   display: flex;
   justify-content: center;
+  max-height: 70px;
 }
 
 .imageWrapper img {
-  width: 60px;
+  width: 70px;
   height: auto;
   object-fit: contain;
 }
 
 .name {
+  color: var(--color-text);
+  text-decoration: none;
+
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+
+.brewery {
   color: var(--color-text);
   text-decoration: none;
 
@@ -62,21 +78,63 @@
 
 }
 
-@media (max-width: 768px) {
 
-  .tableHeader {
-    display: none;
+
+  @media (max-width: 425px) {
+
+    .tableHeader {
+      display: none;
+    }
+
+    .imageWrapper,
+    .brewery {
+      display: none;
+    }
+
+    .item {
+      grid-template-columns:
+        40px
+        /* X */
+        1fr
+        /* nome */
+        auto
+        /* prezzo */
+        40px;
+      /* carrello */
+
+      gap: 1rem;
+      padding: 0;
+    }
+
+    :root {
+      --section-padding: 1rem !important;
+    }
+
+
   }
 
-  .item {
-    grid-template-columns: 60px 1fr;
+  @media (max-width: 320px) {
+    .item {
+      grid-template-columns:
+        20px
+        /* X */
+        1fr
+        /* nome */
+        auto
+        /* prezzo */
+        40px;
+      /* carrello */
 
-    gap: 1rem;
+      
+      gap: 0.5rem;
+      padding: 0;
+    }
+        
+    :root {
+      --section-padding: 1rem !important;
+    }
+
+    
   }
 
-  .price,
-  .actions {
-    grid-column: 2;
-  }
 
-}
