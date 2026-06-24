@@ -78,9 +78,38 @@
 
 }
 
+.icon-button{
+  padding: 0.7rem 1rem !important;
+}
+
+.beer-button {
+  background: transparent !important;
+  color: var(--color-gold) !important;
+  border: 1px solid var(--color-gold) !important;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.beer-button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  ) !important;
+
+  color: #1a120c !important;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
+}
 
 
-  @media (max-width: 425px) {
+
+
+  @media (max-width: 700px) {
 
     .tableHeader {
       display: none;
