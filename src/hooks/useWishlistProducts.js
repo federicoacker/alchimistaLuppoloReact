@@ -13,9 +13,6 @@ function useWishlistProducts(wishlist) {
 
             try {
 
-                setLoading(true);
-                setError("");
-
                 if (wishlist.length === 0) {
 
                     setProducts([]);
@@ -35,7 +32,7 @@ function useWishlistProducts(wishlist) {
                         }
 
                         const data = await response.json();
-
+                       
                         return data.result;
 
                     } catch {
@@ -44,8 +41,7 @@ function useWishlistProducts(wishlist) {
                     }
                 });
 
-                const fetchedProducts =
-                    await Promise.all(requests);
+                const fetchedProducts = await Promise.all( requests);
 
                 const validProducts =
                     fetchedProducts.filter(
