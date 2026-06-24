@@ -4,6 +4,11 @@ import Home from "./pages/Home"
 import ProductInfo from "./pages/ProductInfo"
 import NotFound from "./pages/NotFound"
 import { BrowserRouter, Routes, Route } from 'react-router'
+
+import Contacts from "./pages/Contacts";
+import WishlistPage from "./pages/Wishlist";
+import { WishlistProvider } from "./contexts/WishlistContext"
+
 import Contacts from "./pages/Contacts"
 import CheckoutPage from "./pages/CheckoutPage"
 
@@ -12,13 +17,13 @@ import Checkout from "./components/Checkout"
 import { CartProvider } from "./contexts/CartContext"
 
 
-
 function App() {
   return (
     <>
-      <CartProvider>
-        <BrowserRouter>
 
+      <CartProvider>
+        <WishlistProvider>
+        <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route element={<MainLayout />}>
@@ -29,8 +34,9 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-
       </BrowserRouter>
+ </WishlistProvider>
+</CartProvider>
 
     </>
   )
