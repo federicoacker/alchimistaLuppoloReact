@@ -103,8 +103,7 @@ function Checkout() {
                         Please provide a valid date of birth.
                     </Form.Control.Feedback>
                 </Form.Group>
-            </Row>
-
+            </Row>                
         </form>
         </Section>
     )
