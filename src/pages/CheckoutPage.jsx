@@ -19,13 +19,19 @@ function CheckoutPage() {
                     return;
                 }
 
-                console.log("cartItems:", cartItems);
-                console.log("primo prodotto nel carrello:", cartItems[0]?.cartProduct);
-
                 const stripeCartItems = cartItems.map(item => ({
-                    product_id: item.cartProduct.id,
+                    slug: item.cartProduct?.slug || item.slug,
                     quantity: item.quantity,
                 }));
+
+                console.log("stripeCartItems inviati al backend:", stripeCartItems);
+
+                const invalidCartItem = stripeCartItems.find(item => !item.slug || !item.quantity);
+
+                if (invalidCartItem) {
+                    setErrorMessage("Prodotto nel carrello non valido");
+                    return;
+                }
 
                 const response = await fetch("http://localhost:3000/payments/create-payment-intent", {
                     method: "POST",
