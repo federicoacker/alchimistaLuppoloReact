@@ -4,14 +4,44 @@
   object-fit: fill !important;
   object-position: 50% 50% !important;
 }
+.beer-card-title {
+  border: 1px solid var(--color-border);
+  padding: 5px 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 25%;
+  min-width: 150px;
+  flex-grow: 1;
+  color: var(--color-cream);
+  font-family: var(--font-title);
+}
 .beer-title {
   font-family: var(--font-title);
   color: var(--color-gold) !important;
   text-wrap: nowrap;
 }
 .beer-card {
+  width:100%;
+  border: 1px solid var(--color-border);
   background-color: transparent !important;
-  border-color: var(--color-border) !important;
+  padding: 0 !important;
+}
+.beer-card-details {
+  display: flex;
+  border: 1px solid var(--color-border);
+  align-items: center;
+  gap: 10px;
+  padding: 10px 5px;
+  text-align: center;
+  flex-grow: 1;
+}
+.beer-card-text {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-cream) !important;
+  font-family: var(--font-text);
 }
 .beer-card-body {
   color: var(--color-cream) !important;
@@ -28,15 +58,17 @@
   color: var(--color-cream) !important;
   border-top: 1px solid var(--color-border) !important;
 }
-.beer-card-text {
-  margin-bottom: 0.5rem;
-}
 
+.icon-button {
+  padding: 0.7rem 1rem !important;
+}
+.text-button {
+  padding: 0.7rem 0.5rem !important;
+}
 .beer-button {
   background: transparent !important;
   color: var(--color-gold) !important;
   border: 1px solid var(--color-gold) !important;
-  padding: 0.7rem 0.2rem !important;
   border-radius: 4px;
   font-family: var(--font-body);
   font-size: 0.75rem !important;
@@ -55,4 +87,13 @@
 
   color: #1a120c !important;
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
+}
+.beer-card-buttons {
+  flex-grow: 1;
+  justify-content: center;
+}
+.quantity-text {
+  padding: 2rem;
+  color: var(--color-cream);
+  font-family: var(--font-text);
 }

@@ -4,23 +4,37 @@ import Home from "./pages/Home"
 import ProductInfo from "./pages/ProductInfo"
 import NotFound from "./pages/NotFound"
 import { BrowserRouter, Routes, Route } from 'react-router'
+import WishlistPage from "./pages/Wishlist";
+import { WishlistProvider } from "./contexts/WishlistContext"
+import Contacts from "./pages/Contacts"
+import CheckoutPage from "./pages/CheckoutPage"
+import Beers from "./pages/Beers"
+import Checkout from "./components/Checkout"
+import { CartProvider } from "./contexts/CartContext"
 
 
 function App() {
   return (
     <>
-      <BrowserRouter>
 
-      <ScrollToTop />
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/products/:slug" element={<ProductInfo />} />
+      <CartProvider>
+        <WishlistProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Beers/>}/> 
+                <Route path="/products/:slug" element={<ProductInfo />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/wishlist" element={<WishlistPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-
-      </BrowserRouter>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </WishlistProvider>
+      </CartProvider>
 
     </>
   )

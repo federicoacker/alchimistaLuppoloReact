@@ -1,0 +1,6 @@
+.checkout-title{
+    color: var(--color-cream);
+    font-family: var(--font-title);
+    text-align:center;
+    margin-bottom:10px;
+}

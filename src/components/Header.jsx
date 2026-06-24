@@ -2,20 +2,28 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import styles from './Header.module.css';
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
+import useCart from '../hooks/useCart';
+
 
 function Header() {
+    const {handleShow, cartItems} = useCart();
 
     return (
         <>
 
-            <Navbar expand="lg" className={styles.customNavbar} variant="dark">
+            <Navbar expand="lg" className={`sticky-top ${styles.customNavbar}`} variant="dark">
                 <Container>
                     <Navbar.Brand as={NavLink} to="/" className={styles.logoContainer}>
                         <div className={styles.logoGlow}></div>
                         <img src="/imgs/logo-semplice.png" alt="L'Alchimista del Luppolo" className={styles.navbarLogo} />
                     </Navbar.Brand>
-                    <a href="/carrello" className={styles.cartIconMobile}><i className="bi bi-cart3"></i> </a>
+                    <div className={styles.iconGroupMobile}>
+                        <button onClick={handleShow} className={styles.cartIconDesktop}>
+                            {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{cartItems.length}</label>}</button>
+                            <i className="bi bi-cart3"></i>
+                        <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
+                    </div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -29,7 +37,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/birre"
+                                to="/products"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -38,7 +46,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/novita"
+                                to="/news"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -47,7 +55,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/contatti"
+                                to="/contacts"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -56,7 +64,7 @@ function Header() {
                             <span className={styles.alchemySeparator}> ✦</span>
 
                             <NavLink
-                                to="/chi-siamo"
+                                to="/about-us"
                                 end
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
@@ -65,7 +73,14 @@ function Header() {
 
 
                         </Nav>
-                        <Link to="/carrello" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></Link>
+                        <div className={styles.iconGroupDesktop}>
+                            
+                            <button onClick={handleShow} className={styles.cartIconDesktop}>
+                                {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{cartItems.length}</label>}
+                                <i className="bi bi-cart3"></i>
+                            </button>
+                            <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
