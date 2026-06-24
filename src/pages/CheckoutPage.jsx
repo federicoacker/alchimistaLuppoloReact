@@ -1,14 +1,13 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
-import { CartContext } from "../contexts/CartContext";
+import useCart from "../hooks/useCart";
 import stripePromise from "../config/stripe";
 import Checkout from "../components/Checkout";
 
 function CheckoutPage() {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, totalPrice } = useCart();
 
     const [clientSecret, setClientSecret] = useState("");
-    const [totalPrice, setTotalPrice] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
@@ -49,7 +48,6 @@ function CheckoutPage() {
                 }
 
                 setClientSecret(data.clientSecret);
-                setTotalPrice(data.totalPrice);
             } catch (error) {
                 setErrorMessage("Errore di connessione con il server");
             }

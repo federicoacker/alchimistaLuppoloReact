@@ -6,13 +6,12 @@
 
 .cart-section {
   height: 100%;
-  overflow-y: scroll;
   position: relative;
   --section-padding: 1rem;
   padding: var(--section-padding);
   border: 2px solid var(--color-border);
   background: var(--section-background);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .cart-title {

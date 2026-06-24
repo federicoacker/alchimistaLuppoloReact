@@ -16,8 +16,11 @@ function BeerContainer() {
     const [query, setQuery] = useSearchParams();
     const [debouncedQuery, setSearchTerms, searchTerms] = useDebounce(query.get("search") ? query.get("search") : "", 500);
     const [selectedCategory, setSelectedCategory] = useState("any");
-    const { products, loading } = useProducts(`?search=${debouncedQuery}&category=${selectedCategory}`);
     const { categories, loading: categoryLoading, error: categoryError } = useCategories();
+    const [orderBy, setOrderBy] = useState("updated_at");
+    const [order, setOrder] = useState("asc");
+    const { products, loading } = useProducts(`?search=${debouncedQuery}&category=${selectedCategory}&orderBy=${orderBy}&order=${order}`);
+
 
     const changeCategory = (e) => {
         setSelectedCategory((current) => {
@@ -42,10 +45,12 @@ function BeerContainer() {
         setQuery(
             {
                 search: debouncedQuery,
-                category: selectedCategory
+                category: selectedCategory,
+                orderBy: orderBy,
+                order:order
             });
 
-    }, [debouncedQuery, setQuery, selectedCategory]);
+    }, [debouncedQuery, setQuery, selectedCategory, orderBy, order]);
 
     return (
         <Section className="gap-4">
@@ -54,6 +59,14 @@ function BeerContainer() {
                     <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} />
                     <button className={styles["buttonAction"]} onClick={() => { setIsGrid(!isGrid) }}>
                         <i className={isGrid ? "bi bi-card-list" : "bi bi-grid-3x2"} />
+                    </button>
+                    <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+                        <option value="name">Nome</option>
+                        <option value="price">Prezzo</option>
+                        <option value="updated_at">Data</option>
+                    </select>
+                    <button onClick={()=>{order === "desc" ? setOrder("asc") : setOrder("desc")}}>
+                        {order === "desc" ? <i className="bi bi-arrow-bar-up"></i> : <i className="bi bi-arrow-bar-down"></i>}
                     </button>
                     <div className="d-flex gap-2 flex-wrap">
                         {!categoryLoading && !categoryError && categories.map(category => {

@@ -109,7 +109,7 @@ function CartProvider({ children }) {
     const totalPrice = sumOfItems + shippingPrice;
 
 
-    const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow, totalPrice, shippingPrice, productsPrice };
+    const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow, totalPrice, shippingPrice, productsPrice, setCartItems };
     return (
         <CartContext value={value}>{children}</CartContext>
 

@@ -4,7 +4,7 @@ import styles from "./BeerCardHorizontal.module.css";
 import { useWishlist } from "../contexts/WishlistContext";
 import useCart from "../hooks/useCart";
 
-function BeerCardHorizontal({ product, quantity }) {
+function BeerCardHorizontal({ product, quantity, isCart = false }) {
     const {
         toggleWishlist,
         isInWishlist
@@ -35,7 +35,7 @@ function BeerCardHorizontal({ product, quantity }) {
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
                         </div>
                     }
-                    {quantity &&
+                    {quantity && 
                         <div className="d-flex align-items-center justify-content-center w-100">
                             <button onClick={()=>{removeFromCart(product)}} className={`${styles["icon-button"]} ${styles["beer-button"]} `}>
                                 <i className="bi bi-dash-circle"></i>

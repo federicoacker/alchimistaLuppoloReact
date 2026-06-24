@@ -18,7 +18,7 @@ function CartOffCanvas() {
                 <section className={styles["cart-section"]}>
                     <div className="d-flex flex-column">
                         {cartItems.map((cartItem) => {
-                            return <BeerCardHorizontal key={cartItem.cartProduct.slug} product={cartItem.cartProduct} quantity={cartItem.quantity} />
+                            return <BeerCardHorizontal key={cartItem.cartProduct.slug} product={cartItem.cartProduct} quantity={cartItem.quantity} isCart={true} />
                         })}
                     </div>
                     {cartItems.length > 0 &&
