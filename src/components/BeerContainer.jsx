@@ -47,7 +47,7 @@ function BeerContainer() {
                 search: debouncedQuery,
                 category: selectedCategory,
                 orderBy: orderBy,
-                order:order
+                order: order
             });
 
     }, [debouncedQuery, setQuery, selectedCategory, orderBy, order]);
@@ -60,12 +60,15 @@ function BeerContainer() {
                     <button className={styles["buttonAction"]} onClick={() => { setIsGrid(!isGrid) }}>
                         <i className={isGrid ? "bi bi-card-list" : "bi bi-grid-3x2"} />
                     </button>
-                    <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-                        <option value="name">Nome</option>
-                        <option value="price">Prezzo</option>
-                        <option value="updated_at">Data</option>
-                    </select>
-                    <button onClick={()=>{order === "desc" ? setOrder("asc") : setOrder("desc")}}>
+                    <div className={styles["selectWrapper"]}>
+                        <select className={styles["selectAction"]} value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+                            <option value="name">Nome</option>
+                            <option value="price">Prezzo</option>
+                            <option value="updated_at">Data</option>
+                        </select>
+                        <i className={`bi bi-chevron-down ${styles.selectIcon}`}></i>
+                    </div>
+                    <button className={styles["buttonAction"]} onClick={() => { order === "desc" ? setOrder("asc") : setOrder("desc") }}>
                         {order === "desc" ? <i className="bi bi-arrow-bar-up"></i> : <i className="bi bi-arrow-bar-down"></i>}
                     </button>
                     <div className="d-flex gap-2 flex-wrap">
