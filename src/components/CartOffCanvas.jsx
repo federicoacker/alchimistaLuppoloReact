@@ -32,7 +32,7 @@ function CartOffCanvas() {
                                         <th className={styles["cart-tag"]}>
                                             Prezzo di Shipping
                                         </th>
-                                        <th colspan={2} className={styles["cart-tag"]}>
+                                        <th colSpan={2} className={styles["cart-tag"]}>
                                             Totale
                                         </th>
                                     </tr>
@@ -45,7 +45,7 @@ function CartOffCanvas() {
                                         <td className={styles["cart-tag"]}>
                                             &euro; {shippingPrice.toFixed(2)}
                                         </td>
-                                        <td colspan={2} className={styles["cart-tag"]}>
+                                        <td colSpan={2} className={styles["cart-tag"]}>
                                             &euro; {totalPrice.toFixed(2)}
                                         </td>
                                     </tr>

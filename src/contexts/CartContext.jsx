@@ -111,7 +111,7 @@ function CartProvider({ children }) {
 
     const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow, totalPrice, shippingPrice, productsPrice };
     return (
-        <CartContext.Provider value={value}>{children}</CartContext.Provider>
+        <CartContext value={value}>{children}</CartContext>
 
 
     )
