@@ -1,163 +1,170 @@
 .customNavbar {
-    background: rgba(23, 18, 15, 0.95);
-    backdrop-filter: blur(10px);
+  background: rgba(23, 18, 15, 0.95);
+  backdrop-filter: blur(10px);
 
-    border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 
-    box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-gold);
 
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
-    transition: var(--transition);
+  transition: var(--transition);
 }
 
 .logoContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoGlow {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle,
-            rgba(200, 155, 60, 0.25) 0%,
-            rgba(200, 155, 60, 0.12) 45%,
-            transparent 75%);
-    filter: blur(20px);
-    z-index: 1;
-    pointer-events: none;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(200, 155, 60, 0.25) 0%,
+    rgba(200, 155, 60, 0.12) 45%,
+    transparent 75%
+  );
+  filter: blur(20px);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .navbarLogo {
-    height: 60px;
-    width: auto;
-    position: relative;
-    z-index: 2;
-    border-radius: 50%;
+  height: 60px;
+  width: auto;
+  position: relative;
+  z-index: 2;
+  border-radius: 50%;
 }
 
 .navbarLogo:hover {
-    transform: scale(1.10);
+  transform: scale(1.1);
 }
 
 /* Links */
 
 .customNavbar :global(.nav-link) {
-    color: var(--color-text-muted);
-    font-family: var(--font-body);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    margin: 0 0.75rem;
-    transition: var(--transition);
-    position: relative;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: 0 0.75rem;
+  transition: var(--transition);
+  position: relative;
 }
 
 .customNavbar :global(.nav-link:hover) {
-    color: var(--color-gold-dark) !important;
+  color: var(--color-gold-dark) !important;
 }
 
 .customNavbar :global(.nav-link.active) {
-    color: var(--color-gold) !important;
+  color: var(--color-gold) !important;
 }
 
 /* Linea animata sotto */
 
 .customNavbar :global(.nav-link)::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 1px;
-    background: var(--color-gold);
-    transition: var(--transition);
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: var(--transition);
 }
 
 .customNavbar :global(.nav-link:hover)::after {
-    width: 100%;
+  width: 100%;
 }
 
 .alchemySeparator {
-    display: flex;
-    align-items: center;
-    color: var(--color-gold-dark);
-    font-size: 0.9rem;
-    margin: 0 0.5rem;
-    opacity: 0.7;
-    transition: var(--transition);
+  display: flex;
+  align-items: center;
+  color: var(--color-gold-dark);
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+  opacity: 0.7;
+  transition: var(--transition);
 }
 
 .alchemySeparator:hover {
-    color: var(--color-gold);
-    opacity: 1;
+  color: var(--color-gold);
+  opacity: 1;
 }
 
 /* Carrello e Wishlist */
 
-
 .cartIconMobile,
 .iconGroupDesktop {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .cartIconDesktop,
 .cartIconMobile {
-    color: var(--color-gold);
-    font-size: 1.4rem;
-    text-decoration: none;
-    transition: var(--transition);
+  background: transparent !important;
+  color: var(--color-gold) !important;
+  border: 1px solid var(--color-gold) !important;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1.4rem !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0.7rem !important;
 }
 
 .cartIconDesktop:hover,
 .cartIconMobile:hover {
-    color: var(--color-gold-light);
-    transform: translateY(-2px);
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
 }
 
 /* Toggle mobile */
 
 .customNavbar :global(.navbar-toggler) {
-    border-color: var(--color-border);
+  border-color: var(--color-border);
 }
 
 .customNavbar :global(.navbar-toggler:focus) {
-    box-shadow: 0 0 0 0.15rem rgba(200, 155, 60, 0.3);
+  box-shadow: 0 0 0 0.15rem rgba(200, 155, 60, 0.3);
 }
 
 /* Responsive */
 
 .iconGroupMobile {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 991px) {
-    .iconGroupMobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        margin-right: 1rem;
-    }
+  .iconGroupMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
 
-    .iconGroupDesktop {
-        display: none;
-    }
+  .iconGroupDesktop {
+    display: none;
+  }
 
-    .customNavbar :global(.navbar-collapse) {
-        padding-top: 1rem;
-    }
+  .customNavbar :global(.navbar-collapse) {
+    padding-top: 1rem;
+  }
 
-    .customNavbar :global(.nav-link) {
-        margin: 0.5rem 0;
-    }
+  .customNavbar :global(.nav-link) {
+    margin: 0.5rem 0;
+  }
 }
