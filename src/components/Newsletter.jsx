@@ -13,6 +13,10 @@ function Newsletter() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const validatedEmail = validateEmail(email);
+        if(!validatedEmail){
+            setError("Email non valida");
+            return;
+        }
 
         const options = {
             method: "POST",
@@ -25,10 +29,14 @@ function Newsletter() {
         fetch(`${BASE_API_URL}/mail`, options)
             .then(response => {
                 if (!response.ok) {
-                    setError("C'è stato un problema nell'iscrizione alla newsletter");
-                    throw new Error("C'è stato un problema nell'iscrizione alla newsletter");
+                    throw new Error("Errore nell'invio dell'email");
                 }
                 return response.json();
+            })
+            .then(result=> {
+                if(result.result !== null){
+                    setEmail("");
+                }
             })
             .catch(error => {
                 setError(error.message);
@@ -44,6 +52,7 @@ function Newsletter() {
                     <div className="d-flex justify-content-center align-items-center position-relative">
                         <form className={styles.newsletterForm} onSubmit={handleSubmit}>
                             <input value={email} onChange={handleChange} className={styles.newsLetterInput} type="text" placeholder="Inserisci la tua email"></input>
+                            {error && <p>C'è stato un errore: {error}</p>}
                             <button className={`${styles.buttonAction} ${styles.newsLetterButton}`}>Iscriviti</button>
                             <div className={styles.logoGlow}></div>
                         </form>
