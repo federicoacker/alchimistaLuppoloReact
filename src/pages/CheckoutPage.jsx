@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Elements } from "@stripe/react-stripe-js";
+import { CartContext } from "../contexts/CartContext";
 import stripePromise from "../config/stripe";
 import Checkout from "../components/Checkout";
 
 function CheckoutPage() {
+    const { cartItems } = useContext(CartContext);
+
     const [clientSecret, setClientSecret] = useState("");
     const [totalPrice, setTotalPrice] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -11,10 +14,16 @@ function CheckoutPage() {
     useEffect(() => {
         async function createPaymentIntent() {
             try {
-                const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+                if (!cartItems || cartItems.length === 0) {
+                    setErrorMessage("Carrello vuoto");
+                    return;
+                }
 
-                const cartItems = cart.map(item => ({
-                    product_id: item.product_id,
+                console.log("cartItems:", cartItems);
+                console.log("primo prodotto nel carrello:", cartItems[0]?.cartProduct);
+
+                const stripeCartItems = cartItems.map(item => ({
+                    product_id: item.cartProduct.id,
                     quantity: item.quantity,
                 }));
 
@@ -23,7 +32,7 @@ function CheckoutPage() {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ cartItems }),
+                    body: JSON.stringify({ cartItems: stripeCartItems }),
                 });
 
                 const data = await response.json();
@@ -41,7 +50,7 @@ function CheckoutPage() {
         }
 
         createPaymentIntent();
-    }, []);
+    }, [cartItems]);
 
     if (errorMessage) {
         return <p className="text-danger">{errorMessage}</p>;

@@ -1,43 +1,55 @@
 import React from "react";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { preloadModule } from "react-dom";
 
 const CartContext = createContext(null);
 
 function CartProvider({ children }) {
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCart = localStorage.getItem("cartItems");
+
+        if (!savedCart) {
+            return [];
+        }
+
+        try {
+            return JSON.parse(savedCart);
+        } catch (error) {
+            localStorage.removeItem("cartItems");
+            return [];
+        }
+    });
+
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }, [cartItems]);
 
     const addToCart = (product) => {
-        let productIndex = 0;
-        let productFound = false;
+        setCartItems(current => {
+            const productIndex = current.findIndex(item => {
+                return item.cartProduct?.slug === product.slug;
+            });
 
-        //se prodotto già inserito aumenta (+1), altrimenti inserisci nuovo prodotto al cart
-        for (let i = 0; i < cartItems.length && !productFound; i++) {
-            const element = cartItems[i];
-            const elementSlug = element.cartProduct.slug;
+            if (productIndex !== -1) {
+                const currentCartItems = [...current];
 
-            if (elementSlug === product.slug) {
-                productFound = true;
-                productIndex = i;
+                currentCartItems[productIndex] = {
+                    ...currentCartItems[productIndex],
+                    quantity: currentCartItems[productIndex].quantity + 1,
+                };
+
+                return currentCartItems;
             }
-        }
 
-        if (productFound) {
-            setCartItems(current => {
-                let currentCartItems = [...current];
-                currentCartItems[productIndex].quantity += 1;
-                return currentCartItems;
-            })
-        } else {
-            setCartItems(current => {
-                let currentCartItems = [...current];
-                currentCartItems.push({ cartProduct: product, quantity: 1 })
-                return currentCartItems;
-            })
-
-
-        }
-    }
+            return [
+                ...current,
+                {
+                    cartProduct: product,
+                    quantity: 1,
+                },
+            ];
+        });
+    };
     const removeFromCart = (product) => {
         let productIndex = 0;
         let productFound = false;
@@ -69,7 +81,7 @@ function CartProvider({ children }) {
 
     const value = { cartItems, addToCart, removeFromCart };
     return (
-        <CartContext value={value}>{children}</CartContext>
+        <CartContext.Provider value={value}>{children}</CartContext.Provider>
 
 
     )
