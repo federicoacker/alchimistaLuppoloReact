@@ -22,6 +22,7 @@
   text-wrap: nowrap;
 }
 .beer-card {
+  width:100%;
   border: 1px solid var(--color-border);
   background-color: transparent !important;
   padding: 0 !important;

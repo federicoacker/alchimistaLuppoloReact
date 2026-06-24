@@ -13,7 +13,7 @@ function BeerCardHorizontal({ product, quantity, isCart = false }) {
     const { addToCart, removeFromCart } = useCart();
 
     return (
-        <div className="d-flex">
+        <div className="d-flex w-100 justify-content-center">
             <div className={styles["beer-card"]}>
                 <div className="d-flex w-100 flex-wrap">
                     <div className={styles["beer-card-title"]}>
