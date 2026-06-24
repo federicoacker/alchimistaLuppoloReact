@@ -2,14 +2,20 @@
 import { useParams } from "react-router";
 import styles from "./ProductInfo.module.css";
 import useProduct from "../hooks/useProduct";
+import useCart from "../hooks/useCart";
+import { useWishlist } from "../contexts/WishlistContext.jsx";
 import { Navigate } from "react-router";
 
 function ProductInfo() {
     const { slug } = useParams();
 
-    const {product, loading, error} = useProduct(slug);
-    if(error){
-        return <Navigate to="/404"/>
+    const { product, loading, error } = useProduct(slug);
+    const { addToCart } = useCart();
+    const { toggleWishlist, isInWishlist } = useWishlist();
+    const favorite = isInWishlist(product.slug);
+
+    if (error) {
+        return <Navigate to="/404" />
     }
     return (
         !loading && !error &&
@@ -36,7 +42,7 @@ function ProductInfo() {
                 </p>
 
                 <p className={styles.price}>
-                    &euro; {Number(product.price).toFixed(2).replace(".",",")}
+                    &euro; {Number(product.price).toFixed(2).replace(".", ",")}
                 </p>
 
                 <div className={styles.productDetails}>
@@ -52,8 +58,12 @@ function ProductInfo() {
                     <p><strong>Ingredienti:</strong> {product.ingredients}</p>
                     <p><strong>Abbinamenti:</strong> {product.pairs_with}</p>
                 </div>
-
-                <button className={styles.buttonAction}>
+                <button className={styles.buttonWishlist}
+                    onClick={() => toggleWishlist(product.slug)}>
+                    {favorite ? (<i className="bi bi-heart-fill"></i>)
+                        : (<i className="bi bi-heart"></i>)}
+                </button>
+                <button className={styles.buttonAction} onClick={() => addToCart(product)}>
                     Aggiungi al carrello
                 </button>
             </div>
