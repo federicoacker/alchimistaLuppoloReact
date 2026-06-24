@@ -1,40 +1,36 @@
-.beer-img {
-  height: 300px !important;
-  width: auto !important;
-  object-fit: fill !important;
-  object-position: 50% 50% !important;
-}
-.beer-title {
-  font-family: var(--font-title);
-  color: var(--color-gold) !important;
-  text-wrap: nowrap;
-}
-.beer-card {
-  background-color: transparent !important;
-  border-color: var(--color-border) !important;
-}
-.beer-card-body {
-  color: var(--color-cream) !important;
-}
-.beer-card-header {
-  border-color: var(--color-border) !important;
-}
-.beer-description {
-  height: 150px;
-  overflow-y: scroll;
-  scrollbar-width: none;
-}
-.beer-card-footer {
-  color: var(--color-cream) !important;
-  border-top: 1px solid var(--color-border) !important;
-}
-.beer-card-text {
-  margin-bottom: 0.5rem;
+.cart-offcanvas {
+  background-color: var(--color-bg) !important;
+  border-left: 2px solid var(--color-border) !important;
+  outline: 2px solid var(--color-border) !important;
 }
 
-.icon-button{
-  padding: 0.7rem 1rem !important;
+.cart-section {
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  --section-padding: 1rem;
+  padding: var(--section-padding);
+  border: 2px solid var(--color-border);
+  background: var(--section-background);
+  overflow-y: scroll;
 }
+
+.cart-title {
+  color: var(--color-cream) !important;
+  font-family: var(--font-title) !important;
+  font-size: 2rem !important;
+}
+
+.cart-total {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--color-cream) !important;
+  font-family: var(--font-title) !important;
+}
+.cart-tag{
+    padding:5px;
+}
+
 .text-button{
   padding: 0.7rem 0.5rem !important;
 }

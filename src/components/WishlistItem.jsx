@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 import { useWishlist } from "../contexts/WishlistContext";
 import styles from "./WishlistItem.module.css";
-import { NavLink } from 'react-router';
-
+import { Button } from "react-bootstrap";
+import useCart from "../hooks/useCart";
 function WishlistItem({ product }) {
 
     const { removeFromWishlist } = useWishlist();
-
+    const { cartItems, addToCart } = useCart();
+    console.log(cartItems);
     return (
 
         <article className={styles.item}>
@@ -21,16 +22,16 @@ function WishlistItem({ product }) {
             <Link to={`/products/${product.slug}`} className={styles.name}>
                 {product.name}
             </Link>
-             <span className={styles.brewery} className={styles.brewery}>
+            <span className={styles.brewery} className={styles.brewery}>
                 {product.brewery}
             </span >
             <span className={styles.price} >
                 € {product.price.toFixed(2)}
             </span >
 
-            <NavLink to="/cart" className={styles.actions}>
+            <Button onClick={()=>{addToCart(product)}} className={`${styles["beer-button"]} ${styles["icon-button"]}`}>
                 <i className="bi bi-cart3"></i>
-            </NavLink>
+            </Button>
 
         </article >
 
