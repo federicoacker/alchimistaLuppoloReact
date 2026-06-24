@@ -30,7 +30,10 @@
 
 .tableHeader {
   display: grid;
-  grid-template-columns: 4fr 1fr 1.5fr;
+  grid-template-columns:
+  0.3fr 
+  2.4fr 
+  0.7fr;
   gap: 1rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--color-border);

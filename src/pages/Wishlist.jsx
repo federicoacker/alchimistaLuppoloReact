@@ -36,12 +36,9 @@ function WishlistPage() {
             <Section className={styles.wishlistTable}>
 
                 <header className={styles.tableHeader}>
+                    <spam></spam>
                     <span>Prodotto</span>
-
                     <span>Prezzo</span>
-
-                    <span>Azioni</span>
-
                 </header>
 
                 {

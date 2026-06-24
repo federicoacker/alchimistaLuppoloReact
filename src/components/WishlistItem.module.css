@@ -1,9 +1,15 @@
 .item {
   display: grid;
-  grid-template-columns: auto 80px 1fr auto auto;
+  grid-template-columns:
+    40px /* X */
+    0.5fr /* immagine */
+    0.5fr /* nome */
+    2.3fr /* birrificio */
+    0.5fr /* prezzo */
+    0.3fr; /* carrello */
   align-items: center;
   gap: 1.5rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem;
   border-bottom: 1px solid rgba(200, 155, 60, 0.12);
 }
 
@@ -30,13 +36,13 @@
   object-fit: contain;
 }
 
-.productInfo h2 {
-  margin: 0;
-  font-size: 1.1rem;
+.name {
   color: var(--color-text);
-  font-family: var(--font-title);
-}
+  text-decoration: none;
 
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
 
 .price {
   font-weight: 600;
@@ -46,7 +52,14 @@
 
 .actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  color: var(--color-gold);
+  font-size: 1.4rem;
+
+  text-decoration: none;
+
+  transition: var(--transition);
+
 }
 
 @media (max-width: 768px) {

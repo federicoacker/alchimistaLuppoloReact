@@ -114,9 +114,7 @@
 .cartIconMobile {
     color: var(--color-gold);
     font-size: 1.4rem;
-
     text-decoration: none;
-
     transition: var(--transition);
 }
 
