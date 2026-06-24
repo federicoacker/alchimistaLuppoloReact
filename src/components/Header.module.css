@@ -60,8 +60,8 @@
     position: relative;
 }
 
-.customNavbar :global(.nav-link:hover){
-    color: var(--color-gold-dark) !important; 
+.customNavbar :global(.nav-link:hover) {
+    color: var(--color-gold-dark) !important;
 }
 
 .customNavbar :global(.nav-link.active) {
@@ -100,15 +100,21 @@
     opacity: 1;
 }
 
-/* Carrello */
+/* Carrello e Wishlist */
+
+
+.cartIconMobile,
+.iconGroupDesktop {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
 .cartIconDesktop,
 .cartIconMobile {
     color: var(--color-gold);
     font-size: 1.4rem;
-
     text-decoration: none;
-
     transition: var(--transition);
 }
 
@@ -120,35 +126,38 @@
 
 /* Toggle mobile */
 
-.customNavbar  :global(.navbar-toggler) {
+.customNavbar :global(.navbar-toggler) {
     border-color: var(--color-border);
 }
 
-.customNavbar  :global(.navbar-toggler:focus) {
+.customNavbar :global(.navbar-toggler:focus) {
     box-shadow: 0 0 0 0.15rem rgba(200, 155, 60, 0.3);
 }
 
 /* Responsive */
 
-.cartIconMobile {
+.iconGroupMobile {
     display: none;
 }
 
 @media (max-width: 991px) {
-    .cartIconMobile {
-        display: block;
+    .iconGroupMobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
         margin-right: 1rem;
     }
 
-    .cartIconDesktop {
+    .iconGroupDesktop {
         display: none;
     }
 
-    .customNavbar  :global(.navbar-collapse) {
+    .customNavbar :global(.navbar-collapse) {
         padding-top: 1rem;
     }
 
-    .customNavbar  :global(.nav-link) {
+    .customNavbar :global(.nav-link) {
         margin: 0.5rem 0;
     }
 }

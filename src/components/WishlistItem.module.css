@@ -1,0 +1,169 @@
+.item {
+  display: grid;
+  grid-template-columns:
+    40px
+    /* X */
+    0.5fr
+    /* immagine */
+    0.5fr
+    /* nome */
+    2.3fr
+    /* birrificio */
+    0.5fr
+    /* prezzo */
+    0.3fr;
+  /* carrello */
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(200, 155, 60, 0.12);
+}
+
+.removeButton {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.removeButton:hover {
+  color: var(--color-gold);
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  max-height: 70px;
+}
+
+.imageWrapper img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.name {
+  color: var(--color-text);
+  text-decoration: none;
+
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+
+.brewery {
+  color: var(--color-text);
+  text-decoration: none;
+
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+.price {
+  font-weight: 600;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  color: var(--color-gold);
+  font-size: 1.4rem;
+
+  text-decoration: none;
+
+  transition: var(--transition);
+
+}
+
+.icon-button{
+  padding: 0.7rem 1rem !important;
+}
+
+.beer-button {
+  background: transparent !important;
+  color: var(--color-gold) !important;
+  border: 1px solid var(--color-gold) !important;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.beer-button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  ) !important;
+
+  color: #1a120c !important;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
+}
+
+
+
+
+  @media (max-width: 700px) {
+
+    .tableHeader {
+      display: none;
+    }
+
+    .imageWrapper,
+    .brewery {
+      display: none;
+    }
+
+    .item {
+      grid-template-columns:
+        40px
+        /* X */
+        1fr
+        /* nome */
+        auto
+        /* prezzo */
+        40px;
+      /* carrello */
+
+      gap: 1rem;
+      padding: 0;
+    }
+
+    :root {
+      --section-padding: 1rem !important;
+    }
+
+
+  }
+
+  @media (max-width: 320px) {
+    .item {
+      grid-template-columns:
+        20px
+        /* X */
+        1fr
+        /* nome */
+        auto
+        /* prezzo */
+        40px;
+      /* carrello */
+
+      
+      gap: 0.5rem;
+      padding: 0;
+    }
+        
+    :root {
+      --section-padding: 1rem !important;
+    }
+
+    
+  }
+
+

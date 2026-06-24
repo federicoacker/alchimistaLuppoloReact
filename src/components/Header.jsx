@@ -15,7 +15,10 @@ function Header() {
                         <div className={styles.logoGlow}></div>
                         <img src="/imgs/logo-semplice.png" alt="L'Alchimista del Luppolo" className={styles.navbarLogo} />
                     </Navbar.Brand>
-                    <a href="/carrello" className={styles.cartIconMobile}><i className="bi bi-cart3"></i> </a>
+                    <div className={styles.iconGroupMobile}>
+                        <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
+                        <NavLink to="/carrello" className={styles.cartIconMobile}><i className="bi bi-cart3"></i> </NavLink>
+                    </div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -65,7 +68,10 @@ function Header() {
 
 
                         </Nav>
-                        <Link to="/cart" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></Link>
+                        <div className={styles.iconGroupDesktop}>
+                            <NavLink to="/cart" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></NavLink>
+                            <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
