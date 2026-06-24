@@ -70,8 +70,34 @@ function CartProvider({ children }) {
         }
     }
 
+    const sumOfItems = cartItems.reduce((accumulator, item) => {
 
-    const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow };
+        const itemPrice = item.cartProduct.price;
+        const itemQuantity = item.quantity;
+
+        // Moltiplichiamo il prezzo per la quantità e sommiamo al totale accumulato
+        return accumulator + (itemPrice * itemQuantity);
+    }, 0);
+
+    let shippingPrice = 0;
+
+
+    if (cartItems.length > 0) {
+    
+        if (sumOfItems > 20) {
+            shippingPrice = 0;
+        } else {
+            shippingPrice = 5;
+        }
+    } 
+
+
+    const productsPrice = sumOfItems;
+
+    const totalPrice = sumOfItems + shippingPrice;
+
+
+    const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow, totalPrice, shippingPrice, productsPrice };
     return (
         <CartContext value={value}>{children}</CartContext>
 
