@@ -10,7 +10,7 @@ function BeerCard({ product }) {
         isInWishlist
     } = useWishlist();
     const favorite = isInWishlist(product.slug);
-    const {cartItems, addToCart, removeFromCart} = useCart();
+    const { cartItems, addToCart, removeFromCart } = useCart();
     console.log(cartItems);
 
     return (
@@ -40,18 +40,18 @@ function BeerCard({ product }) {
 
                     <Row className="g-2 justify-content-center">
                         <Col xs="auto" className="text-center">
-                            <Button className={styles["beer-button"]} onClick={event =>{addToCart(product)}}><i className="bi bi-cart-fill"></i></Button>
+                            <Button className={styles["beer-button"]} onClick={event => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
                         </Col>
                         <Col xs="auto" className="text-center">
                             <Button className={styles["beer-button"]}
                                 onClick={() => toggleWishlist(product.slug)}>
-                                { favorite ? ( <i className="bi bi-heart-fill"></i>)
-                                         : ( <i className="bi bi-heart"></i>)}
+                                {favorite ? (<i className="bi bi-heart-fill"></i>)
+                                    : (<i className="bi bi-heart"></i>)}
                             </Button>
-                
+                        </Col>
                         <Col xs="auto" className="text-center">
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]}`}>Dettagli</Link>
-                             <Button className={styles["beer-button"]} onClick={event =>removeFromCart(product)}>Rimuovi</Button>
+                            <Button className={styles["beer-button"]} onClick={event => removeFromCart(product)}>Rimuovi</Button>
                         </Col>
                     </Row>
                 </Card.Footer>

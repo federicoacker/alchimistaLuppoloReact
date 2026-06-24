@@ -28,20 +28,21 @@ function useWishlistProducts(wishlist) {
                         );
 
                         if (!response.ok) {
+                            setError("Errore nel recupero dei prodotti");
                             return null;
                         }
 
                         const data = await response.json();
-                       
+
                         return data.result;
 
                     } catch {
-
+                        setError("Errore di connessione");
                         return null;
                     }
                 });
 
-                const fetchedProducts = await Promise.all( requests);
+                const fetchedProducts = await Promise.all(requests);
 
                 const validProducts =
                     fetchedProducts.filter(
