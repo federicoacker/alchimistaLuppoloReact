@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router";
 import useDebounce from "../hooks/useDebounce.js";
 import { useEffect, useState } from "react";
 import useProducts from "../hooks/useProducts.js";
-import BeerCardVertical from "./BeerCard.jsx";
+import BeerCardVertical from "./BeerCardVertical.jsx";
 import { Row } from "react-bootstrap";
 import useCategories from "../hooks/useCategories.js";
 import styles from "./BeerContainer.module.css";

@@ -2,9 +2,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import styles from './Header.module.css';
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
+import useCart from '../hooks/useCart';
+
 
 function Header() {
+    const {handleShow} = useCart();
 
     return (
         <>
@@ -69,7 +72,7 @@ function Header() {
 
                         </Nav>
                         <div className={styles.iconGroupDesktop}>
-                            <NavLink to="/cart" className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></NavLink>
+                            <button onClick={handleShow} className={styles.cartIconDesktop}><i className="bi bi-cart3"></i></button>
                             <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
                         </div>
                     </Navbar.Collapse>
