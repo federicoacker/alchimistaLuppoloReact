@@ -1,11 +1,15 @@
-import React from "react";
+
 import { createContext, useState } from "react";
-import { preloadModule } from "react-dom";
+
 
 const CartContext = createContext(null);
 
 function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const addToCart = (product) => {
         let productIndex = 0;
@@ -67,7 +71,7 @@ function CartProvider({ children }) {
     }
 
 
-    const value = { cartItems, addToCart, removeFromCart };
+    const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow };
     return (
         <CartContext value={value}>{children}</CartContext>
 

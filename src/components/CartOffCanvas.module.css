@@ -1,0 +1,15 @@
+.cart-offcanvas{
+    background-color: var(--color-bg);
+    border-left: 2px solid var(--color-border);
+    outline:2px solid var(--color-border);
+}
+
+.cart-section{
+    height:100%;
+}
+
+.cart-title{
+    color: var(--color-cream);
+    font-family: var(--font-title);
+    font-size: 2rem;
+}
