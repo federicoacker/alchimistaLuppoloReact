@@ -1,6 +1,6 @@
-import React from "react";
+
 import { createContext, useState, useEffect } from "react";
-import { preloadModule } from "react-dom";
+
 
 const CartContext = createContext(null);
 
@@ -23,6 +23,10 @@ function CartProvider({ children }) {
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const addToCart = (product) => {
         setCartItems(current => {
@@ -78,8 +82,34 @@ function CartProvider({ children }) {
         }
     }
 
+    const sumOfItems = cartItems.reduce((accumulator, item) => {
 
-    const value = { cartItems, addToCart, removeFromCart };
+        const itemPrice = item.cartProduct.price;
+        const itemQuantity = item.quantity;
+
+        // Moltiplichiamo il prezzo per la quantità e sommiamo al totale accumulato
+        return accumulator + (itemPrice * itemQuantity);
+    }, 0);
+
+    let shippingPrice = 0;
+
+
+    if (cartItems.length > 0) {
+    
+        if (sumOfItems > 20) {
+            shippingPrice = 0;
+        } else {
+            shippingPrice = 5;
+        }
+    } 
+
+
+    const productsPrice = sumOfItems;
+
+    const totalPrice = sumOfItems + shippingPrice;
+
+
+    const value = { cartItems, addToCart, removeFromCart, show, handleClose, handleShow, totalPrice, shippingPrice, productsPrice };
     return (
         <CartContext.Provider value={value}>{children}</CartContext.Provider>
 
