@@ -21,7 +21,7 @@ function WishlistItem({ product }) {
             <Link to={`/products/${product.slug}`} className={styles.name}>
                 {product.name}
             </Link>
-             <span className={styles.brewery} className={styles.name}>
+             <span className={styles.brewery} className={styles.brewery}>
                 {product.brewery}
             </span >
             <span className={styles.price} >
