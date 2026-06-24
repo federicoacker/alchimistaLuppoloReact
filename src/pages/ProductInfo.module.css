@@ -137,6 +137,7 @@
     padding: 0.7rem 1.5rem;
     border-radius: 4px;
     min-width: 260px;
+    margin:10px;
 
     font-family: var(--font-body);
     font-size: 1rem;
@@ -149,7 +150,8 @@
     transition: all .3s ease;
 }
 
-.buttonAction:hover {
+.buttonAction:hover,
+.buttonWishlist:hover {
     background: linear-gradient(135deg,
             var(--color-gold-light),
             var(--color-gold));
@@ -157,6 +159,27 @@
     color: #1a120c;
     box-shadow: 0 0 20px rgba(200, 155, 60, .25);
 }
+
+.buttonWishlist{
+    background: transparent;
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    transition: all .3s ease;
+
+}
+
+
 .colour{
     text-transform:capitalize;
 }
