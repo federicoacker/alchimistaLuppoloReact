@@ -1,0 +1,164 @@
+.item {
+  display: grid;
+  grid-template-columns:
+    40px
+    /* X */
+    0.5fr
+    /* immagine */
+    0.7fr
+    /* nome */
+    2.3fr
+    /* birrificio */
+    0.3fr
+    /* prezzo */
+    0.3fr
+    /* carrello */
+    0.5fr;
+  align-items: center;
+  padding: 1rem;
+  gap: 1.5rem;
+  border-bottom: 2px solid rgba(200, 155, 60, 0.12);
+}
+
+.removeButton {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.removeButton:hover {
+  color: var(--color-gold);
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  max-height: 70px;
+}
+
+.imageWrapper img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.name {
+  color: var(--color-text);
+  text-decoration: none;
+
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+
+.brewery {
+  color: var(--color-text);
+  text-decoration: none;
+
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+.price {
+  font-weight: 600;
+  color: var(--color-gold);
+ 
+}
+
+.totPrice {
+  font-weight: 600;
+  color: var(--color-gold);
+  
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.quantity {
+    width: 2rem;          /* oppure 32px */
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-gold);
+}
+
+.iconButton {
+  background: transparent !important;
+  color: var(--color-gold) !important;
+  border: 1px solid var(--color-gold) !important;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem !important;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.4rem 0.7rem;
+  margin: 10px;
+}
+
+.iconButton:hover {
+  background: linear-gradient(135deg,
+      var(--color-gold-light),
+      var(--color-gold)) !important;
+
+  color: #1a120c !important;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .imageWrapper,
+  .brewery {
+    display: none;
+  }
+
+  .item {
+    grid-template-columns:
+      20px
+      /* X */
+      1.4fr
+      /* nome */
+      0.3fr
+      /* prezzo */
+      0.5fr
+      /* carrello */
+      0.5fr;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  :root {
+    --section-padding: 1rem !important;
+  }
+
+}
+
+@media (max-width: 767px) {
+ 
+  .price,
+  .quantityControls{
+    display: none;
+    
+  }
+
+ 
+  .item {
+    grid-template-columns:
+      15px
+      0.7fr
+      0.4fr;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+
+
+
+}
