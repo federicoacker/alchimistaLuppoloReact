@@ -132,13 +132,13 @@
     color:var(--color-cream);
     border-radius:50%;
     bottom:0;
-    left:0;
+    right:0;
     width:20px;
     aspect-ratio:1;
     display:flex;
     align-items:center;
     justify-content:center;
-    translate: -50% 50%;
+    translate: 50% 40%;
 }
 .cartIconDesktop:hover,
 .cartIconMobile:hover {

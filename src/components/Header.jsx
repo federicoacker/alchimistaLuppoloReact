@@ -7,7 +7,7 @@ import useCart from '../hooks/useCart';
 
 
 function Header() {
-    const {handleShow, cartItems} = useCart();
+    const { handleShow, cartItems } = useCart();
 
     return (
         <>
@@ -21,7 +21,7 @@ function Header() {
                     <div className={styles.iconGroupMobile}>
                         <button onClick={handleShow} className={styles.cartIconDesktop}>
                             {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{cartItems.length}</label>}</button>
-                            <i className="bi bi-cart3"></i>
+                        <i className="bi bi-cart3"></i>
                         <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
                     </div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -74,12 +74,12 @@ function Header() {
 
                         </Nav>
                         <div className={styles.iconGroupDesktop}>
-                            
+                            <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
                             <button onClick={handleShow} className={styles.cartIconDesktop}>
                                 {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{cartItems.length}</label>}
                                 <i className="bi bi-cart3"></i>
                             </button>
-                            <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
+
                         </div>
                     </Navbar.Collapse>
                 </Container>

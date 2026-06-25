@@ -113,7 +113,7 @@ function Checkout({ totalPrice }) {
         <Section>
             <div>
                 <CartContainer />
-                <div>
+                <div className='text-end'>
                     {totalPrice && (
                         <h2  className={styles.totalPrice}>Totale da pagare: € {totalPrice.toFixed(2).replace(".", ",")}</h2>
                     )}
