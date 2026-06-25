@@ -64,6 +64,7 @@
 .price {
   font-weight: 600;
   color: var(--color-gold);
+  min-width: 17px;
  
 }
 
