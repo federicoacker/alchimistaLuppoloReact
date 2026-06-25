@@ -101,6 +101,18 @@ main {
   pointer-events: none;
 }
 
+select option:enabled:hover {
+  background-color: var(--color-bg-light) !important;
+  color: var(--color-text) !important;
+}
+
+select {
+  appearance: none; /* Removes native OS styling */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 10px;
+}
+
 @media screen and (min-width: 1600px) {
   .container,
   .container-lg,
