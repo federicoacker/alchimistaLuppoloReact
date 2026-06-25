@@ -34,6 +34,8 @@ function Checkout({ totalPrice }) {
     const [formData, setFormData] = useState(templateForm);
 
     const [validated, setValidated] = useState(false);
+    
+    const finalTotal = totalPrice + shippingPrice;
 
     const handleChange = () => {
 
@@ -113,9 +115,24 @@ function Checkout({ totalPrice }) {
         <Section>
             <div>
                 <CartContainer />
-                <div className='text-end'>
+                <div className="text-end">
                     {totalPrice && (
-                        <h2  className={styles.totalPrice}>Totale da pagare: € {totalPrice.toFixed(2).replace(".", ",")}</h2>
+                        <>
+                            <p className={styles.summaryRow}>
+                                Totale prodotti: € {totalPrice.toFixed(2).replace(".", ",")}
+                            </p>
+
+                            <p className={styles.summaryRow}>
+                                Spedizione:{" "}
+                                {shippingPrice === 0
+                                    ? "Gratuita"
+                                    : `€ ${shippingPrice.toFixed(2).replace(".", ",")}`}
+                            </p>
+
+                            <h2 className={styles.totalPrice}>
+                                Totale da pagare: € {finalTotal.toFixed(2).replace(".", ",")}
+                            </h2>
+                        </>
                     )}
                 </div>
             </div>
