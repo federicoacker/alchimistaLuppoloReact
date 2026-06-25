@@ -160,6 +160,7 @@
 }
 .newsLetterButton {
   position: relative;
+  margin-bottom:20px;
   z-index: 101;
 }
 

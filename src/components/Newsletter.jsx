@@ -42,6 +42,8 @@ function Newsletter() {
                 setError(error.message);
             }
             );
+            setEmail("");
+            setError("Grazie per l'iscrizione!");
     }
     return (
         <Container fluid="lg">
@@ -52,9 +54,9 @@ function Newsletter() {
                     <div className="d-flex justify-content-center align-items-center position-relative">
                         <form className={styles.newsletterForm} onSubmit={handleSubmit}>
                             <input value={email} onChange={handleChange} className={styles.newsLetterInput} type="text" placeholder="Inserisci la tua email"></input>
-                            {error && <p>C'è stato un errore: {error}</p>}
                             <button className={`${styles.buttonAction} ${styles.newsLetterButton}`}>Iscriviti</button>
                             <div className={styles.logoGlow}></div>
+                            {error && <p>{error}</p>}
                         </form>
                     </div>
                 </Col>
