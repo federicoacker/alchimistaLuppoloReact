@@ -35,7 +35,6 @@ function Checkout({ totalPrice }) {
 
     const [validated, setValidated] = useState(false);
     
-    const finalTotal = totalPrice + shippingPrice;
 
     const handleChange = () => {
 
@@ -119,7 +118,7 @@ function Checkout({ totalPrice }) {
                     {totalPrice && (
                         <>
                             <p className={styles.summaryRow}>
-                                Totale prodotti: € {totalPrice.toFixed(2).replace(".", ",")}
+                                Totale prodotti: € {productsPrice.toFixed(2).replace(".", ",")}
                             </p>
 
                             <p className={styles.summaryRow}>
@@ -130,7 +129,7 @@ function Checkout({ totalPrice }) {
                             </p>
 
                             <h2 className={styles.totalPrice}>
-                                Totale da pagare: € {finalTotal.toFixed(2).replace(".", ",")}
+                                Totale da pagare: € {totalPrice.toFixed(2).replace(".", ",")}
                             </h2>
                         </>
                     )}
