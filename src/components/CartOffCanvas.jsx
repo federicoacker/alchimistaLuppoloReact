@@ -8,7 +8,7 @@ import styles from "./CartOffCanvas.module.css";
 
 function CartOffCanvas() {
     const { cartItems, show, handleClose, productsPrice, shippingPrice, totalPrice } = useCart();
-    console.log(cartItems);
+
     return (
         <Offcanvas show={show} onHide={handleClose} placement="end" className={`${styles["cart-offcanvas"]} ${styles["section-frame"]}`}>
             <Offcanvas.Header closeButton closeVariant="white">

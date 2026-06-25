@@ -9,34 +9,57 @@ import { Row } from "react-bootstrap";
 import useCategories from "../hooks/useCategories.js";
 import styles from "./BeerContainer.module.css";
 import BeerCardHorizontal from "./BeerCardHorizontal.jsx";
+import Select from "react-select";
 
 
 function BeerContainer() {
     const [isGrid, setIsGrid] = useState(true);
     const [query, setQuery] = useSearchParams();
     const [debouncedQuery, setSearchTerms, searchTerms] = useDebounce(query.get("search") ? query.get("search") : "", 500);
-    const [selectedCategory, setSelectedCategory] = useState("any");
     const { categories, loading: categoryLoading, error: categoryError } = useCategories();
-    const [orderBy, setOrderBy] = useState("updated_at");
-    const [order, setOrder] = useState("asc");
-    const { products, loading } = useProducts(`?search=${debouncedQuery}&category=${selectedCategory}&orderBy=${orderBy}&order=${order}`);
+    const [orderBy, setOrderBy] = useState(query.get("orderBy") ? query.get("orderBy") : "updated_at");
+    const [order, setOrder] = useState(query.get("order") ? query.get("order") : "asc");
+    const [selectedCategoryArray, setSelectedCategoryArray] = useState(query.get("category")?.split(",") ? query.get("category")?.split(",") : ["any"]);
+    const { products, loading } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}`);
+    const [options, setOptions] = useState([{ value: "any", label: "Tutte" }]);
+    const [sortOptions, setSortOptions] = useState([
+        { value: "name", label: "Nome" },
+        { value: "price", label: "Prezzo" },
+        { value: "updated_at", label: "Data" }
+    ])
 
+    useEffect(() => {
+        if (options.length === 1) {
+            const optionArray = categories.map(category => { return { value: category.slug, label: category.name } });
+            setOptions([...options, ...optionArray]);
+        }
+    }, [categories, options]);
 
-    const changeCategory = (e) => {
-        setSelectedCategory((current) => {
-            const value = e.target.value;
-            if (current === "any") {
-                return value;
+    const changeCategoryArray = (e) => {
+        setSelectedCategoryArray((current) => {
+
+            if (!e || e.length === 0) {
+                return ["any"];
             }
-            const categoryArray = current?.split(",");
-            if (categoryArray.includes(value)) {
-                categoryArray.splice(categoryArray.indexOf(value), 1);
-                if (categoryArray.length === 0) {
-                    categoryArray.push("any");
-                }
-                return categoryArray.join(",");
+
+            const newSelectedValues = e.map(option => option.value);
+            const hasAny = newSelectedValues.includes("any");
+            const hadAny = current.includes("any");
+
+            if (hasAny && !hadAny) {
+                return ["any"];
             }
-            return current + `,${e.target.value}`
+
+            if (hasAny && hadAny) {
+                const withoutAny = newSelectedValues.filter(v => v !== "any");
+                return withoutAny.length > 0 ? withoutAny : ["any"];
+            }
+
+            if (newSelectedValues.length === 0) {
+                return ["any"];
+            }
+
+            return newSelectedValues;
         });
     };
 
@@ -45,51 +68,87 @@ function BeerContainer() {
         setQuery(
             {
                 search: debouncedQuery,
-                category: selectedCategory,
+                category: selectedCategoryArray.join(","),
                 orderBy: orderBy,
                 order: order
             });
 
-    }, [debouncedQuery, setQuery, selectedCategory, orderBy, order]);
+    }, [debouncedQuery, setQuery, selectedCategoryArray, orderBy, order]);
 
     return (
         <Section className="gap-4">
             <Section className={`d-flex ${styles["search-section"]}`}>
-                <div>
+                <div className="w-100">
                     <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} />
-                    <button className={styles["buttonAction"]} onClick={() => { setIsGrid(!isGrid) }}>
-                        <i className={isGrid ? "bi bi-card-list" : "bi bi-grid-3x2"} />
-                    </button>
-                    <div className={styles["selectWrapper"]}>
-                        <select className={styles["selectAction"]} value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-                            <option value="name">Nome</option>
-                            <option value="price">Prezzo</option>
-                            <option value="updated_at">Data</option>
-                        </select>
-                        <i className={`bi bi-chevron-down ${styles.selectIcon}`}></i>
+                    <div className="d-flex my-2 g-4 w-100 flex-wrap">
+                        <div className={styles["display-wrapper"]}>
+                            <label className={styles["label"]}>
+                                Display {isGrid ? "Griglia" : "Lista"}
+                            </label>
+                            <button className={styles["displayButton"]} onClick={() => { setIsGrid(!isGrid) }}>
+                                <i className={!isGrid ? "bi bi-card-list" : "bi bi-grid-3x2"} />
+                            </button>
+                        </div>
+                        <div className={styles["orderBy-wrapper"]}>
+                            <label className={styles["label"]}>
+                                Ordina per:
+                            </label>
+                            <Select
+                                options={sortOptions}
+                                onChange={(e) => setOrderBy(e.value)}
+                                hideSelectedOptions
+                                isSearchable={false}
+                                unstyled
+                                placeholder={sortOptions.find(option => option.value === orderBy).label}
+                                classNames={{
+                                    container: () => { return styles["select-order"] },
+                                    control: () => { return styles["select-order-control"] },
+                                    menu: () => { return styles["select-menu"] },
+                                    option: ({ isSelected, isFocused }) => {
+                                        return isSelected ? styles["select-option-selected"] : isFocused ? styles["select-option-focused"] : styles["select-option"]
+                                    }
+                                }}
+                            />
+                        </div>
+                        <div className={styles["order-wrapper"]}>
+                            <label className={`${styles["label"]} ${styles["order-text"]}`}>
+                                Ordine: {order}
+                            </label>
+                            <button className={styles["buttonAction"]} onClick={() => { order === "desc" ? setOrder("asc") : setOrder("desc") }}>
+                                {order === "asc" ? <i className="bi bi-arrow-bar-up"></i> : <i className="bi bi-arrow-bar-down"></i>}
+                            </button>
+                        </div>
                     </div>
-                    <button className={styles["buttonAction"]} onClick={() => { order === "desc" ? setOrder("asc") : setOrder("desc") }}>
-                        {order === "desc" ? <i className="bi bi-arrow-bar-up"></i> : <i className="bi bi-arrow-bar-down"></i>}
-                    </button>
-                    <div className="d-flex gap-2 flex-wrap">
-                        {!categoryLoading && !categoryError && categories.map(category => {
-                            return (
-                                <label htmlFor={category.slug} key={category.slug} className={styles["category-pill"]}>
-                                    <input
-                                        className={styles["category-pill-input"]}
-                                        id={`${category.slug}`}
-                                        type="checkbox"
-                                        name="category"
-                                        value={category.slug}
-                                        checked={selectedCategory?.split(",").includes(category.slug)}
-                                        onChange={changeCategory} />
-                                    <span className={styles["category-pill-chip"]}>{category.name}</span>
-                                </label>
-                            )
-                        }
-                        )
-                        }
-                    </div>
+
+                    {
+                        !categoryLoading && !categoryError &&
+                        <div className="d-flex flex-column">
+                            <label className={styles["label"]}>
+                                Seleziona le categorie
+                            </label>
+                            <Select
+                                isMulti
+                                options={options}
+                                value={options.filter(opt => selectedCategoryArray.includes(opt.value))}
+                                onChange={changeCategoryArray}
+                                unstyled
+                                classNames={{
+                                    container: () => { return styles["select"] },
+                                    menu: () => { return styles["select-menu"] },
+                                    option: ({ isSelected, isFocused }) => {
+                                        return isSelected ? styles["select-option-selected"] : isFocused ? styles["select-option-focused"] : styles["select-option"]
+                                    },
+                                    multiValue: () => { return styles["select-multi-value"] },
+                                    multiValueLabel: () => { return styles["select-multi-value-label"] },
+                                    multiValueRemove: () => { return styles["select-multi-value-remove-btn"] },
+
+
+                                }}
+                                isSearchable={false}
+                                hideSelectedOptions
+                            />
+                        </div>
+                    }
                 </div>
             </Section>
             <Row className={`row-gap-4 ${styles["product-section"]}`}>

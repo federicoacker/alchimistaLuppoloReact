@@ -115,7 +115,6 @@ function switchValidator(key, formObject) {
 
         case "total_price":
             result = validateFloatNumber(formObject[key]);
-            console.log(formObject["shipping_price"], formObject["products_price"], formObject["total_price"]);
             if(result === null || result !== (formObject["shipping_price"] + formObject["products_price"]) || result > dataTypes.TOTAL_PRICE){ 
                 return "Il total price inserito non è valido"
             };
@@ -169,7 +168,6 @@ function isValidDate(value) {
     const today = new Date();
     const today_year = today.getFullYear();
     const year = date.getFullYear();
-    console.log(today_year, year);
     return /^\d{4}-\d{2}-\d{2}$/.test(value) && !isNaN(Date.parse(value)) && today_year - year > 18;
 }
 
