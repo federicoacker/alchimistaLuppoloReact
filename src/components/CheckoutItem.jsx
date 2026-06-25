@@ -42,7 +42,7 @@ function CheckoutItem({ cartItem }) {
                 {quantity}
                 <button className={styles.iconButton} onClick={() => addToCart(cartProduct)}>+</button>
             </span>
-            <span className={styles.price}>
+            <span className={styles.totPrice}>
                 tot. € {(cartProduct.price * quantity).toFixed(2)}
             </span>
 
