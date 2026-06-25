@@ -10,8 +10,8 @@ function BeerCardVertical({ product }) {
         isInWishlist
     } = useWishlist();
     const favorite = isInWishlist(product.slug);
-    const { cartItems, addToCart} = useCart();
-    console.log(cartItems);
+    const { addToCart} = useCart();
+
 
     return (
         <Col md={6} lg={4} xl={4} xxl={4}>
