@@ -12,17 +12,18 @@ function Header() {
     return (
         <>
 
-            <Navbar expand="lg" className={`sticky-top ${styles.customNavbar}`} variant="dark">
+            <Navbar expand="xl" className={`sticky-top ${styles.customNavbar}`} variant="dark">
                 <Container>
                     <Navbar.Brand as={NavLink} to="/" className={styles.logoContainer}>
                         <div className={styles.logoGlow}></div>
                         <img src="/imgs/logo-semplice.png" alt="L'Alchimista del Luppolo" className={styles.navbarLogo} />
                     </Navbar.Brand>
                     <div className={styles.iconGroupMobile}>
-                        <button onClick={handleShow} className={styles.cartIconDesktop}>
-                            {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{cartItems.length}</label>}</button>
-                        <i className="bi bi-cart3"></i>
                         <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
+                        <button onClick={handleShow} className={styles.cartIconDesktop}>
+                            {cartItems.length > 0 && (<label className={styles["cart-item-label"]}> {cartItems.length}</label>)}
+                            <i className="bi bi-cart3"></i>
+                        </button>
                     </div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

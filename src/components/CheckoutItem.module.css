@@ -15,6 +15,7 @@
     /* carrello */
     0.5fr;
   align-items: center;
+  padding: 1rem;
   gap: 1.5rem;
   border-bottom: 2px solid rgba(200, 155, 60, 0.12);
 }
@@ -72,6 +73,20 @@
   
 }
 
+.quantityControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.quantity {
+    width: 2rem;          /* oppure 32px */
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-gold);
+}
+
 .iconButton {
   background: transparent !important;
   color: var(--color-gold) !important;
@@ -125,9 +140,10 @@
 
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
  
-  .price{
+  .price,
+  .quantityControls{
     display: none;
     
   }

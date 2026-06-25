@@ -37,11 +37,11 @@ function CheckoutItem({ cartItem }) {
             <span className={styles.price} >
                 € {cartProduct.price.toFixed(2)}
             </span >
-            <span className={styles.price}>
+            <div className={styles.quantityControls}>
                 <button className={styles.iconButton} onClick={() => removeFromCart(cartProduct)}>-</button>
-                {quantity}
+                <div className={styles.price} >{quantity} </div>
                 <button className={styles.iconButton} onClick={() => addToCart(cartProduct)}>+</button>
-            </span>
+            </div>
             <span className={styles.totPrice}>
                 tot. € {(cartProduct.price * quantity).toFixed(2)}
             </span>
