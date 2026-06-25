@@ -15,7 +15,7 @@ function BeerContainer() {
     const [isGrid, setIsGrid] = useState(true);
     const [query, setQuery] = useSearchParams();
     const [debouncedQuery, setSearchTerms, searchTerms] = useDebounce(query.get("search") ? query.get("search") : "", 500);
-    const [selectedCategory, setSelectedCategory] = useState("any");
+    const [selectedCategory, setSelectedCategory] = useState(["any"]);
     const { categories, loading: categoryLoading, error: categoryError } = useCategories();
     const [orderBy, setOrderBy] = useState("updated_at");
     const [order, setOrder] = useState("asc");
@@ -24,11 +24,31 @@ function BeerContainer() {
 
     const changeCategory = (e) => {
         setSelectedCategory((current) => {
+
             const value = e.target.value;
-            if (current === "any") {
+            if(current.includes("any")){
+                return ["any"];
+            }
+
+            let categoryArray = current;
+            if(categoryArray.includes(value)){
+                categoryArray.splice(categoryArray.indexOf(value), 1);
+                if(categoryArray.length === 0){
+                    categoryArray = ["any"];
+                }
+                return categoryArray.join(", ")
+            }
+        });
+
+            /*
+            const value = e.target.value;
+            console.log(value);
+            if (value === "any") {
+                console.log(value)
                 return value;
             }
-            const categoryArray = current?.split(",");
+            let categoryArray = current?.split(",");
+            categoryArray = categoryArray.replace("any", "");
             if (categoryArray.includes(value)) {
                 categoryArray.splice(categoryArray.indexOf(value), 1);
                 if (categoryArray.length === 0) {
@@ -38,6 +58,7 @@ function BeerContainer() {
             }
             return current + `,${e.target.value}`
         });
+        */
     };
 
 
@@ -45,7 +66,7 @@ function BeerContainer() {
         setQuery(
             {
                 search: debouncedQuery,
-                category: selectedCategory,
+                category: selectedCategory.join(","),
                 orderBy: orderBy,
                 order: order
             });
@@ -72,6 +93,23 @@ function BeerContainer() {
                         {order === "desc" ? <i className="bi bi-arrow-bar-up"></i> : <i className="bi bi-arrow-bar-down"></i>}
                     </button>
                     <div className="d-flex gap-2 flex-wrap">
+                        {
+                            !categoryLoading && !categoryError &&
+                            <select multiple={true} className={styles["selectAction"]} value={selectedCategory} onChange={changeCategory}>
+                                <option value="any">Tutte</option>
+                                {categories.map(category => {
+                                    return <option
+                                        key={category.slug}
+                                        value={category.slug}
+                                        data-selected={selectedCategory.includes(category.slug)}
+                                        className={this?.dataset["data-selected"] ? `${styles["selected-category"]}` : `${styles["category"]}`}
+                                    >
+                                        {category.name}
+                                    </option>
+                                })}
+                            </select>
+                        }
+                        {/*
                         {!categoryLoading && !categoryError && categories.map(category => {
                             return (
                                 <label htmlFor={category.slug} key={category.slug} className={styles["category-pill"]}>
@@ -87,7 +125,7 @@ function BeerContainer() {
                                 </label>
                             )
                         }
-                        )
+                            */
                         }
                     </div>
                 </div>
