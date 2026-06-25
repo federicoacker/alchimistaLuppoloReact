@@ -28,3 +28,7 @@
 
     color: var(--color-cream);
 }
+
+.text-cream{
+    color: var(--color-text) !important;
+}
