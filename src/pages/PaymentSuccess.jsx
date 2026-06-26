@@ -62,7 +62,7 @@ function PaymentSuccess() {
         <section className={styles.paymentSuccessPage}>
             <div className={styles.successCard}>
                 <div className={styles.symbol}>
-                    ✓
+                    &#10004;
                 </div>
 
                 <h5 className={styles.subtitle}>Resoconto ordine</h5>
