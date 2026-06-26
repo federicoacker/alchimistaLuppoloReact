@@ -5,7 +5,7 @@ import Section from './Section';
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useCart from '../hooks/useCart';
 import { BASE_API_URL } from '../data/apiConstants';
-import validateForm from "../data/validation/validateForm.js";
+import validateForm, { useValidateForm } from "../hooks/useValidateForm.js";
 import styles from "./Checkout.module.css";
 import CartContainer from './CartContainer.jsx';
 
@@ -32,9 +32,15 @@ function Checkout({ totalPrice }) {
     const elements = useElements();
     const [paymentError, setPaymentError] = useState("");
     const [formData, setFormData] = useState(templateForm);
+    const [needsValidation, setNeedsValidation] = useState(false)
 
-    const [validated, setValidated] = useState(false);
-    
+    const isFormValidated = useValidateForm(formData, needsValidation);
+    let validated;
+    let errors;
+    if (isFormValidated) {
+        validated = isFormValidated.validated;
+        errors = isFormValidated.errors;
+    }
 
     const handleChange = () => {
 
@@ -50,6 +56,11 @@ function Checkout({ totalPrice }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!needsValidation) {
+            setNeedsValidation(true);
+            return;
+        }
+
         const mappedCartItems = cartItems.map(cartItem => {
             return {
                 "product_slug": cartItem.cartProduct.slug,
@@ -63,14 +74,6 @@ function Checkout({ totalPrice }) {
             shipping_price: shippingPrice,
             products_price: productsPrice
         }
-
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
-        setValidated(validateForm(newOrder));
 
         const options = {
             method: "POST",
@@ -137,6 +140,7 @@ function Checkout({ totalPrice }) {
             </div>
             <Section>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                    <Form.Text className={styles["text-cream-title"]}>*Tutti i campi sono obbligatori</Form.Text>
                     <Row className="mb-3">
                         <Form.Group as={Col} md="4" controlId="validationCustom01">
                             <Form.Label>Nome</Form.Label>
@@ -148,6 +152,7 @@ function Checkout({ totalPrice }) {
                                 value={formData.first_name}
                                 onChange={handleChange}
                             />
+                            {errors?.first_name && <Form.Text className={styles["text-red"]}>{errors.first_name}</Form.Text>}
                         </Form.Group>
 
                         <Form.Group as={Col} md="4" controlId="validationCustom02">
@@ -160,6 +165,7 @@ function Checkout({ totalPrice }) {
                                 value={formData.last_name}
                                 onChange={handleChange}
                             />
+                            {errors?.last_name && <Form.Text className={styles["text-red"]}>{errors.last_name}</Form.Text>}
                         </Form.Group>
                     </Row>
 
@@ -167,24 +173,18 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
                             <Form.Control type="text" placeholder="Città" required value={formData.city} name="city" onChange={handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci una città esistente.
-                            </Form.Control.Feedback>
+                            {errors?.city && <Form.Text className={styles["text-red"]}>{errors.city}</Form.Text>}
                         </Form.Group>
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
                             <Form.Control type="text" placeholder="Indirizzo" required value={formData.address_line_1} name="address_line_1" onChange={handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci un indirizzo valido.
-                            </Form.Control.Feedback>
+                            {errors?.address_line_1 && <Form.Text className={styles["text-red"]}>{errors.address_line_1}</Form.Text>}
                         </Form.Group>
 
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
                             <Form.Control type="text" placeholder="CAP" required value={formData.postal_code} name="postal_code" onChange={handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                Per faore inserisci un CAP valido.
-                            </Form.Control.Feedback>
+                            {errors?.postal_code && <Form.Text className={styles["text-red"]}>{errors.postal_code}</Form.Text>}
                         </Form.Group>
                     </Row>
 
@@ -192,9 +192,12 @@ function Checkout({ totalPrice }) {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Indirizzo email</Form.Label>
                             <Form.Control type="email" placeholder="Inserisci email" required name="email" value={formData.email} onChange={handleChange} />
-                            <Form.Text className={styles["text-cream"]}>
-                                Non condivideremo mai la tua email con nessun'altro oltre a Stripe.
-                            </Form.Text>
+                            {errors?.email ?
+                                <Form.Text className={styles["text-red"]}>{errors.email}</Form.Text> :
+                                <Form.Text className={styles["text-cream"]}>
+                                    Non condivideremo mai la tua email con nessun'altro oltre a Stripe.
+                                </Form.Text>
+                            }
                         </Form.Group>
                     </Row>
 
@@ -210,9 +213,7 @@ function Checkout({ totalPrice }) {
 
                                 onChange={handleChange}
                             />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci un numero di telefono valido
-                            </Form.Control.Feedback>
+                            {errors?.phone && <Form.Text className={styles["text-red"]}>{errors.phone}</Form.Text>}
                         </Form.Group>
 
                         <Form.Group as={Col} md="6" controlId="validationDate">
@@ -225,9 +226,7 @@ function Checkout({ totalPrice }) {
                                 name="date_of_birth"
                                 onChange={handleChange}
                             />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci una data di nascita valida.
-                            </Form.Control.Feedback>
+                            {errors?.date_of_birth && <Form.Text className={styles["text-red"]}>{errors.date_of_birth}</Form.Text>}
                         </Form.Group>
                     </Row>
 
