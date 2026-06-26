@@ -60,7 +60,9 @@ function Checkout({ totalPrice }) {
             setNeedsValidation(true);
             return;
         }
-
+        if(!validated){
+            return;
+        }
         const mappedCartItems = cartItems.map(cartItem => {
             return {
                 "product_slug": cartItem.cartProduct.slug,
