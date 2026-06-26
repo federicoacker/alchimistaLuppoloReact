@@ -39,3 +39,10 @@
 .text-cream{
     color: var(--color-text) !important;
 }
+.text-cream-title{
+    color: var(--color-text) !important;
+    font-size: 1.5rem !important;
+}
+.text-red{
+    color:rgba(255, 0, 0, 0.568) !important;
+}
