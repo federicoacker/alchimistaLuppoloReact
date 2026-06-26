@@ -5,7 +5,7 @@ import Section from './Section';
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useCart from '../hooks/useCart';
 import { BASE_API_URL } from '../data/apiConstants';
-import validateForm from "../data/validation/validateForm.js";
+import validateForm, { useValidateForm } from "../hooks/useValidateForm.js";
 import styles from "./Checkout.module.css";
 import CartContainer from './CartContainer.jsx';
 
@@ -32,9 +32,15 @@ function Checkout({ totalPrice }) {
     const elements = useElements();
     const [paymentError, setPaymentError] = useState("");
     const [formData, setFormData] = useState(templateForm);
+    const [needsValidation, setNeedsValidation] = useState(false)
 
-    const [validated, setValidated] = useState(false);
-    
+    const isFormValidated = useValidateForm(formData, needsValidation);
+    let validated;
+    let errors;
+    if (isFormValidated) {
+        validated = isFormValidated.validated;
+        errors = isFormValidated.errors;
+    }
 
     const handleChange = () => {
 
@@ -50,6 +56,11 @@ function Checkout({ totalPrice }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!needsValidation) {
+            setNeedsValidation(true);
+            return;
+        }
+
         const mappedCartItems = cartItems.map(cartItem => {
             return {
                 "product_slug": cartItem.cartProduct.slug,
@@ -63,14 +74,6 @@ function Checkout({ totalPrice }) {
             shipping_price: shippingPrice,
             products_price: productsPrice
         }
-
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
-        setValidated(validateForm(newOrder));
 
         const options = {
             method: "POST",
@@ -137,6 +140,7 @@ function Checkout({ totalPrice }) {
             </div>
             <Section>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                    <Form.Text className={styles["text-cream-title"]}>*Tutti i campi sono obbligatori</Form.Text>
                     <Row className="mb-3">
                         <Form.Group as={Col} md="4" controlId="validationCustom01">
                             <Form.Label>Nome</Form.Label>
@@ -147,7 +151,10 @@ function Checkout({ totalPrice }) {
                                 placeholder="Nome"
                                 value={formData.first_name}
                                 onChange={handleChange}
+                                isValid={errors?.first_name === ""}
+                                isInvalid={errors?.first_name !== ""}
                             />
+                            <Form.Control.Feedback type="invalid">{errors?.first_name}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="4" controlId="validationCustom02">
@@ -159,42 +166,71 @@ function Checkout({ totalPrice }) {
                                 placeholder="Cognome"
                                 value={formData.last_name}
                                 onChange={handleChange}
+                                isValid={errors?.last_name === ""}
+                                isInvalid={errors?.last_name !== ""}
                             />
+                            <Form.Control.Feedback type="invalid">{errors?.last_name}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
-                            <Form.Control type="text" placeholder="Città" required value={formData.city} name="city" onChange={handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci una città esistente.
-                            </Form.Control.Feedback>
+                            <Form.Control 
+                            type="text" 
+                            placeholder="Città" 
+                            required 
+                            value={formData.city} 
+                            name="city" 
+                            onChange={handleChange} 
+                            isValid={errors?.city === ""}
+                            isInvalid={errors?.city !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.city}</Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
-                            <Form.Control type="text" placeholder="Indirizzo" required value={formData.address_line_1} name="address_line_1" onChange={handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci un indirizzo valido.
-                            </Form.Control.Feedback>
+                            <Form.Control 
+                            type="text" 
+                            placeholder="Indirizzo"
+                            required value={formData.address_line_1} 
+                            name="address_line_1" 
+                            onChange={handleChange} 
+                            isValid={errors?.address_line_1 === ""}
+                            isInvalid={errors?.address_line_1 !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.address_line_1}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
-                            <Form.Control type="text" placeholder="CAP" required value={formData.postal_code} name="postal_code" onChange={handleChange} />
-                            <Form.Control.Feedback type="invalid">
-                                Per faore inserisci un CAP valido.
-                            </Form.Control.Feedback>
+                            <Form.Control 
+                            type="text" 
+                            placeholder="CAP" 
+                            required 
+                            value={formData.postal_code} 
+                            name="postal_code" 
+                            onChange={handleChange} 
+                            isValid={errors?.postal_code === ""}
+                            isInvalid={errors?.postal_code !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.postal_code}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
                     <Row className="mb-3">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Indirizzo email</Form.Label>
-                            <Form.Control type="email" placeholder="Inserisci email" required name="email" value={formData.email} onChange={handleChange} />
-                            <Form.Text className={styles["text-cream"]}>
-                                Non condivideremo mai la tua email con nessun'altro oltre a Stripe.
-                            </Form.Text>
+                            <Form.Control
+                                type="email"
+                                placeholder="Inserisci email"
+                                required name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                isValid={errors?.email === ""}
+                                isInvalid={errors?.email !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.email}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
@@ -207,12 +243,12 @@ function Checkout({ totalPrice }) {
                                 placeholder="Inserisci numero di telefono"
                                 value={formData.phone}
                                 name="phone"
-
+                                isValid={errors?.phone === ""}
+                                isInvalid={errors?.phone !== ""}
                                 onChange={handleChange}
+                                
                             />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci un numero di telefono valido
-                            </Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">{errors?.phone}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="6" controlId="validationDate">
@@ -220,14 +256,13 @@ function Checkout({ totalPrice }) {
                             <Form.Control
                                 required
                                 type="date"
-
+                                isValid={errors?.date_of_birth === ""}
+                                isInvalid={errors?.date_of_birth !== ""}
                                 value={formData.date_of_birth}
                                 name="date_of_birth"
                                 onChange={handleChange}
                             />
-                            <Form.Control.Feedback type="invalid">
-                                Per favore inserisci una data di nascita valida.
-                            </Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">{errors?.date_of_birth}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
@@ -242,7 +277,7 @@ function Checkout({ totalPrice }) {
                     )}
 
                     <button className={styles.paymentButton} type="submit" disabled={!stripe}>
-                        Paga
+                        {!needsValidation ? "Valida i dati" : "Paga"}
                     </button>
 
                 </Form>
