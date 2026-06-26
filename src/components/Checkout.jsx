@@ -32,8 +32,14 @@ function Checkout({ totalPrice }) {
     const elements = useElements();
     const [paymentError, setPaymentError] = useState("");
     const [formData, setFormData] = useState(templateForm);
-
-    const [validated, setValidated] = useState(false);
+    const [needsValidation, setNeedsValidation] = useState(false);
+    const isFormValidated = useValidateForm(formData, needsValidation);
+    let validated;
+    let errors;
+    if(isFormValidated){
+        validated = isFormValidated.validated;
+        errors = isFormValidated.errors;
+    }
 
 
     const handleChange = () => {
@@ -101,8 +107,8 @@ function Checkout({ totalPrice }) {
                     },
                 });
 
-                if (error) {
-                    setPaymentError(error.message);
+                if (result) {
+                    setPaymentError(result.message);
                 }
 
             })
