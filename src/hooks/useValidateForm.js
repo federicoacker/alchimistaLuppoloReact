@@ -199,7 +199,7 @@ function validateForm(formObject) {
     }
     for (const key of Object.getOwnPropertyNames(validationErrors)) {
         if (validationErrors[key].length !== 0) {
-            console.log(validationErrors.other_errors);
+
             return { validated: false, errors: validationErrors };
         }
     }

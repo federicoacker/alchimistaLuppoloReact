@@ -60,7 +60,7 @@ function Checkout({ totalPrice }) {
             setNeedsValidation(true);
             return;
         }
-        console.log(validated);
+
         if (!validated) {
             return;
         }

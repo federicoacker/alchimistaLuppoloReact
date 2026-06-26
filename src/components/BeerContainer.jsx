@@ -74,7 +74,7 @@ function BeerContainer() {
             return newSelectedValues;
         });
     };
-    console.log(products);
+
 
     useEffect(() => {
 
