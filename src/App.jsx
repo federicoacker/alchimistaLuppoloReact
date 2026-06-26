@@ -10,6 +10,7 @@ import Contacts from "./pages/Contacts"
 import CheckoutPage from "./pages/CheckoutPage"
 import Beers from "./pages/Beers"
 import Checkout from "./components/Checkout"
+import Cronache from "./pages/Cronache"
 import { CartProvider } from "./contexts/CartContext"
 
 
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/news" element={<Cronache />} />
                 <Route path="/products" element={<Beers/>}/> 
                 <Route path="/products/:slug" element={<ProductInfo />} />
                 <Route path="/contacts" element={<Contacts />} />
