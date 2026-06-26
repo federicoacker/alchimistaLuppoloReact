@@ -82,7 +82,7 @@ function switchValidator(key, formObject, validationErrors) {
 
         case "postal_code":
             result = validateNumberString(formObject[key]);
-            if (!result || result.length > 20) {
+            if (!result || result.length > 5) {
                 validationErrors.postal_code = "Il codice postale inserito non è valido";
             }
             break;

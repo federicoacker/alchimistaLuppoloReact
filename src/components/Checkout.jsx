@@ -151,8 +151,10 @@ function Checkout({ totalPrice }) {
                                 placeholder="Nome"
                                 value={formData.first_name}
                                 onChange={handleChange}
+                                isValid={errors?.first_name === ""}
+                                isInvalid={errors?.first_name !== ""}
                             />
-                            {errors?.first_name && <Form.Text className={styles["text-red"]}>{errors.first_name}</Form.Text>}
+                            <Form.Control.Feedback type="invalid">{errors?.first_name}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="4" controlId="validationCustom02">
@@ -164,40 +166,71 @@ function Checkout({ totalPrice }) {
                                 placeholder="Cognome"
                                 value={formData.last_name}
                                 onChange={handleChange}
+                                isValid={errors?.last_name === ""}
+                                isInvalid={errors?.last_name !== ""}
                             />
-                            {errors?.last_name && <Form.Text className={styles["text-red"]}>{errors.last_name}</Form.Text>}
+                            <Form.Control.Feedback type="invalid">{errors?.last_name}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
-                            <Form.Control type="text" placeholder="Città" required value={formData.city} name="city" onChange={handleChange} />
-                            {errors?.city && <Form.Text className={styles["text-red"]}>{errors.city}</Form.Text>}
+                            <Form.Control 
+                            type="text" 
+                            placeholder="Città" 
+                            required 
+                            value={formData.city} 
+                            name="city" 
+                            onChange={handleChange} 
+                            isValid={errors?.city === ""}
+                            isInvalid={errors?.city !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.city}</Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
-                            <Form.Control type="text" placeholder="Indirizzo" required value={formData.address_line_1} name="address_line_1" onChange={handleChange} />
-                            {errors?.address_line_1 && <Form.Text className={styles["text-red"]}>{errors.address_line_1}</Form.Text>}
+                            <Form.Control 
+                            type="text" 
+                            placeholder="Indirizzo"
+                            required value={formData.address_line_1} 
+                            name="address_line_1" 
+                            onChange={handleChange} 
+                            isValid={errors?.address_line_1 === ""}
+                            isInvalid={errors?.address_line_1 !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.address_line_1}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
-                            <Form.Control type="text" placeholder="CAP" required value={formData.postal_code} name="postal_code" onChange={handleChange} />
-                            {errors?.postal_code && <Form.Text className={styles["text-red"]}>{errors.postal_code}</Form.Text>}
+                            <Form.Control 
+                            type="text" 
+                            placeholder="CAP" 
+                            required 
+                            value={formData.postal_code} 
+                            name="postal_code" 
+                            onChange={handleChange} 
+                            isValid={errors?.postal_code === ""}
+                            isInvalid={errors?.postal_code !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.postal_code}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
                     <Row className="mb-3">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Indirizzo email</Form.Label>
-                            <Form.Control type="email" placeholder="Inserisci email" required name="email" value={formData.email} onChange={handleChange} />
-                            {errors?.email ?
-                                <Form.Text className={styles["text-red"]}>{errors.email}</Form.Text> :
-                                <Form.Text className={styles["text-cream"]}>
-                                    Non condivideremo mai la tua email con nessun'altro oltre a Stripe.
-                                </Form.Text>
-                            }
+                            <Form.Control
+                                type="email"
+                                placeholder="Inserisci email"
+                                required name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                isValid={errors?.email === ""}
+                                isInvalid={errors?.email !== ""}
+                            />
+                            <Form.Control.Feedback type="invalid">{errors?.email}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
@@ -210,10 +243,12 @@ function Checkout({ totalPrice }) {
                                 placeholder="Inserisci numero di telefono"
                                 value={formData.phone}
                                 name="phone"
-
+                                isValid={errors?.phone === ""}
+                                isInvalid={errors?.phone !== ""}
                                 onChange={handleChange}
+                                
                             />
-                            {errors?.phone && <Form.Text className={styles["text-red"]}>{errors.phone}</Form.Text>}
+                            <Form.Control.Feedback type="invalid">{errors?.phone}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="6" controlId="validationDate">
@@ -221,12 +256,13 @@ function Checkout({ totalPrice }) {
                             <Form.Control
                                 required
                                 type="date"
-
+                                isValid={errors?.date_of_birth === ""}
+                                isInvalid={errors?.date_of_birth !== ""}
                                 value={formData.date_of_birth}
                                 name="date_of_birth"
                                 onChange={handleChange}
                             />
-                            {errors?.date_of_birth && <Form.Text className={styles["text-red"]}>{errors.date_of_birth}</Form.Text>}
+                            <Form.Control.Feedback type="invalid">{errors?.date_of_birth}</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
@@ -241,7 +277,7 @@ function Checkout({ totalPrice }) {
                     )}
 
                     <button className={styles.paymentButton} type="submit" disabled={!stripe}>
-                        Paga
+                        {!needsValidation ? "Valida i dati" : "Paga"}
                     </button>
 
                 </Form>
