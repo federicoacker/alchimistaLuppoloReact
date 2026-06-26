@@ -13,9 +13,9 @@ function CartProductDisplay({ productItem }) {
     const itemSinglePrice = product.price.toFixed(2);
     return (
         <>
-            <h4>{product.name}</h4>
-            
-            <p>Prezzo singolo: {itemSinglePrice} €</p>
+            <h4 className={styles["color-title"]}>{product.name}</h4>
+
+            <p className={styles["color-text"]}>Prezzo singolo: {itemSinglePrice} €</p>
 
             <div className="cart-buttons-wrapper">
                 <button
@@ -24,9 +24,9 @@ function CartProductDisplay({ productItem }) {
                 >
                     -
                 </button>
-                
-                <span className="quantity-display">{quantity}</span>
-                
+
+                <span className={styles["quantity-display"]}>{quantity}</span>
+
                 <button
                     className={styles["btn-quantity-action"]}
                     onClick={() => addToCart(product)}
@@ -35,7 +35,7 @@ function CartProductDisplay({ productItem }) {
                 </button>
             </div>
 
-            <p>Totale parziale: {itemTotalPrice} €</p>
+            <p className={styles["color-text"]}>Totale parziale: {itemTotalPrice} €</p>
         </>
     )
 }
