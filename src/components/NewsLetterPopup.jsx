@@ -19,7 +19,7 @@ function NewsLetterPopup() {
     return (
         <>
             <Modal show={show} onHide={handleClose} className={styles["modal"]}>
-                <Modal.Header closeButton className={styles["modal-header"]}>
+                <Modal.Header closeButton closeVariant="white" className={styles["modal-header"]}>
                     <Modal.Title className={styles["modal-title"]}>Benvenuto!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={styles["modal-body"]}>

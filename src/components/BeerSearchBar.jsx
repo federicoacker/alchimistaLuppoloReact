@@ -1,5 +1,5 @@
 
-function BeerSearchBar({query, setQuery}) {
+function BeerSearchBar({query, setQuery, setOffset}) {
     
     return (
         <div className="search-bar my-2">
@@ -11,7 +11,8 @@ function BeerSearchBar({query, setQuery}) {
                 className="form-control"
                 value={query}
                 onChange={(e) => {
-                    setQuery(e.target.value);}}
+                    setQuery(e.target.value);
+                    setOffset(0);}}
             />
         </div>
 

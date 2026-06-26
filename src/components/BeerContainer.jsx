@@ -10,8 +10,9 @@ import useCategories from "../hooks/useCategories.js";
 import styles from "./BeerContainer.module.css";
 import BeerCardHorizontal from "./BeerCardHorizontal.jsx";
 import Select from "react-select";
+import PageNavigator from "./PageNavigator.jsx";
 
-
+const MAX_ITEMS_PER_PAGE = 9;
 function BeerContainer() {
     const [isGrid, setIsGrid] = useState(true);
     const [query, setQuery] = useSearchParams();
@@ -20,13 +21,23 @@ function BeerContainer() {
     const [orderBy, setOrderBy] = useState(query.get("orderBy") ? query.get("orderBy") : "updated_at");
     const [order, setOrder] = useState(query.get("order") ? query.get("order") : "asc");
     const [selectedCategoryArray, setSelectedCategoryArray] = useState(query.get("category")?.split(",") ? query.get("category")?.split(",") : ["any"]);
-    const { products, loading } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}`);
+    const [offset, setOffset] = useState(0);
+    const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${MAX_ITEMS_PER_PAGE}&offset=${offset}`, true);
     const [options, setOptions] = useState([{ value: "any", label: "Tutte" }]);
-    const [sortOptions, setSortOptions] = useState([
+
+    const [sortOptions] = useState([
         { value: "name", label: "Nome" },
         { value: "price", label: "Prezzo" },
         { value: "updated_at", label: "Data" }
     ])
+
+    const handlePrevPage = () => {
+        setOffset((prev) => Math.max(prev - MAX_ITEMS_PER_PAGE, 0));
+    }
+
+    const handleNextPage = () => {
+        setOffset((prev) => Math.min(prev + MAX_ITEMS_PER_PAGE, productCount));
+    }
 
     useEffect(() => {
         if (options.length === 1) {
@@ -36,6 +47,7 @@ function BeerContainer() {
     }, [categories, options]);
 
     const changeCategoryArray = (e) => {
+        setOffset(0);
         setSelectedCategoryArray((current) => {
 
             if (!e || e.length === 0) {
@@ -62,24 +74,27 @@ function BeerContainer() {
             return newSelectedValues;
         });
     };
-
+    console.log(products);
 
     useEffect(() => {
+
         setQuery(
             {
                 search: debouncedQuery,
                 category: selectedCategoryArray.join(","),
                 orderBy: orderBy,
-                order: order
+                order: order,
+                limit: MAX_ITEMS_PER_PAGE,
+                offset: offset
             });
 
-    }, [debouncedQuery, setQuery, selectedCategoryArray, orderBy, order]);
+    }, [debouncedQuery, setQuery, selectedCategoryArray, orderBy, order, offset]);
 
     return (
         <Section className="gap-4">
             <Section className={`d-flex ${styles["search-section"]}`}>
                 <div className="w-100">
-                    <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} />
+                    <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} setOffset={setOffset} />
                     <div className="d-flex my-2 g-4 w-100 flex-wrap">
                         <div className={styles["display-wrapper"]}>
                             <label className={styles["label"]}>
@@ -95,7 +110,10 @@ function BeerContainer() {
                             </label>
                             <Select
                                 options={sortOptions}
-                                onChange={(e) => setOrderBy(e.value)}
+                                onChange={(e) => {
+                                    setOrderBy(e.value);
+                                    setOffset(0);
+                                }}
                                 hideSelectedOptions
                                 isSearchable={false}
                                 unstyled
@@ -114,7 +132,10 @@ function BeerContainer() {
                             <label className={`${styles["label"]} ${styles["order-text"]}`}>
                                 Ordine: {order}
                             </label>
-                            <button className={styles["buttonAction"]} onClick={() => { order === "desc" ? setOrder("asc") : setOrder("desc") }}>
+                            <button className={styles["buttonAction"]} onClick={() => {
+                                order === "desc" ? setOrder("asc") : setOrder("desc");
+                                setOffset(0);
+                            }}>
                                 {order === "asc" ? <i className="bi bi-arrow-bar-up"></i> : <i className="bi bi-arrow-bar-down"></i>}
                             </button>
                         </div>
@@ -151,6 +172,8 @@ function BeerContainer() {
                     }
                 </div>
             </Section>
+            <p>Sono stati trovati {productCount} risultati</p>
+            <PageNavigator currentOffset={offset} MAX_ITEMS_PER_PAGE={MAX_ITEMS_PER_PAGE} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} productCount={productCount} />
             <Row className={`row-gap-4 ${styles["product-section"]}`}>
                 {
                     !loading && products.map(product => { return isGrid ? <BeerCardVertical key={product?.slug} product={product} /> : <BeerCardHorizontal key={product?.slug} product={product} /> })
