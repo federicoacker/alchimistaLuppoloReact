@@ -5,7 +5,7 @@ import Section from './Section';
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useCart from '../hooks/useCart';
 import { BASE_API_URL } from '../data/apiConstants';
-import validateForm, { useValidateForm } from "../hooks/useValidateForm.js";
+import { useValidateForm } from "../hooks/useValidateForm.js";
 import styles from "./Checkout.module.css";
 import CartContainer from './CartContainer.jsx';
 
@@ -41,7 +41,6 @@ function Checkout({ totalPrice }) {
         validated = isFormValidated.validated;
         errors = isFormValidated.errors;
     }
-
     const handleChange = () => {
 
         const target = event.target;
@@ -50,7 +49,7 @@ function Checkout({ totalPrice }) {
 
         setFormData({
             ...formData,
-            [name]: value
+            [name]: value,
         });
     }
 
@@ -60,7 +59,8 @@ function Checkout({ totalPrice }) {
             setNeedsValidation(true);
             return;
         }
-        if(!validated){
+        console.log(validated);
+        if (!validated) {
             return;
         }
         const mappedCartItems = cartItems.map(cartItem => {
@@ -69,6 +69,7 @@ function Checkout({ totalPrice }) {
                 "quantity": cartItem.quantity
             };
         });
+
         const newOrder = {
             ...formData,
             products: mappedCartItems,
@@ -153,8 +154,8 @@ function Checkout({ totalPrice }) {
                                 placeholder="Nome"
                                 value={formData.first_name}
                                 onChange={handleChange}
-                                isValid={errors?.first_name === ""}
-                                isInvalid={errors?.first_name !== ""}
+                                isValid={errors && errors?.first_name === ""}
+                                isInvalid={errors && errors?.first_name !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.first_name}</Form.Control.Feedback>
                         </Form.Group>
@@ -168,8 +169,8 @@ function Checkout({ totalPrice }) {
                                 placeholder="Cognome"
                                 value={formData.last_name}
                                 onChange={handleChange}
-                                isValid={errors?.last_name === ""}
-                                isInvalid={errors?.last_name !== ""}
+                                isValid={errors && errors?.last_name === ""}
+                                isInvalid={errors && errors?.last_name !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.last_name}</Form.Control.Feedback>
                         </Form.Group>
@@ -178,43 +179,43 @@ function Checkout({ totalPrice }) {
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
-                            <Form.Control 
-                            type="text" 
-                            placeholder="Città" 
-                            required 
-                            value={formData.city} 
-                            name="city" 
-                            onChange={handleChange} 
-                            isValid={errors?.city === ""}
-                            isInvalid={errors?.city !== ""}
+                            <Form.Control
+                                type="text"
+                                placeholder="Città"
+                                required
+                                value={formData.city}
+                                name="city"
+                                onChange={handleChange}
+                                isValid={errors && errors?.city === ""}
+                                isInvalid={errors && errors?.city !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.city}</Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
-                            <Form.Control 
-                            type="text" 
-                            placeholder="Indirizzo"
-                            required value={formData.address_line_1} 
-                            name="address_line_1" 
-                            onChange={handleChange} 
-                            isValid={errors?.address_line_1 === ""}
-                            isInvalid={errors?.address_line_1 !== ""}
+                            <Form.Control
+                                type="text"
+                                placeholder="Indirizzo"
+                                required value={formData.address_line_1}
+                                name="address_line_1"
+                                onChange={handleChange}
+                                isValid={errors && errors?.address_line_1 === ""}
+                                isInvalid={errors && errors?.address_line_1 !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.address_line_1}</Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
-                            <Form.Control 
-                            type="text" 
-                            placeholder="CAP" 
-                            required 
-                            value={formData.postal_code} 
-                            name="postal_code" 
-                            onChange={handleChange} 
-                            isValid={errors?.postal_code === ""}
-                            isInvalid={errors?.postal_code !== ""}
+                            <Form.Control
+                                type="text"
+                                placeholder="CAP"
+                                required
+                                value={formData.postal_code}
+                                name="postal_code"
+                                onChange={handleChange}
+                                isValid={errors && errors?.postal_code === ""}
+                                isInvalid={errors && errors?.postal_code !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.postal_code}</Form.Control.Feedback>
                         </Form.Group>
@@ -229,8 +230,8 @@ function Checkout({ totalPrice }) {
                                 required name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                isValid={errors?.email === ""}
-                                isInvalid={errors?.email !== ""}
+                                isValid={errors && errors?.email === ""}
+                                isInvalid={errors && errors?.email !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.email}</Form.Control.Feedback>
                         </Form.Group>
@@ -245,10 +246,10 @@ function Checkout({ totalPrice }) {
                                 placeholder="Inserisci numero di telefono"
                                 value={formData.phone}
                                 name="phone"
-                                isValid={errors?.phone === ""}
-                                isInvalid={errors?.phone !== ""}
+                                isValid={errors && errors?.phone === ""}
+                                isInvalid={errors && errors?.phone !== ""}
                                 onChange={handleChange}
-                                
+
                             />
                             <Form.Control.Feedback type="invalid">{errors?.phone}</Form.Control.Feedback>
                         </Form.Group>
@@ -258,8 +259,8 @@ function Checkout({ totalPrice }) {
                             <Form.Control
                                 required
                                 type="date"
-                                isValid={errors?.date_of_birth === ""}
-                                isInvalid={errors?.date_of_birth !== ""}
+                                isValid={errors && errors?.date_of_birth === ""}
+                                isInvalid={errors && errors?.date_of_birth !== ""}
                                 value={formData.date_of_birth}
                                 name="date_of_birth"
                                 onChange={handleChange}
@@ -283,6 +284,11 @@ function Checkout({ totalPrice }) {
                     </button>
 
                 </Form>
+                {orderError && <Section>
+                    <h5 className={styles["text-cream-title"]}>
+                        C'è stato un errore nella creazione dell'ordine
+                    </h5>
+                    </Section>}
             </Section>
         </Section>
     )

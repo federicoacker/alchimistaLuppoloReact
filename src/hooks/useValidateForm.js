@@ -1,7 +1,5 @@
 import { validateNumberString, validateString } from "../data/validation/validateString.js";
 import validateFloatNumber from "../data/validation/validateFloatNumber.js";
-import validateNumber from "../data/validation/validateNumber.js";
-import { validateSlug } from "../data/validation/validateSlug.js";
 import dataTypes from "../data/validation/dataTypes.js";
 import { useState, useEffect } from "react";
 
@@ -133,22 +131,6 @@ function switchValidator(key, formObject, validationErrors) {
             }
             break;
 
-        case "products":
-            if (!Array.isArray(formObject[key]) || formObject[key].length === 0) {
-                validationErrors.other_errors.push("I prodotti inseriti non sono validi");
-            }
-            for (const product of formObject[key]) {
-                if (!product || typeof product !== "object") {
-                    validationErrors.other_errors.push("I dati dei prodotti inseriti non sono validi");
-                }
-                const productSlug = validateSlug(product.product_slug);
-                const quantity = validateNumber(product.quantity);
-                if (!productSlug || quantity === null || quantity <= 0) {
-                    validationErrors.other_errors.push("I dati dei prodotti inseriti non sono validi");
-                }
-            }
-            break;
-
         default:
             break;
     }
@@ -217,10 +199,10 @@ function validateForm(formObject) {
     }
     for (const key of Object.getOwnPropertyNames(validationErrors)) {
         if (validationErrors[key].length !== 0) {
+            console.log(validationErrors.other_errors);
             return { validated: false, errors: validationErrors };
         }
     }
-
     return { validated: true, errors: null };
 
 }
