@@ -1,13 +1,13 @@
-import comeDegustare from "./comeDegustare.js";
-import comeSpillare from "./comeSpillare.js";
-import esperienzaBeverage from "./esperienzaBeverage.js";
-import birraDellAnno from "./birraDellAnno.js"
-import storiaBirra from "./storiaBirra.js";
-import ciboeBirra from "./ciboEBirra.js";
-import birraEAcqua from "./birraEAcqua.js";
-import dryHopping from "./dryHopping.js";
-import bicchiereGiusto from "./bicchieregiusto.js";
-import falsiMiti from "./falsiMiti.js";
+import comeDegustare from "./comeDegustare.jsx";
+import comeSpillare from "./comeSpillare.jsx";
+import esperienzaBeverage from "./esperienzaBeverage.jsx";
+import birraDellAnno from "./birraDellAnno.jsx"
+import storiaBirra from "./storiaBirra.jsx";
+import ciboeBirra from "./ciboEBirra.jsx";
+import birraEAcqua from "./birraEAcqua.jsx";
+import dryHopping from "./dryHopping.jsx";
+import bicchiereGiusto from "./bicchieregiusto.jsx";
+import falsiMiti from "./falsiMiti.jsx";
 
 const articles = [
   {
