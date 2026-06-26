@@ -6,8 +6,7 @@ import useCart from "../hooks/useCart";
 function WishlistItem({ product }) {
 
     const { removeFromWishlist } = useWishlist();
-    const { cartItems, addToCart } = useCart();
-    console.log(cartItems);
+    const { addToCart } = useCart();
     return (
 
         <article className={styles.item}>
