@@ -34,7 +34,7 @@ function Checkout({ totalPrice }) {
     const [formData, setFormData] = useState(templateForm);
 
     const [validated, setValidated] = useState(false);
-    
+
 
     const handleChange = () => {
 
@@ -93,10 +93,10 @@ function Checkout({ totalPrice }) {
                 }
 
                 window.localStorage.removeItem("cartItems");
-                const { error } = await stripe.confirmPayment({
+                const result = await stripe.confirmPayment({
                     elements,
                     confirmParams: {
-                        return_url: "http://localhost:5173/",
+                        return_url: "http://localhost:5173/payment-success-page",
                     },
                 });
 
