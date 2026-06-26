@@ -16,7 +16,7 @@ const articles = [
     title: "Come spillare una birra nel modo giusto",
     author: "Jurij Rossi",
     date: "29-07-2020",
-    image: "/imgs/blog/spillare-birra.jpg",
+    image: "/imgs/spillare-birra.png",
     excerpt:
       "Una corretta spillatura permette di valorizzare aromi, schiuma e gusto della birra.",
     content: comeSpillare,
@@ -28,7 +28,7 @@ const articles = [
     title: "Come degustare una birra artigianale",
     author: "Marco Bianchi",
     date: "10-03-2024",
-    image: "/imgs/blog/degustazione.jpg",
+    image: "/imgs/degustazione.png",
     excerpt:
       "Osservare, annusare e assaggiare: tre semplici passaggi per apprezzare ogni birra.",
     content: comeDegustare,
@@ -40,7 +40,7 @@ const articles = [
     title: "Come sta cambiando l'esperienza beverage nel settore",
     author: "Elena Ferri",
     date: "18-02-2025",
-    image: "/imgs/blog/beverage.jpg",
+    image: "/imgs/beverage.png",
     excerpt:
       "Dall'intentional drinking alla sostenibilità: come stanno cambiando i consumatori.",
     content: esperienzaBeverage,
@@ -52,7 +52,7 @@ const articles = [
     title: "Birra dell'Anno 2026",
     author: "Luca Moretti",
     date: "16-02-2026",
-    image: "/imgs/blog/birra-anno.jpg",
+    image: "/imgs/birra-anno.png",
     excerpt:
       "I risultati del più importante concorso italiano dedicato alla birra artigianale.",
     content: birraDellAnno,
@@ -64,7 +64,7 @@ const articles = [
     title: "La storia della birra: un viaggio lungo oltre 5.000 anni",
     author: "Sara Conti",
     date: "08-11-2025",
-    image: "/imgs/blog/storia-birra.jpg",
+    image: "/imgs/storia-birra.png",
     excerpt:
       "Dai Sumeri alla rivoluzione della birra artigianale: oltre cinque millenni di storia.",
     content: storiaBirra,
@@ -76,7 +76,7 @@ const articles = [
     title: "Abbinare la birra al cibo: qualche consiglio",
     author: "Davide Rinaldi",
     date: "21-09-2025",
-    image: "/imgs/blog/food-pairing.jpg",
+    image: "/imgs/food-pairing.png",
     excerpt:
       "Scopri come scegliere la birra giusta per valorizzare ogni piatto.",
     content: ciboeBirra ,
@@ -88,7 +88,7 @@ const articles = [
     title: "L'importanza dell'acqua nella produzione della birra",
     author: "Giulia Ferraro",
     date: "12-06-2025",
-    image: "/imgs/blog/acqua.jpg",
+    image: "/imgs/acqua.png",
     excerpt:
       "L'acqua rappresenta oltre il 90% della birra ed è fondamentale per ogni stile.",
     content: birraEAcqua,
@@ -100,7 +100,7 @@ const articles = [
     title: "Il dry hopping: quando il luppolo diventa protagonista",
     author: "Andrea Vitale",
     date: "27-04-2025",
-    image: "/imgs/blog/dry-hopping.jpg",
+    image: "/imgs/dry-hopping.png",
     excerpt:
       "La tecnica che ha rivoluzionato il modo di utilizzare il luppolo nelle birre moderne.",
     content: dryHopping,
@@ -112,7 +112,7 @@ const articles = [
     title: "Il bicchiere giusto fa davvero la differenza?",
     author: "Francesca Neri",
     date: "03-08-2025",
-    image: "/imgs/blog/bicchiere.jpg",
+    image: "/imgs/bicchiere.png",
     excerpt:
       "Forma e apertura del bicchiere possono cambiare completamente la degustazione.",
     content: bicchiereGiusto,
@@ -124,7 +124,7 @@ const articles = [
     title: "I falsi miti sulla birra: sfatiamo qualche leggenda",
     author: "Matteo Gallo",
     date: "14-12-2025",
-    image: "/imgs/blog/falsi-miti.jpg",
+    image: "/imgs/falsi-miti.png",
     excerpt:
       "Dalla 'doppio malto' alla schiuma: scopri quali sono i luoghi comuni più diffusi.",
     content: falsiMiti,

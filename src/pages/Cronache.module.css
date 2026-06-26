@@ -1,0 +1,13 @@
+.title{
+    font-family: var(--font-title);
+    color:var(--color-gold);
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom:2rem;
+}
+
+.text {
+font-family: var(--font-text);
+color:var(--color-cream);
+
+}

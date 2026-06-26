@@ -8,23 +8,29 @@ function ArticleCard({ article }) {
   return (
     <article className={styles.card}>
 
-      <img
-        src={article.image}
-        alt={article.title}
-        className={styles.image}
-      />
+      <div className={styles.header}>
+
+        <div className={styles.imageContainer}>
+          <img
+            src={article.image}
+            alt={article.title}
+            className={styles.image}
+          />
+        </div>
+
+        <div className={styles.headerInfo}>
+          <h3 className={styles.title}>
+            {article.title}
+          </h3>
+
+          <p className={styles.info}>
+            {article.author} • {article.date}
+          </p>
+        </div>
+
+      </div>
 
       <div className={styles.body}>
-
-        <h3>{article.title}</h3>
-
-        <p className={styles.info}>
-          {article.author} • {article.date}
-        </p>
-
-        {!open && (
-          <p>{article.excerpt}</p>
-        )}
 
         <div className={`${styles.content} ${open ? styles.open : ""}`}>
           {article.content}
