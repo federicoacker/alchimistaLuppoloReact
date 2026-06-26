@@ -3,6 +3,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import useCart from "../hooks/useCart";
 import stripePromise from "../config/stripe";
 import Checkout from "../components/Checkout";
+import styles from "./CheckoutPage.module.css";
 
 function CheckoutPage() {
     const { cartItems, totalPrice } = useCart();
@@ -57,7 +58,31 @@ function CheckoutPage() {
     }, [cartItems]);
 
     if (errorMessage) {
-        return <p className="text-danger">{errorMessage}</p>;
+        return (
+            <section className={styles.checkoutMessagePage}>
+                <div className={styles.checkoutMessageCard}>
+                    <div className={styles.messageSymbol}>
+                        &#128722;
+                    </div>
+
+                    <h5 className={styles.messageSubtitle}>
+                        Checkout
+                    </h5>
+
+                    <h1 className={styles.messageTitle}>
+                        Carrello vuoto
+                    </h1>
+
+                    <p className={styles.messageDescription}>
+                        Prima di procedere al pagamento, aggiungi almeno una birra al carrello.
+                    </p>
+
+                    <a href="/products" className={styles.buttonAction}>
+                        Esplora le birre
+                    </a>
+                </div>
+            </section>
+        );
     }
 
     if (!clientSecret) {

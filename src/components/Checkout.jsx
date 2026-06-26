@@ -32,15 +32,10 @@ function Checkout({ totalPrice }) {
     const elements = useElements();
     const [paymentError, setPaymentError] = useState("");
     const [formData, setFormData] = useState(templateForm);
-    const [needsValidation, setNeedsValidation] = useState(false)
 
-    const isFormValidated = useValidateForm(formData, needsValidation);
-    let validated;
-    let errors;
-    if (isFormValidated) {
-        validated = isFormValidated.validated;
-        errors = isFormValidated.errors;
-    }
+    const [validated, setValidated] = useState(false);
+
+
     const handleChange = () => {
 
         const target = event.target;
@@ -99,10 +94,10 @@ function Checkout({ totalPrice }) {
                 }
 
                 window.localStorage.removeItem("cartItems");
-                const { error } = await stripe.confirmPayment({
+                const result = await stripe.confirmPayment({
                     elements,
                     confirmParams: {
-                        return_url: "http://localhost:5173/",
+                        return_url: "http://localhost:5173/payment-success-page",
                     },
                 });
 
