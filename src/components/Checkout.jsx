@@ -36,13 +36,13 @@ function Checkout({ totalPrice }) {
     const isFormValidated = useValidateForm(formData, needsValidation);
     let validated;
     let errors;
-    if(isFormValidated){
+    if (isFormValidated) {
         validated = isFormValidated.validated;
         errors = isFormValidated.errors;
     }
 
 
-    
+
 
 
 
@@ -190,10 +190,10 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
 
-                           
+
 
                             <Form.Control
-                            className={styles.formInput}
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="Città"
                                 required
@@ -208,6 +208,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="Indirizzo"
                                 required value={formData.address_line_1}
@@ -223,7 +224,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
 
-                          
+
 
                             <Form.Control
                                 className={styles.formInput}
@@ -245,9 +246,9 @@ function Checkout({ totalPrice }) {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Indirizzo email</Form.Label>
 
-                            
+
                             <Form.Control
-                               className={styles.formInput} 
+                                className={styles.formInput}
                                 type="email"
                                 placeholder="Inserisci email"
                                 required name="email"
@@ -314,7 +315,7 @@ function Checkout({ totalPrice }) {
                     <h5 className={styles["text-cream-title"]}>
                         C'è stato un errore nella creazione dell'ordine
                     </h5>
-                    </Section>}
+                </Section>}
             </Section>
         </Section>
     )
