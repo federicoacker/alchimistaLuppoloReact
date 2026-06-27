@@ -36,10 +36,14 @@ function Checkout({ totalPrice }) {
     const isFormValidated = useValidateForm(formData, needsValidation);
     let validated;
     let errors;
-    if(isFormValidated){
+    if (isFormValidated) {
         validated = isFormValidated.validated;
         errors = isFormValidated.errors;
     }
+
+
+
+
 
 
     const handleChange = () => {
@@ -143,12 +147,16 @@ function Checkout({ totalPrice }) {
                 </div>
             </div>
             <Section>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+
+                <Form noValidate data-bs-theme="dark" validated={validated} onSubmit={handleSubmit}>
+
                     <Form.Text className={styles["text-cream-title"]}>*Tutti i campi sono obbligatori</Form.Text>
+
                     <Row className="mb-3">
                         <Form.Group as={Col} md="4" controlId="validationCustom01">
-                            <Form.Label>Nome</Form.Label>
+                            <Form.Label >Nome</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 required
                                 type="text"
                                 name="first_name"
@@ -164,6 +172,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="4" controlId="validationCustom02">
                             <Form.Label>Cognome</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 required
                                 type="text"
                                 name="last_name"
@@ -180,7 +189,11 @@ function Checkout({ totalPrice }) {
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
+
+
+
                             <Form.Control
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="Città"
                                 required
@@ -195,6 +208,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="Indirizzo"
                                 required value={formData.address_line_1}
@@ -204,11 +218,16 @@ function Checkout({ totalPrice }) {
                                 isInvalid={errors && errors?.address_line_1 !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.address_line_1}</Form.Control.Feedback>
+
                         </Form.Group>
 
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
+
+
+
                             <Form.Control
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="CAP"
                                 required
@@ -219,13 +238,17 @@ function Checkout({ totalPrice }) {
                                 isInvalid={errors && errors?.postal_code !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.postal_code}</Form.Control.Feedback>
+
                         </Form.Group>
                     </Row>
 
                     <Row className="mb-3">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Indirizzo email</Form.Label>
+
+
                             <Form.Control
+                                className={styles.formInput}
                                 type="email"
                                 placeholder="Inserisci email"
                                 required name="email"
@@ -235,6 +258,7 @@ function Checkout({ totalPrice }) {
                                 isInvalid={errors && errors?.email !== ""}
                             />
                             <Form.Control.Feedback type="invalid">{errors?.email}</Form.Control.Feedback>
+
                         </Form.Group>
                     </Row>
 
@@ -242,6 +266,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="6" controlId="validationPhone">
                             <Form.Label>Numero di Telefono</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 required
                                 type="tel"
                                 placeholder="Inserisci numero di telefono"
@@ -258,6 +283,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="6" controlId="validationDate">
                             <Form.Label>Data di nascita</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 required
                                 type="date"
                                 isValid={errors && errors?.date_of_birth === ""}
@@ -289,7 +315,7 @@ function Checkout({ totalPrice }) {
                     <h5 className={styles["text-cream-title"]}>
                         C'è stato un errore nella creazione dell'ordine
                     </h5>
-                    </Section>}
+                </Section>}
             </Section>
         </Section>
     )
