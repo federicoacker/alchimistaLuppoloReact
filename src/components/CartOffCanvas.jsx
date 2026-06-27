@@ -2,8 +2,8 @@
 import useCart from "../hooks/useCart"
 import { Offcanvas } from "react-bootstrap";
 import { Link } from "react-router";
-import BeerCardHorizontal from "./BeerCardHorizontal";
 import styles from "./CartOffCanvas.module.css";
+import CartProductDisplay from "./CartProductDisplay";
 
 
 function CartOffCanvas() {
@@ -16,38 +16,39 @@ function CartOffCanvas() {
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <section className={styles["cart-section"]}>
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column row-gap-3">
                         {cartItems.map((cartItem) => {
-                            return <BeerCardHorizontal key={cartItem.cartProduct.slug} product={cartItem.cartProduct} quantity={cartItem.quantity} isCart={true} />
+                            return <CartProductDisplay key={cartItem.cartProduct.slug} productItem={cartItem} />
                         })}
                     </div>
                     {cartItems.length > 0 &&
                         <div>
-                            <table className={styles["cart-total"]}>
-                                <thead>
-                                    <tr>
-                                        <th className={styles["cart-tag"]}>
-                                            Prezzo Prodotti
-                                        </th>
-                                        <th className={styles["cart-tag"]}>
-                                            Prezzo di Shipping
-                                        </th>
-                                        <th colSpan={2} className={styles["cart-tag"]}>
-                                            Totale
-                                        </th>
-                                    </tr>
-                                </thead>
+                            <table className={styles["cart-table"]}>
                                 <tbody>
-                                    <tr>
+                                    <tr className={styles["cart-row"]}>
                                         <td className={styles["cart-tag"]}>
-                                            &euro; {productsPrice.toFixed(2)}
+                                            Prezzo Prodotti:
                                         </td>
+                                        <td className={styles["price-tag"]}>
+                                            &euro; {productsPrice.toFixed(2).replace(".",",")}
+                                        </td>  
+                                    </tr>
+                                    <tr className={styles["cart-row"]}>
                                         <td className={styles["cart-tag"]}>
-                                            &euro; {shippingPrice.toFixed(2)}
+                                            Prezzo di Shipping
                                         </td>
-                                        <td colSpan={2} className={styles["cart-tag"]}>
-                                            &euro; {totalPrice.toFixed(2)}
+                                        <td className={styles["price-tag"]}>
+                                            &euro; {shippingPrice.toFixed(2).replace(".",",")}
                                         </td>
+                                    </tr>
+                                    <tr className={styles["cart-row"]}>
+                                        <td  className={styles["cart-total"]}>
+                                            Totale
+                                        </td>
+                                        <td  className={`${styles["price-tag"]} ${styles["total-tag"]}`}>
+                                            &euro; {totalPrice.toFixed(2).replace(".",",")}
+                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>

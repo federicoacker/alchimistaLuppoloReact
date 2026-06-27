@@ -12,6 +12,7 @@ import Beers from "./pages/Beers"
 import Checkout from "./components/Checkout"
 import Cronache from "./pages/Cronache"
 import { CartProvider } from "./contexts/CartContext"
+import PaymentSuccess from "./pages/PaymentSuccess"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/payment-success-page" element={<PaymentSuccess />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
