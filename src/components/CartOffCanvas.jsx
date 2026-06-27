@@ -2,8 +2,8 @@
 import useCart from "../hooks/useCart"
 import { Offcanvas } from "react-bootstrap";
 import { Link } from "react-router";
-import BeerCardHorizontal from "./BeerCardHorizontal";
 import styles from "./CartOffCanvas.module.css";
+import CartProductDisplay from "./CartProductDisplay";
 
 
 function CartOffCanvas() {
@@ -18,7 +18,7 @@ function CartOffCanvas() {
                 <section className={styles["cart-section"]}>
                     <div className="d-flex flex-column">
                         {cartItems.map((cartItem) => {
-                            return <BeerCardHorizontal key={cartItem.cartProduct.slug} product={cartItem.cartProduct} quantity={cartItem.quantity} isCart={true} />
+                            return <CartProductDisplay key={cartItem.cartProduct.slug} productItem={cartItem} />
                         })}
                     </div>
                     {cartItems.length > 0 &&

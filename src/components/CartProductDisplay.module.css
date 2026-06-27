@@ -1,0 +1,41 @@
+.btn-quantity-action {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    padding: 10px 15px;
+
+    background-color: var(--color-gold);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 4px;
+
+
+    margin: 0 10px;
+}
+
+.btn-quantity-action:hover {
+    opacity: 0.8;
+}
+
+
+.quantity-display {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-cream) !important;
+    margin: 0 5px;
+}
+
+.color-title {
+
+    color: var(--color-cream);
+
+}
+
+.color-text {
+
+    color: var(--color-cream);
+}
