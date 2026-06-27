@@ -19,18 +19,46 @@
   font-family: var(--font-title) !important;
   font-size: 2rem !important;
 }
-
-.cart-total {
-  text-align: center;
+.cart-table {
+  width: 100%;
   margin-top: 1rem;
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+.cart-total {
+  width: 50%;
+  text-align: center;
   color: var(--color-cream) !important;
   font-family: var(--font-title) !important;
+  font-size: 1.5rem;
 }
-.cart-tag{
-    padding:5px;
+.cart-row {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.cart-tag {
+  color: var(--color-cream) !important;
+  font-family: var(--font-title) !important;
+  text-align: center;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  width: 50% !important;
+}
+.price-tag {
+  border-left: 1px solid var(--color-border);
+  color: var(--color-cream) !important;
+  font-family: var(--font-title) !important;
+  text-align: center;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  width: 50% !important;
+}
+.total-tag{
+  background:var(--color-gold);
+  color:var(--color-bg) !important;
 }
 
-.text-button{
+.text-button {
   padding: 0.7rem 0.5rem !important;
 }
 .beer-button {

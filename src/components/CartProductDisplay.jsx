@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import styles from "./CartProductDisplay.module.css";
+import Section from "./Section";
 
 function CartProductDisplay({ productItem }) {
 
@@ -9,34 +10,47 @@ function CartProductDisplay({ productItem }) {
     const product = productItem.cartProduct;
     const quantity = productItem.quantity;
 
-    const itemTotalPrice = (product.price * quantity).toFixed(2);
-    const itemSinglePrice = product.price.toFixed(2);
+    const itemTotalPrice = (product.price * quantity).toFixed(2).replace(".", ",");
+    const itemSinglePrice = product.price.toFixed(2).replace(".", ",");
+    
     return (
-        <>
-            <h4 className={styles["color-title"]}>{product.name}</h4>
+        <Section className={styles["product-cart"]}>
+            <div className="d-flex">
+                <h4 className={styles["color-title"]}>{product.name}</h4>
+                <div className={styles["button-wrapper"]}>
+                    <button
+                        className={styles["btn-quantity-action"]}
+                        onClick={() => removeFromCart(product)}
+                    >
+                        -
+                    </button>
 
-            <p className={styles["color-text"]}>Prezzo singolo: {itemSinglePrice} €</p>
+                    <span className={styles["quantity-display"]}>{quantity}</span>
 
-            <div className="cart-buttons-wrapper">
-                <button
-                    className={styles["btn-quantity-action"]}
-                    onClick={() => removeFromCart(product)}
-                >
-                    -
-                </button>
+                    <button
+                        className={styles["btn-quantity-action"]}
+                        onClick={() => addToCart(product)}
+                    >
+                        +
+                    </button>
+                </div>
 
-                <span className={styles["quantity-display"]}>{quantity}</span>
-
-                <button
-                    className={styles["btn-quantity-action"]}
-                    onClick={() => addToCart(product)}
-                >
-                    +
-                </button>
             </div>
-
-            <p className={styles["color-text"]}>Totale parziale: {itemTotalPrice} €</p>
-        </>
+            <div className={styles["price-wrapper"]}>
+                <table className={styles["price-table"]}>
+                    <tbody>
+                        <tr>
+                            <td className={`${styles["color-text"]} ${styles["table-main-row"]}`}>Prezzo Singolo:</td>
+                            <td className={styles["color-text"]}> {itemSinglePrice} &euro;</td>
+                        </tr>
+                        <tr>
+                            <td className={`${styles["color-text"]} ${styles["table-main-row"]}`}>Totale Parziale:</td>
+                            <td className={`${styles["color-text"]} ${styles["main-price"]}`}> {itemTotalPrice} &euro;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </Section>
     )
 }
 
