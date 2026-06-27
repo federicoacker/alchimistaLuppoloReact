@@ -24,7 +24,7 @@ function NewsLetterPopup() {
                 </Modal.Header>
                 <Modal.Body className={styles["modal-body"]}>
                     <Section>
-                        <Newsletter />
+                        <Newsletter handleClose = {handleClose}/>
                     </Section>
                 </Modal.Body>
                 <Modal.Footer className={styles["modal-footer"]}>
