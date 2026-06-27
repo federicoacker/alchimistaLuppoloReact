@@ -1,5 +1,12 @@
 import styles from "./PageNavigator.module.css";
-function PageNavigator({ currentOffset, MAX_ITEMS_PER_PAGE, handlePrevPage, handleNextPage, productCount }) {
+function PageNavigator({ currentOffset, MAX_ITEMS_PER_PAGE, setOffset, productCount }) {
+    const handlePrevPage = () => {
+        setOffset((prev) => Math.max(prev - MAX_ITEMS_PER_PAGE, 0));
+    }
+
+    const handleNextPage = () => {
+        setOffset((prev) => Math.min(prev + MAX_ITEMS_PER_PAGE, productCount));
+    }
     return (
         <div className="d-flex justify-content-center align-items-center gap-3 my-4">
             <button
