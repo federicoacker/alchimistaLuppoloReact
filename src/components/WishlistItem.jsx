@@ -1,38 +1,42 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import { useWishlist } from "../contexts/WishlistContext";
 import styles from "./WishlistItem.module.css";
-import { Button } from "react-bootstrap";
-import useCart from "../hooks/useCart";
 function WishlistItem({ product }) {
 
     const { removeFromWishlist } = useWishlist();
-    const { addToCart } = useCart();
+    const navigate = useNavigate();
+
+    const handleClick = (e) => {
+        const name = e.target.id;
+        if(name === "remove"){
+            removeFromWishlist(product.slug);
+        }
+        else {
+            navigate(`/products/${product.slug}`);
+        }
+    }
+
     return (
 
-        <article className={styles.item}>
-            <button
-                onClick={() => removeFromWishlist(product.slug)}
-                className={styles.removeButton}>
-                <i className="bi bi-x-lg"></i>
-            </button>
-            <div className={styles.imageWrapper} >
-                <img src={product.image} alt={product.name} />
-            </div>
-            <Link to={`/products/${product.slug}`} className={styles.name}>
+        <div onClick={handleClick} className={styles.name}>
+            <article className={styles.item}>
+                <button
+                    className={styles.removeButton}>
+                    <i id="remove" className="bi bi-x-lg"></i>
+                </button>
+                <div className={styles.imageWrapper} >
+                    <img src={product.image} alt={product.name} />
+                </div>
                 {product.name}
-            </Link>
-            <span className={styles.brewery} className={styles.brewery}>
-                {product.brewery}
-            </span >
-            <span className={styles.price} >
-                € {product.price.toFixed(2)}
-            </span >
+                <span className={styles.brewery} className={styles.brewery}>
+                    {product.brewery}
+                </span >
+                <span className={styles.price} >
+                    € {product.price.toFixed(2)}
+                </span >
 
-            <Button onClick={()=>{addToCart(product)}} className={`${styles["beer-button"]} ${styles["icon-button"]}`}>
-                <i className="bi bi-cart3"></i>
-            </Button>
-
-        </article >
+            </article >
+        </div>
 
     );
 }

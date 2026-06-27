@@ -27,8 +27,9 @@ function BeerCardHorizontal({ product }) {
                     </div>
 
                     <div className={`d-flex gap-4 justify-content-center ${styles["beer-card-buttons"]}`}>
-                            {
-                                thisItem ? <div className={styles["button-wrapper"]}>
+                        {
+                            <div className={styles["button-wrapper"]}>
+                                {thisItem ? <>
                                     <button
                                         className={styles["btn-quantity-action"]}
                                         onClick={() => removeFromCart(product)}
@@ -44,15 +45,19 @@ function BeerCardHorizontal({ product }) {
                                     >
                                         +
                                     </button>
-                                </div> :
+                                </> :
                                     <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `} onClick={() => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
-                            }
-                        <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `}
-                            onClick={() => toggleWishlist(product.slug)}>
-                            {favorite ? (<i className="bi bi-heart-fill"></i>)
-                                : (<i className="bi bi-heart"></i>)}
-                        </Button>
-                        <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
+                                }
+                            </div>
+                        }
+                        <div className={styles["button-wrapper"]}>
+                            <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `}
+                                onClick={() => toggleWishlist(product.slug)}>
+                                {favorite ? (<i className="bi bi-heart-fill"></i>)
+                                    : (<i className="bi bi-heart"></i>)}
+                            </Button>
+                            <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
+                        </div>
                     </div>
 
 

@@ -29,7 +29,7 @@ function FiltersSection({urlQueryObject, isGrid, setIsGrid}) {
             const optionArray = categories.map(category => { return { value: category.slug, label: category.name } });
             setOptions([...options, ...optionArray]);
         }
-    }, [categories, options]);
+    }, [categories]);
 
     const changeCategoryArray = (e) => {
         setOffset(0);
