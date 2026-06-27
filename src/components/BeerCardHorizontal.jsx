@@ -10,7 +10,8 @@ function BeerCardHorizontal({ product }) {
         isInWishlist
     } = useWishlist();
     const favorite = isInWishlist(product.slug);
-    const { addToCart } = useCart();
+    const { cartItems, addToCart, removeFromCart } = useCart();
+    const thisItem = cartItems.find(cartItem => cartItem.cartProduct.slug === product.slug);
 
     return (
         <div className="d-flex w-100 justify-content-center">
@@ -26,7 +27,26 @@ function BeerCardHorizontal({ product }) {
                     </div>
 
                     <div className={`d-flex gap-4 justify-content-center ${styles["beer-card-buttons"]}`}>
-                        <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `} onClick={() => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
+                            {
+                                thisItem ? <div className={styles["button-wrapper"]}>
+                                    <button
+                                        className={styles["btn-quantity-action"]}
+                                        onClick={() => removeFromCart(product)}
+                                    >
+                                        -
+                                    </button>
+
+                                    <span className={styles["quantity-display"]}>{thisItem.quantity}</span>
+
+                                    <button
+                                        className={styles["btn-quantity-action"]}
+                                        onClick={() => addToCart(product)}
+                                    >
+                                        +
+                                    </button>
+                                </div> :
+                                    <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `} onClick={() => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
+                            }
                         <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `}
                             onClick={() => toggleWishlist(product.slug)}>
                             {favorite ? (<i className="bi bi-heart-fill"></i>)

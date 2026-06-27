@@ -14,7 +14,8 @@
     border-radius: 4px;
     margin:0;
 }
-.btn-wrapper{
+.button-wrapper{
+    display:flex;
     width:30%;
 }
 

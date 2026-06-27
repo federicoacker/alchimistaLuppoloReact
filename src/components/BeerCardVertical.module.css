@@ -32,10 +32,10 @@
   margin-bottom: 0.5rem;
 }
 
-.icon-button{
+.icon-button {
   padding: 0.7rem 1rem !important;
 }
-.text-button{
+.text-button {
   padding: 0.7rem 0.5rem !important;
 }
 .beer-button {
@@ -60,4 +60,42 @@
 
   color: #1a120c !important;
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
+}
+
+.btn-quantity-action {
+  font-size: 1rem;
+
+  font-weight: bold;
+
+  padding: 0.5rem 0.5rem;
+
+  background-color: var(--color-bg);
+
+  color: var(--color-cream);
+
+  border: none;
+  padding: 0 0.5rem;  
+  border-radius: 4px;
+  margin: 0;
+}
+.button-wrapper {
+  display: flex;
+  align-items:center;
+}
+
+.btn-quantity-action:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+}
+
+.quantity-display {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-cream) !important;
+  margin: 0 5px;
 }
