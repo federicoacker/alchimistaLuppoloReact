@@ -28,6 +28,7 @@
   padding: 0 !important;
 }
 .beer-card-details {
+  width:50%;
   display: flex;
   border: 1px solid var(--color-border);
   align-items: center;
@@ -104,6 +105,7 @@
 .beer-card-buttons {
   flex-grow: 1;
   justify-content: center;
+  border-bottom: 1px solid var(--color-border);
 }
 .quantity-text {
   padding: 2rem;
@@ -148,4 +150,10 @@
   font-weight: bold;
   color: var(--color-cream) !important;
   margin: 0 5px;
+}
+
+.product-image{
+  width:3rem;
+  height:3rem;
+  object-fit:contain;
 }

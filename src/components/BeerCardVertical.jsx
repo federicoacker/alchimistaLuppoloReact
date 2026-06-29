@@ -3,6 +3,7 @@ import styles from "./BeerCardVertical.module.css";
 import { useWishlist } from "../contexts/WishlistContext";
 import useCart from "../hooks/useCart";
 import { Link } from "react-router";
+import CategoryBadge from "./CategoryBadge";
 
 function BeerCardVertical({ product }) {
     const {
@@ -12,6 +13,7 @@ function BeerCardVertical({ product }) {
     const favorite = isInWishlist(product.slug);
     const { cartItems, addToCart, removeFromCart } = useCart();
     const thisItem = cartItems.find(cartItem => cartItem.cartProduct.slug === product.slug);
+    console.log(product.categories);
 
     return (
         <Col md={6} lg={4} xl={4} xxl={4}>
@@ -26,6 +28,7 @@ function BeerCardVertical({ product }) {
                     <Card.Text className={styles["beer-description"]}>
                         {product.short_description}
                     </Card.Text>
+                    {product.categories.map(category => <CategoryBadge key={category.slug} category={category}/>)}
                 </Card.Body>
                 <Card.Footer className={styles["beer-card-footer"]}>
                     <Card.Text className={styles["beer-card-text"]}>
