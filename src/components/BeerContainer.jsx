@@ -10,6 +10,7 @@ import PageNavigator from "./PageNavigator.jsx";
 import useUrlQuery from "../hooks/useUrlQuery.js";
 
 import FiltersSection from "./FiltersSection.jsx";
+import { useNavigate } from "react-router";
 
 const MAX_ITEMS_PER_PAGE = 9;
 function BeerContainer() {
@@ -17,7 +18,11 @@ function BeerContainer() {
     const {debouncedQuery, selectedCategoryArray, orderBy, order, offset, setOffset} = urlQueryObject;
     const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${MAX_ITEMS_PER_PAGE}&offset=${offset}`, true);
     const [isGrid, setIsGrid] = useState(true);
+    const navigate = useNavigate();
 
+    if(!loading && products.length === 0){
+        navigate("/404");
+    }
     return (
         <Section className="gap-4">
             <Section className={`d-flex ${styles["search-section"]}`}>
