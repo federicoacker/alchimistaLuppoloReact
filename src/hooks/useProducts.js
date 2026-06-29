@@ -31,7 +31,6 @@ function useProducts(query, isProductPage = false) {
         if (isProductPage) {
             fetch(`${BASE_API_URL}/products/count${query.toString()}`)
                 .then(response => {
-                    setLoading(true);
                     return response.json();
                     
                 })
