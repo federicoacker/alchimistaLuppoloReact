@@ -16,7 +16,7 @@ const MAX_ITEMS_PER_PAGE = 9;
 function BeerContainer() {
     const urlQueryObject = useUrlQuery(MAX_ITEMS_PER_PAGE)
     const { debouncedQuery, selectedCategoryArray, orderBy, order, offset, setOffset } = urlQueryObject;
-    const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${MAX_ITEMS_PER_PAGE}&offset=${offset}`, true);
+    const { products, loading, productCount, error } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${MAX_ITEMS_PER_PAGE}&offset=${offset}`, true);
     const [isGrid, setIsGrid] = useState(true);
 
     return (
@@ -27,6 +27,7 @@ function BeerContainer() {
             <p>Sono stati trovati {productCount} risultati</p>
             <PageNavigator currentOffset={offset} MAX_ITEMS_PER_PAGE={MAX_ITEMS_PER_PAGE} setOffset={setOffset} productCount={productCount} />
             <Row className={`row-gap-4 ${styles["product-section"]}`}>
+                {error && <Navigate to="/404" />}
                 {(!loading && products.length === 0) ? <Navigate to="/404" /> :
                     products.map(product => { return isGrid ? <BeerCardVertical key={product?.slug} product={product} /> : <BeerCardHorizontal key={product?.slug} product={product} /> })
                 }

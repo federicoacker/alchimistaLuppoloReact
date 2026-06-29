@@ -13,6 +13,7 @@ function useProducts(query, isProductPage = false) {
             .then(response => {
                 if (!response.ok) {
                     setError("C'è stato un problema nella fetch");
+                    throw new Error ("C'è stato un problema nella fetch")
                 }
                 return response.json();
             })
@@ -21,6 +22,13 @@ function useProducts(query, isProductPage = false) {
             })
             .catch(error => {
                 setError(error.message || "C'è stato un problema nella fetch");
+                console.log("Error");
+                return {
+                    products:[],
+                    loading: false,
+                    error: error,
+                    productCount: 0
+                };
             })
             .finally(() => {
                 setLoading(false);
@@ -28,14 +36,25 @@ function useProducts(query, isProductPage = false) {
         if (isProductPage) {
             fetch(`${BASE_API_URL}/products/count${query.toString()}`)
                 .then(response => {
+                    if(!response.ok){
+                        setError("C'è stato un problema nella fetch");
+                        throw new Error ("C'è stato un problema nella fetch");
+                    }
                     setLoading(true);
                     return response.json();
+                    
                 })
                 .then(data => {
                     setProductCount(data.result || 0);
                 })
                 .catch(error => {
                     setError(error.message || "Errore sconosciuto nel fetch del count dei prodotti");
+                    return {
+                    products:[],
+                    loading: false,
+                    error: error,
+                    productCount: 0
+                };
                 })
                 .finally(() => setLoading(false));
         }
