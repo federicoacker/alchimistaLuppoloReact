@@ -11,10 +11,6 @@ function useProducts(query, isProductPage = false) {
     useEffect(() => {
         fetch(`${BASE_API_URL}/products${query.toString()}`)
             .then(response => {
-                if (!response.ok) {
-                    setError("C'è stato un problema nella fetch");
-                    throw new Error ("C'è stato un problema nella fetch")
-                }
                 return response.json();
             })
             .then(data => {
@@ -35,10 +31,6 @@ function useProducts(query, isProductPage = false) {
         if (isProductPage) {
             fetch(`${BASE_API_URL}/products/count${query.toString()}`)
                 .then(response => {
-                    if(!response.ok){
-                        setError("C'è stato un problema nella fetch");
-                        throw new Error ("C'è stato un problema nella fetch");
-                    }
                     setLoading(true);
                     return response.json();
                     
