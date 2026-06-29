@@ -18,7 +18,7 @@ function BeerCardHorizontal({ product }) {
             <div className={styles["beer-card"]}>
                 <div className="d-flex w-100 flex-wrap">
                     <div className={styles["beer-card-title"]}>
-                        <h5>{product.name}</h5>
+                        <h5 className={styles["beer-card-title-text"]}>{product.name}</h5>
                     </div>
                     <div className={styles["beer-card-details"]}>
                         <p className={styles["beer-card-text"]}>ABV: {product.abv.toFixed(2)}%</p>

@@ -18,7 +18,7 @@ function useUrlQuery(MAX_ITEMS_PER_PAGE) {
                 orderBy: orderBy,
                 order: order,
                 limit: MAX_ITEMS_PER_PAGE,
-                offset: offset
+                page: Math.ceil(offset/9) + 1
             });
 
     }, [debouncedQuery, setQuery, selectedCategoryArray, orderBy, order, offset, MAX_ITEMS_PER_PAGE]);
