@@ -7,8 +7,8 @@ function WishlistItem({ product }) {
     const navigate = useNavigate();
 
     const handleClick = (e) => {
-        const name = e.target.id;
-        if(name === "remove"){
+        const id = e.target.id;
+        if(id === `remove-${product.slug}`){
             removeFromWishlist(product.slug);
         }
         else {
@@ -22,7 +22,7 @@ function WishlistItem({ product }) {
             <article className={styles.item}>
                 <button
                     className={styles.removeButton}>
-                    <i id="remove" className="bi bi-x-lg"></i>
+                    <i id={`remove-${product.slug}`} className="bi bi-x-lg"></i>
                 </button>
                 <div className={styles.imageWrapper} >
                     <img src={product.image} alt={product.name} />

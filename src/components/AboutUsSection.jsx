@@ -16,7 +16,7 @@ function AboutUsSection() {
                             sulla nostra missione
                         </p>
                         <div className={styles.heroActions}>
-                            <Link to="/birre" className={styles.buttonAction}>
+                            <Link to="/about-us" className={styles.buttonAction}>
                                 <i className="bi bi-search"></i> Scopri di più
                             </Link>
                         </div>
