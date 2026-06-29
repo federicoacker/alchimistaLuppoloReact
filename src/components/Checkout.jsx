@@ -33,6 +33,7 @@ function Checkout({ totalPrice }) {
     const [paymentError, setPaymentError] = useState("");
     const [formData, setFormData] = useState(templateForm);
     const [needsValidation, setNeedsValidation] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
     const isFormValidated = useValidateForm(formData, needsValidation);
     let validated;
     let errors;
@@ -40,12 +41,6 @@ function Checkout({ totalPrice }) {
         validated = isFormValidated.validated;
         errors = isFormValidated.errors;
     }
-
-
-
-
-
-
     const handleChange = () => {
 
         const target = event.target;
@@ -68,6 +63,9 @@ function Checkout({ totalPrice }) {
         if (!validated) {
             return;
         }
+
+        setIsProcessing(true);
+
         const mappedCartItems = cartItems.map(cartItem => {
             return {
                 "product_slug": cartItem.cartProduct.slug,
@@ -100,6 +98,7 @@ function Checkout({ totalPrice }) {
             })
             .then(async () => {
                 if (!stripe || !elements) {
+                    setIsProcessing(false);
                     return;
                 }
 
@@ -113,11 +112,13 @@ function Checkout({ totalPrice }) {
 
                 if (result) {
                     setPaymentError(result.message);
+                    setIsProcessing(false);
                 }
 
             })
             .catch(error => {
-                setOrderError(error.message)
+                setOrderError(error.message);
+                setIsProcessing(false);
             })
     };
 
@@ -306,8 +307,8 @@ function Checkout({ totalPrice }) {
                         <p className="text-danger">{paymentError}</p>
                     )}
 
-                    <button className={styles.paymentButton} type="submit" disabled={!stripe}>
-                        {!needsValidation ? "Valida i dati" : "Paga"}
+                    <button className={styles.paymentButton} type="submit" disabled={isProcessing}>
+                        {!needsValidation ? "Valida i dati" : isProcessing ? "Elaborazione in corso..." : "Paga"}
                     </button>
 
                 </Form>

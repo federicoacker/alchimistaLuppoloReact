@@ -36,6 +36,15 @@
     color: var(--color-cream);
 }
 
+.paymentButton:disabled,
+.paymentButton:disabled:hover{
+    background:unset;
+    background-color:grey;
+    color: var(--color-gold);
+    cursor:default;
+    opacity:0.5;
+}
+
 .text-cream{
     color: var(--color-text) !important;
 }

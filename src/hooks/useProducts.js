@@ -22,7 +22,6 @@ function useProducts(query, isProductPage = false) {
             })
             .catch(error => {
                 setError(error.message || "C'è stato un problema nella fetch");
-                console.log("Error");
                 return {
                     products:[],
                     loading: false,

@@ -8,7 +8,11 @@ import useCart from '../hooks/useCart';
 
 function Header() {
     const { handleShow, cartItems } = useCart();
-
+    const quantity = cartItems.reduce((acc,current) => {
+                                const currentQuantity = current.quantity;
+                                acc += currentQuantity;
+                                return acc;
+                            }, 0);
     return (
         <>
 
@@ -21,7 +25,7 @@ function Header() {
                     <div className={styles.iconGroupMobile}>
                         <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
                         <button onClick={handleShow} className={styles.cartIconDesktop}>
-                            {cartItems.length > 0 && (<label className={styles["cart-item-label"]}> {cartItems.length}</label>)}
+                            {cartItems.length > 0 && (<label className={styles["cart-item-label"]}> {quantity} </label>)}
                             <i className="bi bi-cart3"></i>
                         </button>
                     </div>
@@ -77,7 +81,7 @@ function Header() {
                         <div className={styles.iconGroupDesktop}>
                             <NavLink to="/wishlist" className={styles.cartIconDesktop}><i className="bi bi-heart"></i></NavLink>
                             <button onClick={handleShow} className={styles.cartIconDesktop}>
-                                {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{cartItems.length}</label>}
+                                {cartItems.length > 0 && <label className={styles["cart-item-label"]}>{quantity}</label>}
                                 <i className="bi bi-cart3"></i>
                             </button>
 
