@@ -17,7 +17,6 @@ function useUrlQuery(MAX_ITEMS_PER_PAGE) {
                 category: selectedCategoryArray.join(","),
                 orderBy: orderBy,
                 order: order,
-                limit: MAX_ITEMS_PER_PAGE,
                 page: offset/9 + 1
             });
 
