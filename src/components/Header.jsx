@@ -18,7 +18,7 @@ function Header() {
 
             <Navbar expand="xl" className={styles.customNavbar} variant="dark">
                 <Container>
-                    <Navbar.Brand as={NavLink} to="/#hero" className={styles.logoContainer}>
+                    <Navbar.Brand as={NavLink} to="/" className={styles.logoContainer}>
                         <div className={styles.logoGlow}></div>
                         <img src="/imgs/logo-semplice.png" alt="L'Alchimista del Luppolo" className={styles.navbarLogo} />
                     </Navbar.Brand>
