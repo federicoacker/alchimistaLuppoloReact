@@ -12,7 +12,7 @@ function LuppolinoChat({ close }) {
     const [messages, setMessages] = useState([
         {
             sender: "luppolino",
-            text: "Ciao! 👋 Posso aiutarti a trovare la birra perfetta, consigliarti un abbinamento oppure spiegarti le differenze tra gli stili!"
+            text: "Ciao! 👋 Posso aiutarti a trovare la birra perfetta o consigliarti un abbinamento con qualcosa da mangiare!"
         }
     ]);
 
