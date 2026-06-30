@@ -14,7 +14,7 @@
     - Pulsanti per aggiungere al carrello i singoli prodotti con cambio di grafica per mostrare la quantità in carrello del prodotto se lo hai in carrello, invece del pulsante aggiungi al carrello (il carrello è salvato in localStorage)
     - Pulsante per la wishlist per il singolo prodotto
     - Pulsante per i dettalgi per il singolo prodotto
-    - Paginazione con numero di prodotti fisso per pagina, sono 9
+    - Paginazione con numero di prodotti che può essere scelto tra 3 - 6 - 9 dall'utente tramite pulsanti.
 - Pagina di dettaglio prodotto con:
     - Immagine e tutti i dettagli del prodotto.
     - Pulsante per il carrello
