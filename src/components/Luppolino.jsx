@@ -1,5 +1,6 @@
 import styles from './Luppolino.module.css';
 import { useState } from 'react';
+import LuppolinoChat from './LuppolinoChat';
 
 
 function Luppolino() {
