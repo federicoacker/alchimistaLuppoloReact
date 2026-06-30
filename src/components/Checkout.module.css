@@ -36,16 +36,25 @@
     color: var(--color-cream);
 }
 
+.paymentButton:disabled,
+.paymentButton:disabled:hover{
+    background:unset;
+    background-color:grey;
+    color: var(--color-gold);
+    cursor:default;
+    opacity:0.5;
+}
+
 .text-cream{
     color: var(--color-text) !important;
 }
 
-.formInput {
+input.formInput {
  position: relative !important;
   width: 100% !important;
   outline: none !important;
   background: transparent !important;
-  border: 1px solid var(--color-gold) !important;
+  border: 1px solid var(--color-gold);
   padding: 0.7rem 1.5rem !important;
   border-radius: 4px !important;
   font-family: var(--font-body) !important;
@@ -56,6 +65,10 @@
   transition: var(--transition) !important;
   margin-bottom:10px !important;
   z-index: 101 !important;   
+}
+
+.form-control.is-valid{
+    border-color:var(--bs-form-valid-border-color) !important;
 }
 
 .text-cream-title{

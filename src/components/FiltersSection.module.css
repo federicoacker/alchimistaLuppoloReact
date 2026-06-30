@@ -138,11 +138,13 @@
 }
 .select-option {
   width: 100%;
+  padding: 0 0.5rem;
   border: 1px solid var(--color-cold);
   background-color: var(--color-bg);
   color: var(--color-cream);
 }
 .select-option-focused {
+  padding: 0 0.5rem;
   background-color: var(--color-gold);
 }
 .select-option-selected {

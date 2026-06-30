@@ -4,7 +4,7 @@ import validateEmail from "../data/validation/validateEmail";
 import { useState } from "react";
 import { BASE_API_URL } from "../data/apiConstants";
 
-function Newsletter() {
+function Newsletter({handleClose}) {
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const handleChange = (event) => {
@@ -54,7 +54,12 @@ function Newsletter() {
                     <div className="d-flex justify-content-center align-items-center position-relative">
                         <form className={styles.newsletterForm} onSubmit={handleSubmit}>
                             <input value={email} onChange={handleChange} className={styles.newsLetterInput} type="text" placeholder="Inserisci la tua email"></input>
-                            <button className={`${styles.buttonAction} ${styles.newsLetterButton}`}>Iscriviti</button>
+                            <button className={`${styles.buttonAction} ${styles.newsLetterButton}`} onClick={(e) => {
+                                const validatedEmail = validateEmail(email);
+                                if(validatedEmail && handleClose){
+                                    handleClose();
+                                }
+                            }}>Iscriviti</button>
                             <div className={styles.logoGlow}></div>
                             {error && <p>{error}</p>}
                         </form>

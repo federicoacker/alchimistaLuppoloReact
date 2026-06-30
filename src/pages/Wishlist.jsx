@@ -38,7 +38,7 @@ function WishlistPage() {
                 <header className={styles.tableHeader}>
                     <span></span>
                     <span>Prodotto</span>
-                    <span>Prezzo</span>
+                    <span className="text-center">Prezzo</span>
                 </header>
 
                 {
