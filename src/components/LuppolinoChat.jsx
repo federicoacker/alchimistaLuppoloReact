@@ -1,7 +1,8 @@
-import { useState} from "react";
-import { useEffect} from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import useAgent from "../hooks/useAgent";
 import styles from "./LuppolinoChat.module.css";
+import Markdown from "react-markdown";
 
 function LuppolinoChat({ close }) {
 
@@ -71,9 +72,18 @@ function LuppolinoChat({ close }) {
 
             <div className={styles.body}>
 
-                {messages.map((message, index) => (
-
-                    <div
+                {messages.map((message, index) => {
+                    if (message.sender !== "user") {
+                        console.log("test");
+                        return (
+                            <div  key={index} className={styles.botMessage}>
+                                <Markdown>
+                                    {message.text}
+                                </Markdown>
+                            </div>
+                        );
+                    }
+                    return (<div
                         key={index}
                         className={
                             message.sender === "user"
@@ -82,9 +92,9 @@ function LuppolinoChat({ close }) {
                         }
                     >
                         <p>{message.text}</p>
-                    </div>
+                    </div>);
 
-                ))}
+                })}
 
                 {isLoading && (
 
