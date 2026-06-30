@@ -76,30 +76,37 @@ function LuppolinoChat({ close }) {
                     if (message.sender !== "user") {
                         console.log("test");
                         return (
-                            <div  key={index} className={styles.botMessage}>
-                                <Markdown>
-                                    {message.text}
-                                </Markdown>
+                            <div key={index} className="d-flex align-items-end justify-content-start">
+                                <img src="/imgs/luppolino.png" className={styles.luppolinoImage} />
+                                <div className={styles.botMessage}>
+                                    <Markdown>
+                                        {message.text}
+                                    </Markdown>
+                                </div>
                             </div>
                         );
                     }
-                    return (<div
-                        key={index}
-                        className={
-                            message.sender === "user"
-                                ? styles.userMessage
-                                : styles.botMessage
-                        }
-                    >
-                        <p>{message.text}</p>
-                    </div>);
+                    return (
+                        <div key={index} className="d-flex align-items-end justify-content-end">
+                            <div
+                                className={
+                                    styles.userMessage
+                                }
+                            >
+                                <p>{message.text}</p>
+                            </div>
+                        </div>
+                    );
 
                 })}
 
                 {isLoading && (
 
                     <div className={styles.botMessage}>
-                        <p>⚗️ Luppolino sta fermentando...</p>
+                        <div className="d-flex align-items-end">
+                            <img src="/imgs/luppolino-pensante.png" className={styles.luppolinoImage} />
+                            <p>Luppolino sta fermentando...</p>
+                        </div>
                     </div>
 
                 )}
@@ -107,7 +114,10 @@ function LuppolinoChat({ close }) {
                 {error && (
 
                     <div className={styles.errorMessage}>
-                        <p>{error}</p>
+                        <div className="d-flex align-items-end">
+                            <img src="/imgs/luppolino-triste.png" className={styles.luppolinoImage} />
+                            <p>{error}</p>
+                        </div>
                     </div>
 
                 )}

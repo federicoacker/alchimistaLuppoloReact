@@ -12,6 +12,7 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,30 +122,14 @@
   max-width: 80%;
 }
 
-.botMessage ul{
+.botMessage {
   background: rgba(255, 255, 255, 0.05);
   color: var(--color-text);
   padding: 0.8rem 1rem;
   border-radius: 18px 18px 18px 4px;
-  max-width: 80%;
-  list-style-type:none;
-}
-
-.botMessage ol {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text);
-  padding: 0.8rem 1rem;
-  border-radius: 18px 18px 18px 4px;
-  max-width: 80%;
-  list-style-type:none;
-}
-
-.botMessage p {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text);
-  padding: 0.8rem 1rem;
-  border-radius: 18px 18px 18px 4px;
-  max-width: 80%;
+  max-width: 100%;
+  list-style-type: none;
+  margin-bottom: 1rem;
 }
 
 .errorMessage p {
@@ -154,4 +139,13 @@
 .form {
   display: flex;
   gap: 0.75rem;
+}
+
+.luppolinoImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  translate: -50% 0;
+  width: 100px;
+  height: auto;
 }
