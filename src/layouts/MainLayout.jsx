@@ -4,7 +4,6 @@ import Footer from '../components/Footer'
 import styles from './MainLayout.module.css'
 import CartOffCanvas from '../components/CartOffCanvas'
 import NewsLetterPopup from '../components/NewsLetterPopup'
-import TestAgent from '../components/TestAgent'
 import Luppolino from '../components/Luppolino'
 
 
@@ -13,7 +12,6 @@ function MainLayout() {
     return (
         <>
             <Header />
-            <TestAgent/>
             <main className={styles.mainLayout}>
                 <NewsLetterPopup/>
                 <CartOffCanvas/>
