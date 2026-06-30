@@ -49,6 +49,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color:var(--color-gold-dark) var(--color-bg);
 }
 
 html,
@@ -111,6 +112,11 @@ select {
   background-color: var(--color-bg);
   color: var(--color-text);
   padding: 10px;
+}
+
+.form-control:focus{
+  border-color: var(--color-gold) !important;
+  box-shadow: none !important;
 }
 
 @media screen and (min-width: 1600px) {

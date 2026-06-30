@@ -8,17 +8,17 @@ import useCart from '../hooks/useCart';
 
 function Header() {
     const { handleShow, cartItems } = useCart();
-    const quantity = cartItems.reduce((acc,current) => {
-                                const currentQuantity = current.quantity;
-                                acc += currentQuantity;
-                                return acc;
-                            }, 0);
+    const quantity = cartItems.reduce((acc, current) => {
+        const currentQuantity = current.quantity;
+        acc += currentQuantity;
+        return acc;
+    }, 0);
     return (
-        <header className={styles.sticky}> 
+        <header className={styles.sticky}>
 
             <Navbar expand="xl" className={styles.customNavbar} variant="dark">
                 <Container>
-                    <Navbar.Brand as={NavLink} to="/" className={styles.logoContainer}>
+                    <Navbar.Brand as={NavLink} to="/#hero" className={styles.logoContainer}>
                         <div className={styles.logoGlow}></div>
                         <img src="/imgs/logo-semplice.png" alt="L'Alchimista del Luppolo" className={styles.navbarLogo} />
                     </Navbar.Brand>
@@ -35,6 +35,13 @@ function Header() {
                             <NavLink
                                 to="/"
                                 end
+                                onClick={() => {
+                                    document.documentElement.scrollTo({
+                                        top: 0,
+                                        left: 0,
+                                        behavior: "smooth",
+                                    });
+                                }}
                                 className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
                             >
                                 Home

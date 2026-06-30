@@ -7,7 +7,7 @@ function HeroSection() {
 
     return (
         <Section className={styles.heroSection}>
-            <Container fluid>
+            <Container id="hero" fluid>
                 <Row className="align-items-center">
                     <Col xs={12} xl={7}>
                         <h5 className={styles.heroSubtitle}>Registro della Birra</h5>

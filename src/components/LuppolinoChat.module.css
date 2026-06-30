@@ -45,6 +45,8 @@
   overflow: auto;
   max-height: 500px;
   padding: 1rem;
+  scrollbar-color:var(--color-gold-dark) var(--color-bg);
+  scrollbar-width: thin;
 }
 
 .message {
@@ -147,6 +149,7 @@
 .form {
   display: flex;
   gap: 0.75rem;
+  align-items:center;
 }
 
 .luppolinoImage {

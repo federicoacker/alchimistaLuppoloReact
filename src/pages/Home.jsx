@@ -12,7 +12,7 @@ function Home() {
 
     return (
         <>
-            <HeroSection />
+            <HeroSection/>
             <Section>
                 <Container fluid="md">
                     <OurBeers />
