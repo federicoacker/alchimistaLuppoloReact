@@ -69,9 +69,18 @@ function FiltersSection({ urlQueryObject, isGrid, setIsGrid }) {
                     Numero di prodotti per pagina
                 </label>
                 <div className="d-flex gap-2">
-                    <button className={Number(limit) === 3 ? styles["buttonActive"] : styles["buttonAction"]} onClick={()=>{setLimit(3)}}>3</button>
-                    <button className={Number(limit) === 6 ? styles["buttonActive"] : styles["buttonAction"]} onClick={()=>{setLimit(6)}}>6</button>
-                    <button className={Number(limit) === 9 ? styles["buttonActive"] : styles["buttonAction"]} onClick={()=>{setLimit(9)}}>9</button>
+                    <button className={Number(limit) === 3 ? styles["buttonActive"] : styles["buttonAction"]} onClick={() => {
+                        setOffset(0);
+                        setLimit(3);
+                    }}>3</button>
+                    <button className={Number(limit) === 6 ? styles["buttonActive"] : styles["buttonAction"]} onClick={() => {
+                        setOffset(0);
+                        setLimit(6);
+                    }}>6</button>
+                    <button className={Number(limit) === 9 ? styles["buttonActive"] : styles["buttonAction"]} onClick={() => { 
+                        setOffset(0);
+                        setLimit(9);
+                        }}>9</button>
                 </div>
             </div>
             <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} setOffset={setOffset} />
