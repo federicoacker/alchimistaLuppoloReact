@@ -1,36 +1,10 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import useAgent from "../hooks/useAgent";
+
 import styles from "./LuppolinoChat.module.css";
 import Markdown from "react-markdown";
 
-function LuppolinoChat({ close }) {
+function LuppolinoChat({ close, setMessages, setPrompt, setNewPrompt, newPrompt, messages, isLoading, error }) {
 
-    const [prompt, setPrompt] = useState("");
-    const [newPrompt, setNewPrompt] = useState("");
-
-    const [messages, setMessages] = useState([
-        {
-            sender: "luppolino",
-            text: "Ciao! 👋 Posso aiutarti a trovare la birra perfetta o consigliarti un abbinamento con qualcosa da mangiare!"
-        }
-    ]);
-
-    const { answer, isLoading, error } = useAgent(prompt);
-
-    useEffect(() => {
-
-        if (!answer) return;
-
-        setMessages(prev => [
-            ...prev,
-            {
-                sender: "luppolino",
-                text: answer
-            }
-        ]);
-
-    }, [answer]);
+    
 
     function handleSubmit(e) {
 
@@ -76,7 +50,6 @@ function LuppolinoChat({ close }) {
                     if (message.sender !== "user") {
                         return (
                             <div key={index} className="d-flex align-items-end justify-content-start">
-                                <img src="/imgs/luppolino.png" className={styles.luppolinoImage} />
                                 <div className={styles.botMessage}>
                                     <Markdown>
                                         {message.text}
@@ -103,7 +76,6 @@ function LuppolinoChat({ close }) {
 
                     <div className={styles.botMessage}>
                         <div className="d-flex align-items-end">
-                            <img src="/imgs/luppolino-pensante.png" className={styles.luppolinoImage} />
                             <p>Luppolino sta fermentando...</p>
                         </div>
                     </div>
@@ -113,8 +85,7 @@ function LuppolinoChat({ close }) {
                 {error && (
 
                     <div className={styles.errorMessage}>
-                        <div className="d-flex align-items-end">
-                            <img src="/imgs/luppolino-triste.png" className={styles.luppolinoImage} />
+                        <div className="d-flex align-items-end"> 
                             <p>{error}</p>
                         </div>
                     </div>

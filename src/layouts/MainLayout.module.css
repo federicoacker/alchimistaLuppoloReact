@@ -1,11 +1,14 @@
 .mainLayout {
     background: var(--gradient-main);
-
+    max-width:100%;
     min-height: 100vh;
-
+    overflow-x:hidden;
     padding: 2rem;
 
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+.mainOutlet{
+    max-width:100%;
 }

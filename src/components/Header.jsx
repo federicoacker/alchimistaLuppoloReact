@@ -14,9 +14,9 @@ function Header() {
                                 return acc;
                             }, 0);
     return (
-        <>
+        <header className={styles.sticky}> 
 
-            <Navbar expand="xl" className={`sticky-top ${styles.customNavbar}`} variant="dark">
+            <Navbar expand="xl" className={styles.customNavbar} variant="dark">
                 <Container>
                     <Navbar.Brand as={NavLink} to="/" className={styles.logoContainer}>
                         <div className={styles.logoGlow}></div>
@@ -90,7 +90,7 @@ function Header() {
                 </Container>
             </Navbar>
 
-        </>
+        </header>
     )
 }
 

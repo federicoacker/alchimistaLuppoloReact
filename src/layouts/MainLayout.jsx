@@ -17,7 +17,7 @@ function MainLayout() {
             <main className={styles.mainLayout}>
                 <NewsLetterPopup/>
                 <CartOffCanvas setIsLuppolinoOpen={setIsLuppolinoOpen}/>
-                <Outlet />
+                <Outlet  className={styles.mainOutlet}/>
             </main>
             <Footer />
             <Luppolino isOpen={isLuppolinoOpen} setIsOpen={setIsLuppolinoOpen}/>
