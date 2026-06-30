@@ -1,0 +1,42 @@
+
+# Cose Fatte dall'inizio:
+- Homepage con:
+    - hero space
+    - lista dei nostri prodotti
+    - sezione con richiamo about-us
+    - lista delle novità
+- Pagina dei prodotti con:
+    - barra di ricerca con debounce
+    - ordinamento per nome, prezzo e data
+    - filter per categorie
+    - pulsante per invertire l'ordinamento da ascendente a discendente
+    - pulsante per cambio di display tra griglia e lista
+    - Pulsanti per aggiungere al carrello i singoli prodotti con cambio di grafica per mostrare la quantità in carrello del prodotto se lo hai in carrello, invece del pulsante aggiungi al carrello (il carrello è salvato in localStorage)
+    - Pulsante per la wishlist per il singolo prodotto
+    - Pulsante per i dettalgi per il singolo prodotto
+    - Paginazione con numero di prodotti fisso per pagina, sono 9
+- Pagina di dettaglio prodotto con:
+    - Immagine e tutti i dettagli del prodotto.
+    - Pulsante per il carrello
+    - Pulsante per la wishlist
+- Carrello offcanvas con:
+    - Calcolo del prezzo parziale per ogni prodotto e totale
+    - Calcolo automatico dello shipping gratuito oltre i 20 euro
+    - Pulsante per andare al checkout
+- Checkout con:
+    - Checkout powered by stripe
+    - Riepilogo dell'ordine
+    - Form con validazione onSubmit e poi onChange
+    - Checkout con creazione ordine in database e invio di mail al venditore (noi) e al cliente (2 mail diverse con informazioni diverse).
+- Popup di benvenuto:
+    - Si attiva solo alla prima visita e permette di iscriversi alla newsletter (anche qui, mail custom).
+- Wishlist:
+    - Wishlist page con lista dei prodotti che sono stati aggiunti alla wishlist, salvata in localStorage
+- Luppolino:
+    - Luppolino aggiunto al main layout, è in grado di rispondere a domande prettamente riguardanti il nostro catalogo, e non ha memoria, quindi risponde solo 1 domanda alla volta senza ricordare cosa gli è stato detto prima. Per ovvi motivi, la sua chat non è salvata in localStorage.
+- Cronache della birra:
+    - Pagina con storie riguardanti il mondo brassicolo che cambiano ogni volta che si clicca, facilmente intercambiabili perché salvate in un array in front end.
+- Contatti:
+    - Pagina dei contatti che permette l'iscrizione alla newsletter se hai rifiutato nel popup.
+- Pagina la nostra missione:
+    - La nostra pagina about us, dove descriviamo i valori della compagnia e la nostra missione.

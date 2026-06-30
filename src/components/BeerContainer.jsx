@@ -12,11 +12,11 @@ import useUrlQuery from "../hooks/useUrlQuery.js";
 import FiltersSection from "./FiltersSection.jsx";
 
 
-const MAX_ITEMS_PER_PAGE = 9;
 function BeerContainer() {
-    const urlQueryObject = useUrlQuery(MAX_ITEMS_PER_PAGE)
-    const { debouncedQuery, selectedCategoryArray, orderBy, order, offset, setOffset } = urlQueryObject;
-    const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${MAX_ITEMS_PER_PAGE}&offset=${offset}`, true);
+    const urlQueryObject = useUrlQuery()
+    const { debouncedQuery, selectedCategoryArray, orderBy, order, offset, setOffset, limit } = urlQueryObject;
+    console.log("limite beer container:", limit);
+    const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${limit}&offset=${offset}`, true);
     const [isGrid, setIsGrid] = useState(true);
 
 
@@ -26,7 +26,7 @@ function BeerContainer() {
                 <FiltersSection urlQueryObject={urlQueryObject} setIsGrid={setIsGrid} isGrid={isGrid} />
             </Section>
             {productCount > 0 && <p>Sono stati trovati {productCount} risultati</p> }
-            <PageNavigator currentOffset={offset} MAX_ITEMS_PER_PAGE={MAX_ITEMS_PER_PAGE} setOffset={setOffset} productCount={productCount} />
+            <PageNavigator currentOffset={offset} MAX_ITEMS_PER_PAGE={limit} setOffset={setOffset} productCount={productCount} />
             <Row className={`row-gap-4 ${styles["product-section"]}`}>
                 {(!loading && products.length > 0) ?
                     products.map(product => {

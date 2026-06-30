@@ -2,13 +2,15 @@ import { useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 import useDebounce from "./useDebounce";
 
-function useUrlQuery(MAX_ITEMS_PER_PAGE) {
+function useUrlQuery() {
     const [query, setQuery] = useSearchParams();
+    const [limit, setLimit] = useState(query.get("limit") ? query.get("limit") : 9);
     const [orderBy, setOrderBy] = useState(query.get("orderBy") ? query.get("orderBy") : "updated_at");
     const [order, setOrder] = useState(query.get("order") ? query.get("order") : "asc");
     const [debouncedQuery, setSearchTerms, searchTerms] = useDebounce(query.get("search") ? query.get("search") : "", 500);
     const [selectedCategoryArray, setSelectedCategoryArray] = useState(query.get("category")?.split(",") ? query.get("category")?.split(",") : ["any"]);
-    const [offset, setOffset] = useState(query.get("page") ? ((query.get("page") - 1) * 9) : 0);
+    const [offset, setOffset] = useState(query.get("page") ? ((query.get("page") - 1) * limit) : 0);
+
     useEffect(() => {
 
         setQuery(
@@ -17,11 +19,13 @@ function useUrlQuery(MAX_ITEMS_PER_PAGE) {
                 category: selectedCategoryArray.join(","),
                 orderBy: orderBy,
                 order: order,
-                page: offset/9 + 1
+                limit: limit,
+                page: Math.ceil(offset/Number(limit)) + 1
             });
 
-    }, [debouncedQuery, setQuery, selectedCategoryArray, orderBy, order, offset, MAX_ITEMS_PER_PAGE]);
+    }, [debouncedQuery, setQuery, selectedCategoryArray, orderBy, order, offset, limit]);
     return {
+        limit,
         orderBy,
         order,
         debouncedQuery,
@@ -32,7 +36,8 @@ function useUrlQuery(MAX_ITEMS_PER_PAGE) {
         setSearchTerms,
         searchTerms,
         setSelectedCategoryArray,
-        setOffset
+        setOffset,
+        setLimit
     }
 }
 

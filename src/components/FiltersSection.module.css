@@ -68,6 +68,24 @@
   text-decoration: none;
 }
 
+.buttonActive{
+
+  background: var(--color-gold);
+  color: var(--color-bg);
+  border: 1px solid var(--color-gold);
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+}
+
 .buttonAction:hover {
   background: linear-gradient(
     135deg,

@@ -1,12 +1,11 @@
 import styles from "./FiltersSection.module.css"
 import BeerSearchBar from "./BeerSearchBar";
 import Select from "react-select";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { baseOptions, sortingOptions } from "../data/apiConstants.js";
 import useCategories from "../hooks/useCategories.js"
-function FiltersSection({urlQueryObject, isGrid, setIsGrid}) {
+function FiltersSection({ urlQueryObject, isGrid, setIsGrid }) {
 
-    
     const {
         orderBy,
         order,
@@ -16,10 +15,12 @@ function FiltersSection({urlQueryObject, isGrid, setIsGrid}) {
         setSearchTerms,
         searchTerms,
         setSelectedCategoryArray,
-        setOffset
+        setOffset,
+        setLimit,
+        limit
     } = urlQueryObject
 
-    
+    console.log(limit);
     const { categories, loading: categoryLoading, error: categoryError } = useCategories();
     const [options, setOptions] = useState(baseOptions);
     const [sortOptions] = useState(sortingOptions)
@@ -30,6 +31,7 @@ function FiltersSection({urlQueryObject, isGrid, setIsGrid}) {
             setOptions([...options, ...optionArray]);
         }
     }, [categories]);
+
 
     const changeCategoryArray = (e) => {
         setOffset(0);
@@ -62,6 +64,16 @@ function FiltersSection({urlQueryObject, isGrid, setIsGrid}) {
 
     return (
         <div className="w-100">
+            <div className="d-flex flex-column justify-content-center align-items-center">
+                <label htmlFor="paginationLimit" className={styles["label"]}>
+                    Numero di prodotti per pagina
+                </label>
+                <div className="d-flex gap-2">
+                    <button className={Number(limit) === 3 ? styles["buttonActive"] : styles["buttonAction"]} onClick={()=>{setLimit(3)}}>3</button>
+                    <button className={Number(limit) === 6 ? styles["buttonActive"] : styles["buttonAction"]} onClick={()=>{setLimit(6)}}>6</button>
+                    <button className={Number(limit) === 9 ? styles["buttonActive"] : styles["buttonAction"]} onClick={()=>{setLimit(9)}}>9</button>
+                </div>
+            </div>
             <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} setOffset={setOffset} />
             <div className="d-flex my-2 g-4 w-100 flex-wrap">
                 <div className={styles["display-wrapper"]}>

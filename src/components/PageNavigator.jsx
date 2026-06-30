@@ -7,6 +7,7 @@ function PageNavigator({ currentOffset, MAX_ITEMS_PER_PAGE, setOffset, productCo
     const handleNextPage = () => {
         setOffset((prev) => Math.min(prev + MAX_ITEMS_PER_PAGE, productCount));
     }
+    console.log(currentOffset, MAX_ITEMS_PER_PAGE)
     return (
         <div className="d-flex justify-content-center align-items-center gap-3 my-4">
             <button
