@@ -3,6 +3,7 @@ import styles from "./BeerCardVertical.module.css";
 import { useWishlist } from "../contexts/WishlistContext";
 import useCart from "../hooks/useCart";
 import { Link } from "react-router";
+import CategoryBadge from "./CategoryBadge";
 
 function BeerCardVertical({ product }) {
     const {
@@ -10,8 +11,9 @@ function BeerCardVertical({ product }) {
         isInWishlist
     } = useWishlist();
     const favorite = isInWishlist(product.slug);
-    const { addToCart} = useCart();
-
+    const { cartItems, addToCart, removeFromCart } = useCart();
+    const thisItem = cartItems.find(cartItem => cartItem.cartProduct.slug === product.slug);
+    console.log(product.categories);
 
     return (
         <Col md={6} lg={4} xl={4} xxl={4}>
@@ -26,6 +28,7 @@ function BeerCardVertical({ product }) {
                     <Card.Text className={styles["beer-description"]}>
                         {product.short_description}
                     </Card.Text>
+                    {product.categories.map(category => <CategoryBadge key={category.slug} category={category}/>)}
                 </Card.Body>
                 <Card.Footer className={styles["beer-card-footer"]}>
                     <Card.Text className={styles["beer-card-text"]}>
@@ -38,17 +41,37 @@ function BeerCardVertical({ product }) {
                         ABV: {product.abv.toFixed(2)}%
                     </Card.Text>
                     <Row className="g-2 justify-content-center">
-                        <Col xs="auto" lg={3} className="text-center">
-                            <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `} onClick={() => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
+                        <Col xs="auto" lg={3} className="text-center g-2 align-items-center d-flex">
+                            {
+                                thisItem ? <div className={styles["button-wrapper"]}>
+                                    <button
+                                        className={styles["btn-quantity-action"]}
+                                        onClick={() => removeFromCart(product)}
+                                    >
+                                        -
+                                    </button>
+
+                                    <span className={styles["quantity-display"]}>{thisItem.quantity}</span>
+
+                                    <button
+                                        className={styles["btn-quantity-action"]}
+                                        onClick={() => addToCart(product)}
+                                    >
+                                        +
+                                    </button>
+                                </div> :
+                                    <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `} onClick={() => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
+                            }
+
                         </Col>
-                        <Col xs="auto" lg={3} className="text-center">
+                        <Col xs="auto" lg={3} className="text-center g-2">
                             <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `}
                                 onClick={() => toggleWishlist(product.slug)}>
                                 {favorite ? (<i className="bi bi-heart-fill"></i>)
                                     : (<i className="bi bi-heart"></i>)}
                             </Button>
                         </Col>
-                        <Col xs="auto" lg={6} className="text-center">
+                        <Col xs="auto" lg={6} className="text-center g-2">
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
                         </Col>
                     </Row>

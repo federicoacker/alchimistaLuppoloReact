@@ -33,19 +33,14 @@ function Checkout({ totalPrice }) {
     const [paymentError, setPaymentError] = useState("");
     const [formData, setFormData] = useState(templateForm);
     const [needsValidation, setNeedsValidation] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
     const isFormValidated = useValidateForm(formData, needsValidation);
     let validated;
     let errors;
-    if(isFormValidated){
+    if (isFormValidated) {
         validated = isFormValidated.validated;
         errors = isFormValidated.errors;
     }
-
-
-    
-
-
-
     const handleChange = () => {
 
         const target = event.target;
@@ -68,6 +63,9 @@ function Checkout({ totalPrice }) {
         if (!validated) {
             return;
         }
+
+        setIsProcessing(true);
+
         const mappedCartItems = cartItems.map(cartItem => {
             return {
                 "product_slug": cartItem.cartProduct.slug,
@@ -100,6 +98,7 @@ function Checkout({ totalPrice }) {
             })
             .then(async () => {
                 if (!stripe || !elements) {
+                    setIsProcessing(false);
                     return;
                 }
 
@@ -113,11 +112,13 @@ function Checkout({ totalPrice }) {
 
                 if (result) {
                     setPaymentError(result.message);
+                    setIsProcessing(false);
                 }
 
             })
             .catch(error => {
-                setOrderError(error.message)
+                setOrderError(error.message);
+                setIsProcessing(false);
             })
     };
 
@@ -190,10 +191,10 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Città</Form.Label>
 
-                           
+
 
                             <Form.Control
-                            className={styles.formInput}
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="Città"
                                 required
@@ -208,6 +209,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="3" controlId="validationCustom04">
                             <Form.Label>Indirizzo</Form.Label>
                             <Form.Control
+                                className={styles.formInput}
                                 type="text"
                                 placeholder="Indirizzo"
                                 required value={formData.address_line_1}
@@ -223,7 +225,7 @@ function Checkout({ totalPrice }) {
                         <Form.Group as={Col} md="3" controlId="validationCustom05">
                             <Form.Label>CAP</Form.Label>
 
-                          
+
 
                             <Form.Control
                                 className={styles.formInput}
@@ -245,9 +247,9 @@ function Checkout({ totalPrice }) {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Indirizzo email</Form.Label>
 
-                            
+
                             <Form.Control
-                               className={styles.formInput} 
+                                className={styles.formInput}
                                 type="email"
                                 placeholder="Inserisci email"
                                 required name="email"
@@ -305,8 +307,8 @@ function Checkout({ totalPrice }) {
                         <p className="text-danger">{paymentError}</p>
                     )}
 
-                    <button className={styles.paymentButton} type="submit" disabled={!stripe}>
-                        {!needsValidation ? "Valida i dati" : "Paga"}
+                    <button className={styles.paymentButton} type="submit" disabled={isProcessing}>
+                        {!needsValidation ? "Valida i dati" : isProcessing ? "Elaborazione in corso..." : "Paga"}
                     </button>
 
                 </Form>
@@ -314,7 +316,7 @@ function Checkout({ totalPrice }) {
                     <h5 className={styles["text-cream-title"]}>
                         C'è stato un errore nella creazione dell'ordine
                     </h5>
-                    </Section>}
+                </Section>}
             </Section>
         </Section>
     )

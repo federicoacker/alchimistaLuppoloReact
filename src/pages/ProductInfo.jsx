@@ -10,7 +10,8 @@ function ProductInfo() {
     const { slug } = useParams();
 
     const { product, loading, error } = useProduct(slug);
-    const { addToCart } = useCart();
+    const { cartItems, addToCart, removeFromCart } = useCart();
+    const thisItem = cartItems.find(cartItem => cartItem.cartProduct.slug === product.slug);
     const { toggleWishlist, isInWishlist } = useWishlist();
     const favorite = isInWishlist(product.slug);
 
@@ -58,14 +59,35 @@ function ProductInfo() {
                     <p><strong>Ingredienti:</strong> {product.ingredients}</p>
                     <p><strong>Abbinamenti:</strong> {product.pairs_with}</p>
                 </div>
-                <button className={styles.buttonWishlist}
-                    onClick={() => toggleWishlist(product.slug)}>
-                    {favorite ? (<i className="bi bi-heart-fill"></i>)
-                        : (<i className="bi bi-heart"></i>)}
-                </button>
-                <button className={styles.buttonAction} onClick={() => addToCart(product)}>
-                    Aggiungi al carrello
-                </button>
+                <div className={`d-flex gap-4 ${styles["button-container"]}`}>
+                    <button className={styles.buttonWishlist}
+                        onClick={() => toggleWishlist(product.slug)}>
+                        {favorite ? (<i className="bi bi-heart-fill"></i>)
+                            : (<i className="bi bi-heart"></i>)}
+                    </button>
+                    {
+                        thisItem ? <div className={styles["button-wrapper"]}>
+                            <button
+                                className={styles["btn-quantity-action"]}
+                                onClick={() => removeFromCart(product)}
+                            >
+                                -
+                            </button>
+
+                            <span className={styles["quantity-display"]}>{thisItem.quantity}</span>
+
+                            <button
+                                className={styles["btn-quantity-action"]}
+                                onClick={() => addToCart(product)}
+                            >
+                                +
+                            </button>
+                        </div> :
+                            <button className={styles.buttonAction} onClick={() => addToCart(product)}>
+                                Aggiungi al carrello
+                            </button>
+                    }
+                </div>
             </div>
         </div>
     );
