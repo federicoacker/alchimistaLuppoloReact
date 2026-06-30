@@ -1,10 +1,9 @@
 import styles from './Luppolino.module.css';
-import { useState } from 'react';
 import LuppolinoChat from './LuppolinoChat';
 
 
-function Luppolino() {
-    const [isOpen, setIsOpen] = useState(false);
+function Luppolino({isOpen, setIsOpen}) {
+    
 
     return (
         <div className={styles.container}>

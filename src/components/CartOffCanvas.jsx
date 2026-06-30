@@ -4,13 +4,20 @@ import { Offcanvas } from "react-bootstrap";
 import { Link } from "react-router";
 import styles from "./CartOffCanvas.module.css";
 import CartProductDisplay from "./CartProductDisplay";
+import { useEffect } from "react";
 
 
-function CartOffCanvas() {
+function CartOffCanvas({setIsLuppolinoOpen}) {
     const { cartItems, show, handleClose, productsPrice, shippingPrice, totalPrice } = useCart();
 
+    useEffect(()=>{
+        if(show){
+            setIsLuppolinoOpen(false);
+        }
+    },[show,setIsLuppolinoOpen]);
+
     return (
-        <Offcanvas show={show} onHide={handleClose} placement="end" className={`${styles["cart-offcanvas"]} ${styles["section-frame"]}`}>
+        <Offcanvas show={show} onHide={handleClose} placement="end" className={`${styles["cart-offcanvas"]}`}>
             <Offcanvas.Header closeButton closeVariant="white">
                 <Offcanvas.Title className={styles["cart-title"]}>Carrello</Offcanvas.Title>
             </Offcanvas.Header>

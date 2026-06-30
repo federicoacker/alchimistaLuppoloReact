@@ -18,7 +18,7 @@ function BeerContainer() {
     const { debouncedQuery, selectedCategoryArray, orderBy, order, offset, setOffset } = urlQueryObject;
     const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${MAX_ITEMS_PER_PAGE}&offset=${offset}`, true);
     const [isGrid, setIsGrid] = useState(true);
-    console.log(products);
+
 
     return (
         <Section className="gap-4">

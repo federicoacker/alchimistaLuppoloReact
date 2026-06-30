@@ -13,7 +13,7 @@ function BeerCardVertical({ product }) {
     const favorite = isInWishlist(product.slug);
     const { cartItems, addToCart, removeFromCart } = useCart();
     const thisItem = cartItems.find(cartItem => cartItem.cartProduct.slug === product.slug);
-    console.log(product.categories);
+
 
     return (
         <Col md={6} lg={4} xl={4} xxl={4}>

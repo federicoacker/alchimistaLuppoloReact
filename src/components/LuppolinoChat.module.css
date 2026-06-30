@@ -131,6 +131,14 @@
   list-style-type: none;
   margin-bottom: 1rem;
 }
+.botMessage h1,
+.botMessage h2,
+.botMessage h3,
+.botMessage h4,
+.botMessage h5,
+.botMessage h6 {
+    font-size:1.25rem;
+}
 
 .errorMessage p {
   color: #ff8c8c;

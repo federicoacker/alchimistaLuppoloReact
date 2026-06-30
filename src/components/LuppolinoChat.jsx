@@ -74,7 +74,6 @@ function LuppolinoChat({ close }) {
 
                 {messages.map((message, index) => {
                     if (message.sender !== "user") {
-                        console.log("test");
                         return (
                             <div key={index} className="d-flex align-items-end justify-content-start">
                                 <img src="/imgs/luppolino.png" className={styles.luppolinoImage} />
