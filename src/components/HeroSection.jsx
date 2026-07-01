@@ -24,7 +24,7 @@ function HeroSection() {
                     </Col>
                     <Col xs={12} xl={5}>
                         <div className={styles.videoLogoWrapper}>
-                            <video src="/vids/videoLogo.mp4" autoPlay loop muted></video>
+                            <video src="/vids/videoLogo.webm" autoPlay loop muted></video>
 
                         </div>
                     </Col>
