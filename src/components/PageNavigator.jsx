@@ -1,11 +1,12 @@
 import styles from "./PageNavigator.module.css";
 function PageNavigator({ currentOffset, MAX_ITEMS_PER_PAGE, setOffset, productCount }) {
     const handlePrevPage = () => {
-        setOffset((prev) => Math.max(prev - MAX_ITEMS_PER_PAGE, 0));
+        setOffset((prev) => Math.max(prev - Number(MAX_ITEMS_PER_PAGE), 0));
     }
+    console.log(Number(MAX_ITEMS_PER_PAGE), currentOffset, productCount);
 
     const handleNextPage = () => {
-        setOffset((prev) => Math.min(prev + MAX_ITEMS_PER_PAGE, productCount));
+        setOffset((prev) => Math.min(prev + Number(MAX_ITEMS_PER_PAGE), productCount));
     }
     console.log(currentOffset, MAX_ITEMS_PER_PAGE)
     return (
@@ -22,7 +23,7 @@ function PageNavigator({ currentOffset, MAX_ITEMS_PER_PAGE, setOffset, productCo
             <button
                 className={styles["buttonAction"]}
                 onClick={handleNextPage}
-                disabled={currentOffset + MAX_ITEMS_PER_PAGE >= productCount}
+                disabled={currentOffset + Number(MAX_ITEMS_PER_PAGE) >= productCount}
             >
                 <i className="bi bi-arrow-bar-right"></i>
             </button>
