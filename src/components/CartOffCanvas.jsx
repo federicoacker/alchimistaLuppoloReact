@@ -36,7 +36,7 @@ function CartOffCanvas({ setIsLuppolinoOpen }) {
                         })}
                     </div>
                     {cartItems.length > 0 &&
-                        <div>
+                        <div className="mb-5">
                             <table className={styles["cart-table"]}>
                                 <tbody>
                                     <tr className={styles["cart-row"]}>

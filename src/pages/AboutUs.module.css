@@ -70,7 +70,6 @@
 }
 
 .heroDescription {
-  max-width: 600px;
   font-family: var(--font-body);
   color: var(--color-text);
   margin-bottom: 2rem;

@@ -3,6 +3,7 @@
   border-left: 2px solid var(--color-border) !important;
   outline: 2px solid var(--color-border) !important;
   z-index:10000 !important;
+  height:100vh;
 }
 
 .cart-section {
