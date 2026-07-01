@@ -4,7 +4,7 @@ import Select from "react-select";
 import { useState, useEffect } from "react";
 import { baseOptions, sortingOptions } from "../data/apiConstants.js";
 import useCategories from "../hooks/useCategories.js"
-function FiltersSection({ urlQueryObject, isGrid, setIsGrid }) {
+function FiltersSection({ urlQueryObject, isGrid, setIsGrid, productCount }) {
 
     const {
         orderBy,
@@ -64,27 +64,36 @@ function FiltersSection({ urlQueryObject, isGrid, setIsGrid }) {
 
     return (
         <div className="w-100">
-            <div className="d-flex flex-column justify-content-center align-items-center">
-                <label htmlFor="paginationLimit" className={styles["label"]}>
-                    Numero di prodotti per pagina
-                </label>
-                <div className="d-flex gap-2">
-                    <button className={Number(limit) === 3 ? styles["buttonActive"] : styles["buttonAction"]} onClick={() => {
-                        setOffset(0);
-                        setLimit(3);
-                    }}>3</button>
-                    <button className={Number(limit) === 6 ? styles["buttonActive"] : styles["buttonAction"]} onClick={() => {
-                        setOffset(0);
-                        setLimit(6);
-                    }}>6</button>
-                    <button className={Number(limit) === 9 ? styles["buttonActive"] : styles["buttonAction"]} onClick={() => { 
-                        setOffset(0);
-                        setLimit(9);
-                        }}>9</button>
-                </div>
-            </div>
             <BeerSearchBar query={searchTerms} setQuery={setSearchTerms} setOffset={setOffset} />
-            <div className="d-flex my-2 g-4 w-100 flex-wrap">
+            {
+                !categoryLoading && !categoryError &&
+                <div className="d-flex flex-column my-5">
+                    <label className={styles["label"]}>
+                        Seleziona le categorie
+                    </label>
+                    <Select
+                        isMulti
+                        options={options}
+                        value={options.filter(opt => selectedCategoryArray.includes(opt.value))}
+                        onChange={changeCategoryArray}
+                        unstyled
+                        classNames={{
+                            container: () => { return styles["select"] },
+                            menu: () => { return styles["select-menu"] },
+                            option: ({ isSelected, isFocused }) => {
+                                return isSelected ? styles["select-option-selected"] : isFocused ? styles["select-option-focused"] : styles["select-option"]
+                            },
+                            multiValue: () => { return styles["select-multi-value"] },
+                            multiValueLabel: () => { return styles["select-multi-value-label"] },
+                            multiValueRemove: () => { return styles["select-multi-value-remove-btn"] },
+                        }}
+                        isSearchable={false}
+                        hideSelectedOptions
+                    />
+                </div>
+            }
+
+            <div className="d-flex g-4 w-100 flex-wrap">
                 <div className={styles["display-wrapper"]}>
                     <label className={styles["label"]}>
                         Display {isGrid ? "Griglia" : "Lista"}
@@ -129,34 +138,28 @@ function FiltersSection({ urlQueryObject, isGrid, setIsGrid }) {
                     </button>
                 </div>
             </div>
-
-            {
-                !categoryLoading && !categoryError &&
-                <div className="d-flex flex-column">
+            <div className="w-100 d-flex justify-content-between align-items-center mt-3">
+                {productCount > 0 && <p>Sono stati trovati {productCount} risultati</p>}
+                <div className="d-flex flex-column justify-content-center align-items-center">
                     <label className={styles["label"]}>
-                        Seleziona le categorie
+                        Numero di prodotti per pagina
                     </label>
-                    <Select
-                        isMulti
-                        options={options}
-                        value={options.filter(opt => selectedCategoryArray.includes(opt.value))}
-                        onChange={changeCategoryArray}
-                        unstyled
-                        classNames={{
-                            container: () => { return styles["select"] },
-                            menu: () => { return styles["select-menu"] },
-                            option: ({ isSelected, isFocused }) => {
-                                return isSelected ? styles["select-option-selected"] : isFocused ? styles["select-option-focused"] : styles["select-option"]
-                            },
-                            multiValue: () => { return styles["select-multi-value"] },
-                            multiValueLabel: () => { return styles["select-multi-value-label"] },
-                            multiValueRemove: () => { return styles["select-multi-value-remove-btn"] },
-                        }}
-                        isSearchable={false}
-                        hideSelectedOptions
-                    />
+                    <div className="d-flex gap-2 justify-content-center">
+                            <button className={Number(limit) === 3 ? `${styles["buttonActive"]}` : `${styles["pageButton"]}`} onClick={() => {
+                                setOffset(0);
+                                setLimit(3);
+                            }}>3</button>
+                            <button className={Number(limit) === 6 ? styles["buttonActive"] : `${styles["pageButton"]}`} onClick={() => {
+                                setOffset(0);
+                                setLimit(6);
+                            }}>6</button>
+                            <button className={Number(limit) === 9 ? styles["buttonActive"] : `${styles["pageButton"]}`} onClick={() => {
+                                setOffset(0);
+                                setLimit(9);
+                            }}>9</button>
+                    </div>
                 </div>
-            }
+            </div>
         </div>
     )
 }
