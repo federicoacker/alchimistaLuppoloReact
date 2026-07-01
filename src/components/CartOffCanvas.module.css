@@ -86,3 +86,19 @@
   color: #1a120c !important;
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
 }
+
+.empty-cart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 200px;
+}
+
+.empty-cart-text {
+    color: var(--color-cream);
+    font-family: var(--font-text);
+    font-size: 1.2rem;
+    text-align: center;
+}

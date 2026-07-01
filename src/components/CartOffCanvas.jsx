@@ -7,14 +7,14 @@ import CartProductDisplay from "./CartProductDisplay";
 import { useEffect } from "react";
 
 
-function CartOffCanvas({setIsLuppolinoOpen}) {
+function CartOffCanvas({ setIsLuppolinoOpen }) {
     const { cartItems, show, handleClose, productsPrice, shippingPrice, totalPrice } = useCart();
 
-    useEffect(()=>{
-        if(show){
+    useEffect(() => {
+        if (show) {
             setIsLuppolinoOpen(false);
         }
-    },[show,setIsLuppolinoOpen]);
+    }, [show, setIsLuppolinoOpen]);
 
     return (
         <Offcanvas show={show} onHide={handleClose} placement="end" className={`${styles["cart-offcanvas"]}`}>
@@ -22,6 +22,15 @@ function CartOffCanvas({setIsLuppolinoOpen}) {
                 <Offcanvas.Title className={styles["cart-title"]}>Carrello</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
+                <section className={styles["cart-section"]}>
+                    {cartItems.length === 0 && (
+                        <div className={styles["empty-cart-container"]}>
+                            <h2 className={styles["empty-cart-text"]}>Il tuo carrello è vuoto...</h2>
+                            <p className={styles["empty-cart-text"]}>
+                                Il tuo carrello aspetta solo di essere riempito. Non deluderlo.
+                            </p>
+                        </div>
+                    )}
                     <div className="d-flex flex-column row-gap-3">
                         {cartItems.map((cartItem) => {
                             return <CartProductDisplay key={cartItem.cartProduct.slug} productItem={cartItem} />
@@ -36,23 +45,23 @@ function CartOffCanvas({setIsLuppolinoOpen}) {
                                             Prezzo Prodotti:
                                         </td>
                                         <td className={styles["price-tag"]}>
-                                            &euro; {productsPrice.toFixed(2).replace(".",",")}
-                                        </td>  
+                                            &euro; {productsPrice.toFixed(2).replace(".", ",")}
+                                        </td>
                                     </tr>
                                     <tr className={styles["cart-row"]}>
                                         <td className={styles["cart-tag"]}>
                                             Prezzo di Shipping
                                         </td>
                                         <td className={styles["price-tag"]}>
-                                            &euro; {shippingPrice.toFixed(2).replace(".",",")}
+                                            &euro; {shippingPrice.toFixed(2).replace(".", ",")}
                                         </td>
                                     </tr>
                                     <tr className={styles["cart-row"]}>
-                                        <td  className={styles["cart-total"]}>
+                                        <td className={styles["cart-total"]}>
                                             Totale
                                         </td>
-                                        <td  className={`${styles["price-tag"]} ${styles["total-tag"]}`}>
-                                            &euro; {totalPrice.toFixed(2).replace(".",",")}
+                                        <td className={`${styles["price-tag"]} ${styles["total-tag"]}`}>
+                                            &euro; {totalPrice.toFixed(2).replace(".", ",")}
                                         </td>
 
                                     </tr>
