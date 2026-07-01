@@ -18,7 +18,7 @@ function PageNavigator({ currentOffset, MAX_ITEMS_PER_PAGE, setOffset, productCo
                 <i className="bi bi-arrow-bar-left"></i>
             </button>
             <span className="fw-semibold">
-                Pagina {Math.ceil((currentOffset + 1) / MAX_ITEMS_PER_PAGE)}
+                Pagina {Math.ceil((currentOffset + 1) / MAX_ITEMS_PER_PAGE)} / {Math.ceil(productCount/MAX_ITEMS_PER_PAGE)}
             </span>
             <button
                 className={styles["buttonAction"]}

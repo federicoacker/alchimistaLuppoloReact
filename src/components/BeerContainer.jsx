@@ -23,11 +23,11 @@ function BeerContainer() {
     return (
         <Section className="gap-4">
             <Section className={`d-flex ${styles["search-section"]}`}>
-                <FiltersSection urlQueryObject={urlQueryObject} setIsGrid={setIsGrid} isGrid={isGrid} />
+                <FiltersSection urlQueryObject={urlQueryObject} setIsGrid={setIsGrid} isGrid={isGrid} productCount={productCount} />
             </Section>
-            {productCount > 0 && <p>Sono stati trovati {productCount} risultati</p> }
+            
             <PageNavigator currentOffset={offset} MAX_ITEMS_PER_PAGE={limit} setOffset={setOffset} productCount={productCount} />
-            <Row className={`row-gap-4 ${styles["product-section"]}`}>
+            <Row className={`row-gap-4 ${styles["product-section"]} align-items-stretch`}>
                 {(!loading && products.length > 0) ?
                     products.map(product => {
                         return isGrid ? <BeerCardVertical key={product?.slug} product={product} /> :
