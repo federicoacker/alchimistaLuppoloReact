@@ -45,15 +45,15 @@ function Footer() {
                     <Col md={3}>
                         <h5 className={styles.social}>Seguici</h5>
                         <div className={styles.socialIcons}>
-                            <a href="#" aria-label="Instagram">
+                            <a  aria-label="Instagram">
                                 <i className="bi bi-instagram"></i>
                             </a>
 
-                            <a href="#" aria-label="Facebook">
+                            <a  aria-label="Facebook">
                                 <i className="bi bi-facebook"></i>
                             </a>
 
-                            <a href="#" aria-label="Untappd">
+                            <a  aria-label="Untappd">
                                 <i className="bi bi-bookmark-heart"></i>
                             </a>
                         </div>
