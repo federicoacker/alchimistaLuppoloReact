@@ -21,12 +21,16 @@
   color: var(--color-gold) !important;
   text-wrap: nowrap;
 }
+
 .beer-card {
-  width:100%;
-  border: 1px solid var(--color-border);
+  width: 100%;
+  border: 2px solid var(--color-gold-dark);
+  border-radius: 5px;
   background-color: transparent !important;
   padding: 0 !important;
+  box-shadow: 0 0 10px var(--color-gold-dark);
 }
+
 .beer-card-details {
   width:50%;
   display: flex;
