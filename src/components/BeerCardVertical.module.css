@@ -10,6 +10,7 @@
   text-wrap: nowrap;
 }
 .beer-card {
+  height:100% !important;
   background-color: transparent !important;
   border-color: var(--color-border) !important;
 }
@@ -20,7 +21,6 @@
   border-color: var(--color-border) !important;
 }
 .beer-description {
-  height: 150px;
   overflow-y: scroll;
   scrollbar-width: none;
 }

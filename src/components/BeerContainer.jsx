@@ -27,7 +27,7 @@ function BeerContainer() {
             </Section>
             
             <PageNavigator currentOffset={offset} MAX_ITEMS_PER_PAGE={limit} setOffset={setOffset} productCount={productCount} />
-            <Row className={`row-gap-4 ${styles["product-section"]}`}>
+            <Row className={`row-gap-4 ${styles["product-section"]} align-items-stretch`}>
                 {(!loading && products.length > 0) ?
                     products.map(product => {
                         return isGrid ? <BeerCardVertical key={product?.slug} product={product} /> :
