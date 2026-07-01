@@ -1,9 +1,11 @@
 .heroSection {
   min-height: 80vh;
   background:
-    radial-gradient(circle at 75% 40%,
+    radial-gradient(
+      circle at 75% 40%,
       rgba(200, 155, 60, 0.08),
-      transparent 35%),
+      transparent 35%
+    ),
     linear-gradient(135deg, #17120f, #241b15, #17120f);
 
   display: flex;
@@ -15,9 +17,11 @@
 
   --radius: 30px;
 
-  mask-image: radial-gradient(var(--radius) at var(--radius) var(--radius),
-      transparent 98%,
-      black 100%);
+  mask-image: radial-gradient(
+    var(--radius) at var(--radius) var(--radius),
+    transparent 98%,
+    black 100%
+  );
   mask-position: calc(-1 * var(--radius)) calc(-1 * var(--radius));
   mask-size: 100%;
   mask-repeat: repeat;
@@ -29,9 +33,11 @@
   inset: 0;
 
   background:
-    radial-gradient(circle at 75% 40%,
+    radial-gradient(
+      circle at 75% 40%,
       rgba(200, 155, 60, 0.12),
-      transparent 45%),
+      transparent 45%
+    ),
     url("/imgs/sfondo.png");
 
   background-size: auto, cover;
@@ -40,7 +46,7 @@
   pointer-events: none;
 }
 
-.heroSection>* {
+.heroSection > * {
   position: relative;
   z-index: 1;
 }
@@ -91,9 +97,11 @@
 }
 
 .buttonAction:hover {
-  background: linear-gradient(135deg,
-      var(--color-gold-light),
-      var(--color-gold));
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
 
   color: #1a120c;
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.25);
@@ -102,12 +110,13 @@
 .logoGlow {
   position: absolute;
   width: 800px;
-  height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(200, 155, 60, 0.18) 0%,
-      rgba(200, 155, 60, 0.08) 40%,
-      transparent 75%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 155, 60, 0.18) 0%,
+    rgba(200, 155, 60, 0.08) 40%,
+    transparent 75%
+  );
 
   filter: blur(40px);
   z-index: 1;
@@ -118,12 +127,20 @@
   width: min(100%, 750px);
   max-width: 500px;
 
-  transform: scale(1.10) translateX(80px);
+  transform: scale(1.1) translateX(80px);
 
   filter: drop-shadow(0 0 10px rgba(200, 155, 60, 0.25))
     drop-shadow(0 0 25px rgba(200, 155, 60, 0.15));
 
   z-index: 2;
+}
+
+.heroSealPanel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 @media (max-width: 991px) {

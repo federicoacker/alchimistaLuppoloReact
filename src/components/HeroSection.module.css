@@ -119,12 +119,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem 0;
 }
 
 .logoGlow {
     position: absolute;
     width: 800px;
-    height: 800px;
     border-radius: 50%;
     background:
         radial-gradient(circle,
@@ -170,7 +170,6 @@
 
     .logoGlow {
         width: 500px;
-        height: 500px;
     }
 }
 
@@ -181,6 +180,5 @@
 
     .logoGlow {
         width: 350px;
-        height: 350px;
     }
 }
