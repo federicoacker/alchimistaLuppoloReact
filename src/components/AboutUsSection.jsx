@@ -22,10 +22,8 @@ function AboutUsSection() {
                         </div>
                     </Col>
                     <Col xs={12} lg={5}>
-                        <div className={styles.heroSealPanel}>
-                            <div className={styles.logoGlow}></div>
-                            <img className={styles.heroLogo} src="/imgs/about-us-1.png" alt="logo pagina" />
-
+                        <div className={styles.videoWrapper}>
+                            <video src="/vids/videoLuppoli.mp4" autoPlay loop muted></video>
                         </div>
                     </Col>
                 </Row>

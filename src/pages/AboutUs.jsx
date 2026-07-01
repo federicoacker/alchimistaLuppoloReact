@@ -31,8 +31,8 @@ function AboutUs() {
             <div className="d-flex flex-wrap">
 
                 <Section className={`${styles.heroSection} ${styles.subHeroSection}`}>
-                    <Container fluid className="h-100">
-                        <Row className="align-items-center">
+                    <Container fluid>
+                        <Row className="align-items-start">
                             <Col xs={12} xl={7}>
                                 <h5 className={styles.heroSubtitle}>La conoscenza è il nostro ingrediente segreto</h5>
                                 <p className={styles.heroDescription}>
@@ -58,8 +58,8 @@ function AboutUs() {
                     </Container>
                 </Section >
                 <Section className={`${styles.heroSection} ${styles.subHeroSection}`}>
-                    <Container fluid className="h-100">
-                        <Row className="align-items-center">
+                    <Container fluid>
+                        <Row className="align-items-start">
                             <Col xs={12} xl={7}>
                                 <h5 className={styles.heroSubtitle}>La nostra promessa</h5>
                                 <p className={styles.heroDescription}>
@@ -88,8 +88,8 @@ function AboutUs() {
             <div className="d-flex flex-wrap">
 
                 <Section className={`${styles.heroSection} ${styles.subHeroSection}`}>
-                    <Container fluid className="h-100">
-                        <Row className="align-items-center">
+                    <Container fluid >
+                        <Row className="align-items-start">
                             <Col xs={12} xl={7}>
                                 <h5 className={styles.heroSubtitle}>L'alchimia della fermentazione</h5>
                                 <p className={styles.heroDescription}>
@@ -115,8 +115,8 @@ function AboutUs() {
                     </Container>
                 </Section >
                 <Section className={`${styles.heroSection} ${styles.subHeroSection}`}>
-                    <Container fluid className="h-100">
-                        <Row className="align-items-center">
+                    <Container fluid >
+                        <Row className="align-items-start">
                             <Col xs={12} xl={7}>
                                 <h5 className={styles.heroSubtitle}>Per chi vive la birra come una passione</h5>
                                 <p className={styles.heroDescription}>

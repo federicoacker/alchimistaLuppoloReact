@@ -135,6 +135,21 @@
   z-index: 2;
 }
 
+.videoWrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    aspect-ratio:calc(16/9);
+    overflow: hidden;
+    border-radius:25px;
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 0 10px var(--color-gold-dark);
+}
+.videoWrapper > video {
+    width:100%;
+}
+
 .heroSealPanel {
   position: relative;
   display: flex;

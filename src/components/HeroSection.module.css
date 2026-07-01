@@ -148,7 +148,20 @@
     z-index: 2;
 }
 
-
+.videoLogoWrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    aspect-ratio:1;
+    overflow: hidden;
+    border-radius:50%;
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 0 50px var(--color-gold-dark);
+}
+.videoLogoWrapper > video {
+    width:100%;
+}
 
 @media (max-width: 1200px) {
     .heroSection {

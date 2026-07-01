@@ -23,9 +23,8 @@ function HeroSection() {
                         </div>
                     </Col>
                     <Col xs={12} xl={5}>
-                        <div className={styles.heroSealPanel}>
-                            <div className={styles.logoGlow}></div>
-                            <img className={styles.heroLogo} src="/imgs/logo.png" alt="logo pagina" />
+                        <div className={styles.videoLogoWrapper}>
+                            <video src="/vids/videoLogo.mp4" autoPlay loop muted></video>
 
                         </div>
                     </Col>
