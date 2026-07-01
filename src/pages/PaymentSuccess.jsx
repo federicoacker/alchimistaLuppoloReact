@@ -1,10 +1,40 @@
 import { Link, useSearchParams } from "react-router";
+import { useEffect, useState } from "react";
+import { BASE_API_URL } from '../data/apiConstants';
 import styles from "./PaymentSuccess.module.css";
 
 function PaymentSuccess() {
     const [searchParams] = useSearchParams();
+    const [isCreatingOrder, setIsCreatingOrder] = useState(false);
 
     const redirectStatus = searchParams.get("redirect_status");
+
+    useEffect(() => {
+        if (redirectStatus === "succeeded" && !isCreatingOrder) {
+            setIsCreatingOrder(true);
+            const orderData = JSON.parse(window.localStorage.getItem("orderData"));
+
+            if (orderData) {
+                fetch(`${BASE_API_URL}/orders`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(orderData)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Errore nella creazione dell'ordine");
+                        }
+                        return response.json();
+                    })
+                    .then(() => {
+                        window.localStorage.removeItem("orderData");
+                    })
+                    .catch(error => {
+                        console.error("Order creation failed:", error);
+                    });
+            }
+        }
+    }, [redirectStatus, isCreatingOrder]);
 
     if (!redirectStatus) {
         return (

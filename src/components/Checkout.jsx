@@ -4,7 +4,6 @@ import { Row, Col } from 'react-bootstrap';
 import Section from './Section';
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useCart from '../hooks/useCart';
-import { BASE_API_URL } from '../data/apiConstants';
 import { useValidateForm } from "../hooks/useValidateForm.js";
 import styles from "./Checkout.module.css";
 import CartContainer from './CartContainer.jsx';
@@ -27,7 +26,6 @@ const templateForm = {
 
 function Checkout({ totalPrice }) {
     const { cartItems, shippingPrice, productsPrice } = useCart();
-    const [orderError, setOrderError] = useState("");
     const stripe = useStripe();
     const elements = useElements();
     const [paymentError, setPaymentError] = useState("");
@@ -81,45 +79,22 @@ function Checkout({ totalPrice }) {
             products_price: productsPrice
         }
 
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
+        window.localStorage.setItem("orderData", JSON.stringify(newOrder));
+        window.localStorage.removeItem("cartItems");
+
+        const result = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: "http://localhost:5173/payment-success-page",
             },
-            body: JSON.stringify(newOrder)
-        };
+        });
 
-        fetch(`${BASE_API_URL}/orders`, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Errore nella creazione dell'ordine");
-                }
-                return response.json();
-            })
-            .then(async () => {
-                if (!stripe || !elements) {
-                    setIsProcessing(false);
-                    return;
-                }
-
-                window.localStorage.removeItem("cartItems");
-                const result = await stripe.confirmPayment({
-                    elements,
-                    confirmParams: {
-                        return_url: "http://localhost:5173/payment-success-page",
-                    },
-                });
-
-                if (result) {
-                    setPaymentError(result.message);
-                    setIsProcessing(false);
-                }
-
-            })
-            .catch(error => {
-                setOrderError(error.message);
-                setIsProcessing(false);
-            })
+        if (result) {
+            setPaymentError(result.message);
+            setIsProcessing(false);
+            window.localStorage.removeItem("orderData");
+            return;
+        }
     };
 
     return (
@@ -312,11 +287,6 @@ function Checkout({ totalPrice }) {
                     </button>
 
                 </Form>
-                {orderError && <Section>
-                    <h5 className={styles["text-cream-title"]}>
-                        C'è stato un errore nella creazione dell'ordine
-                    </h5>
-                </Section>}
             </Section>
         </Section>
     )
