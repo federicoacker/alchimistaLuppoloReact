@@ -41,7 +41,7 @@ function CartProductDisplay({ productItem }) {
                     <tbody>
                         <tr>
                             <td className={`${styles["color-text"]} ${styles["table-main-row"]}`}>Prezzo Singolo:</td>
-                            <td className={styles["color-text"]}> {itemSinglePrice} &euro;</td>
+                            <td className={`${styles["color-text"]} ${styles["price-text"]}`}> {itemSinglePrice} &euro;</td>
                         </tr>
                         <tr>
                             <td className={`${styles["color-text"]} ${styles["table-main-row"]}`}>Totale Parziale:</td>

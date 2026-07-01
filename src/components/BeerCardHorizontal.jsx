@@ -67,20 +67,13 @@ function BeerCardHorizontal({ product }) {
                     </div>
 
                 </div>
-                    <div>
-                        <Dropdown>
-                            <Dropdown.Toggle bg="undefined" id="description-dropdown" className={styles["dropdown-button"]} >
-                            </Dropdown.Toggle>
+                <div>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/description" className={styles["dropdown-item"]}>
-                                    <p className="p-2">
-                                        {product.description}
-                                    </p>
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
+                    <p className="p-2">
+                        {product.description}
+                    </p>
+
+                </div>
             </div>
 
         </div>
