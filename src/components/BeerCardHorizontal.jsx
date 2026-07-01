@@ -4,7 +4,6 @@ import styles from "./BeerCardHorizontal.module.css";
 import { useWishlist } from "../contexts/WishlistContext";
 import useCart from "../hooks/useCart";
 import CategoryBadge from "./CategoryBadge";
-import { Dropdown } from "react-bootstrap";
 
 function BeerCardHorizontal({ product }) {
     const {

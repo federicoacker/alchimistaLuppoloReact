@@ -1,4 +1,4 @@
-import { Card, Button, Col, Row } from "react-bootstrap";
+import { Card, Button, Col } from "react-bootstrap";
 import styles from "./BeerCardVertical.module.css";
 import { useWishlist } from "../contexts/WishlistContext";
 import useCart from "../hooks/useCart";
