@@ -15,7 +15,6 @@ import FiltersSection from "./FiltersSection.jsx";
 function BeerContainer() {
     const urlQueryObject = useUrlQuery()
     const { debouncedQuery, selectedCategoryArray, orderBy, order, offset, setOffset, limit } = urlQueryObject;
-    console.log("limite beer container:", limit);
     const { products, loading, productCount } = useProducts(`?search=${debouncedQuery}&category=${selectedCategoryArray.join(",")}&orderBy=${orderBy}&order=${order}&limit=${limit}&offset=${offset}`, true);
     const [isGrid, setIsGrid] = useState(true);
 

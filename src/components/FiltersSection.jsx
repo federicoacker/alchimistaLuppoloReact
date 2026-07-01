@@ -19,8 +19,6 @@ function FiltersSection({ urlQueryObject, isGrid, setIsGrid, productCount }) {
         setLimit,
         limit
     } = urlQueryObject
-
-    console.log(limit);
     const { categories, loading: categoryLoading, error: categoryError } = useCategories();
     const [options, setOptions] = useState(baseOptions);
     const [sortOptions] = useState(sortingOptions)
