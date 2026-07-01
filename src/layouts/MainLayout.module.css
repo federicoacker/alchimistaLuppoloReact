@@ -2,9 +2,8 @@
     background: var(--gradient-main);
     max-width:100%;
     min-height: 100vh;
-    overflow-x:hidden;
     padding: 2rem;
-
+    z-index:10;
     display: flex;
     flex-direction: column;
     gap: 2rem;

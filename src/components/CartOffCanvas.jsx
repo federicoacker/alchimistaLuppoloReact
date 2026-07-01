@@ -22,7 +22,6 @@ function CartOffCanvas({setIsLuppolinoOpen}) {
                 <Offcanvas.Title className={styles["cart-title"]}>Carrello</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                <section className={styles["cart-section"]}>
                     <div className="d-flex flex-column row-gap-3">
                         {cartItems.map((cartItem) => {
                             return <CartProductDisplay key={cartItem.cartProduct.slug} productItem={cartItem} />
@@ -62,7 +61,6 @@ function CartOffCanvas({setIsLuppolinoOpen}) {
                             <Link to="/checkout" className={`my-2 d-block mx-auto btn ${styles["beer-button"]} ${styles["text-button"]}`} onClick={handleClose}>Vai al checkout</Link>
                         </div>
                     }
-                </section>
             </Offcanvas.Body>
         </Offcanvas>
     )

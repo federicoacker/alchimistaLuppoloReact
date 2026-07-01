@@ -28,7 +28,9 @@ function BeerCardVertical({ product }) {
                     <Card.Text className={styles["beer-description"]}>
                         {product.short_description}
                     </Card.Text>
-                    {product.categories.map(category => <CategoryBadge key={category.slug} category={category}/>)}
+                    <div className="d-flex gap-2">
+                        {product.categories.map(category => <CategoryBadge key={category.slug} category={category} />)}
+                    </div>
                 </Card.Body>
                 <Card.Footer className={styles["beer-card-footer"]}>
                     <Card.Text className={styles["beer-card-text"]}>
@@ -70,7 +72,7 @@ function BeerCardVertical({ product }) {
 
                         </div>
                         <div className="d-flex gap-2 justify-content-center flex-grow-1">
-                            
+
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
                         </div>
                     </div>

@@ -26,17 +26,15 @@
   width: 100%;
   border: 2px solid var(--color-gold-dark);
   border-radius: 5px;
-  background-color: transparent !important;
+  background-color: var(--color-bg) !important;
   padding: 0 !important;
-  box-shadow: 0 0 10px var(--color-gold-dark);
 }
 
 .beer-card-details {
-  width:50%;
+  width:40%;
   display: flex;
   border: 1px solid var(--color-border);
   align-items: center;
-  gap: 10px;
   padding: 10px 5px;
   text-align: center;
   flex-grow: 1;
@@ -46,6 +44,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
+  padding: 0 10px;
   margin-top: 0.5rem;
   color: var(--color-cream) !important;
   font-family: var(--font-text);
@@ -75,12 +74,58 @@
 }
 
 .beer-card-buttons {
+  min-width:35%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.75rem;
-  flex: 1 1 260px;
+  gap:0.75rem;
+  flex-grow:1;
   padding: 0.5rem 1rem;
+}
+.dropdown-button{
+  position:relative;
+  display:block !important;
+  width:100% !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important;
+  color: var(--color-gold) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  font-family: var(--font-body);
+  font-size: 2rem !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 0 !important;
+  transition: all 0.3s ease;
+}
+
+.dropdown-button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  ) !important;
+  color: #1a120c !important;
+  box-shadow: 0 0 16px rgba(200, 155, 60, 0.25) !important;
+}
+
+.dropdown-item{
+  white-space: wrap !important;
+  color: var(--color-cream) !important;
+}
+.dropdown-item:focus{
+  background-color:var(--color-bg) !important;
+  color: var(--color-cream) !important;
+}
+.dropdown-item:hover{
+  background-color:var(--color-bg) !important;
+  color: var(--color-cream) !important;
 }
 
 .button-wrapper {
