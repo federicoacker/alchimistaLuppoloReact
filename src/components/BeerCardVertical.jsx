@@ -40,8 +40,8 @@ function BeerCardVertical({ product }) {
                     <Card.Text className={styles["beer-card-text"]}>
                         ABV: {product.abv.toFixed(2)}%
                     </Card.Text>
-                    <Row className="g-2 justify-content-center">
-                        <Col xs="auto" lg={3} className="text-center g-2 align-items-center d-flex">
+                    <div className="d-flex justify-content-between flex-wrap gap-2">
+                        <div className="d-flex gap-2 justify-content-center flex-grow-1">
                             {
                                 thisItem ? <div className={styles["button-wrapper"]}>
                                     <button
@@ -62,19 +62,18 @@ function BeerCardVertical({ product }) {
                                 </div> :
                                     <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `} onClick={() => { addToCart(product) }}><i className="bi bi-cart-fill"></i></Button>
                             }
-
-                        </Col>
-                        <Col xs="auto" lg={3} className="text-center g-2">
                             <Button className={`${styles["icon-button"]} ${styles["beer-button"]} `}
                                 onClick={() => toggleWishlist(product.slug)}>
                                 {favorite ? (<i className="bi bi-heart-fill"></i>)
                                     : (<i className="bi bi-heart"></i>)}
                             </Button>
-                        </Col>
-                        <Col xs="auto" lg={6} className="text-center g-2">
+
+                        </div>
+                        <div className="d-flex gap-2 justify-content-center flex-grow-1">
+                            
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
-                        </Col>
-                    </Row>
+                        </div>
+                    </div>
                 </Card.Footer>
             </Card>
         </Col>
