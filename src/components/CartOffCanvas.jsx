@@ -70,7 +70,6 @@ function CartOffCanvas({ setIsLuppolinoOpen }) {
                             <Link to="/checkout" className={`my-2 d-block mx-auto btn ${styles["beer-button"]} ${styles["text-button"]}`} onClick={handleClose}>Vai al checkout</Link>
                         </div>
                     }
-                </section>
             </Offcanvas.Body>
         </Offcanvas>
     )

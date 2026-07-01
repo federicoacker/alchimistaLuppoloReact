@@ -4,6 +4,7 @@ import styles from "./BeerCardHorizontal.module.css";
 import { useWishlist } from "../contexts/WishlistContext";
 import useCart from "../hooks/useCart";
 import CategoryBadge from "./CategoryBadge";
+import { Dropdown } from "react-bootstrap";
 
 function BeerCardHorizontal({ product }) {
     const {
@@ -19,19 +20,19 @@ function BeerCardHorizontal({ product }) {
             <div className={styles["beer-card"]}>
                 <div className="d-flex w-100 flex-wrap">
                     <div className={styles["beer-card-title"]}>
-                        <img src={product.image} alt={product.name} className={styles["product-image"]}/>
+                        <img src={product.image} alt={product.name} className={styles["product-image"]} />
                         <h5 className={styles["beer-card-title-text"]}>{product.name}</h5>
                     </div>
                     <div className={styles["beer-card-details"]}>
                         <p className={styles["beer-card-text"]}>ABV: {product.abv.toFixed(2)}%</p>
                         <p className={styles["beer-card-text"]}>Prezzo: {product.price.toFixed(2).replace(".", ",")} &euro;</p>
                         <p className={styles["beer-card-text"]}>IBU: {product.ibu}</p>
-                        <div className="d-flex">
-                            {product.categories?.map(category => <CategoryBadge category={category} key={category.slug}/>)}
+                        <div className="d-flex gap-2 justify-content-center flex-grow-1">
+                            {product.categories?.map(category => <CategoryBadge category={category} key={category.slug} />)}
                         </div>
                     </div>
 
-                    <div className={`d-flex gap-4 justify-content-center ${styles["beer-card-buttons"]}`}>
+                    <div className={`d-flex justify-content-center ${styles["beer-card-buttons"]}`}>
                         {
                             <div className={styles["button-wrapper"]}>
                                 {thisItem ? <>
@@ -64,9 +65,14 @@ function BeerCardHorizontal({ product }) {
                             <Link to={`/products/${product.slug}`} className={`btn ${styles["beer-button"]} ${styles["text-button"]}`}>Dettagli</Link>
                         </div>
                     </div>
-                <p className="p-2">
-                    {product.description}
-                </p>
+
+                </div>
+                <div>
+
+                    <p className="p-2">
+                        {product.description}
+                    </p>
+
                 </div>
             </div>
 

@@ -114,9 +114,9 @@
 .logoGlow {
   position: absolute;
   top: 0;
-  translate: -25% -25%;
-  width: 200%;
-  height: 100px;
+  translate: 0 -25%;
+  width:100%;
+  height:100%;
   border-radius: 50%;
   background: radial-gradient(
     circle,

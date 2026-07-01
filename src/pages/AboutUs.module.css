@@ -1,22 +1,21 @@
 .heroSection {
+  width: 100%;
+  min-height: 80vh;
+  background:
+    radial-gradient(
+      circle at 75% 40%,
+      rgba(200, 155, 60, 0.08),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #17120f, #241b15, #17120f);
 
-    min-height: 80vh;
-    background:
-        radial-gradient(circle at 75% 40%,
-            rgba(200, 155, 60, .08),
-            transparent 35%),
-        linear-gradient(135deg,
-            #17120f,
-            #241b15,
-            #17120f);
-
-    display: flex;
-    align-items: center;
-    padding-left: 5vw;
-    padding-right: 5vw;
-    position: relative;
-    overflow: hidden;
-    --radius: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  position: relative;
+  overflow: hidden;
+  --radius: 30px;
 
   mask-image: radial-gradient(
     var(--radius) at var(--radius) var(--radius),
@@ -27,33 +26,32 @@
   mask-size: 100%;
   mask-repeat: repeat;
 }
-
-
-.heroSection::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(circle at 75% 40%,
-            rgba(200, 155, 60, .12),
-            transparent 45%),
-        url("/imgs/sfondo.png");
-
-    background-size:
-        auto,
-        cover;
-    background-position:
-        center,
-        center;
-    opacity: .30;
-    pointer-events: none;
+.subHeroSection {
+  width: 50% !important;
 }
 
-.heroSection>* {
-    position: relative;
-    z-index: 1;
+.heroSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
+  background:
+    radial-gradient(
+      circle at 75% 40%,
+      rgba(200, 155, 60, 0.12),
+      transparent 45%
+    ),
+    url("/imgs/sfondo.png");
+
+  background-size: auto, cover;
+  background-position: center, center;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.heroSection > * {
+  position: relative;
+  z-index: 1;
 }
 
 .heroSubtitle {
@@ -79,12 +77,10 @@
 }
 
 .heroActions {
-
   display: flex;
   gap: 1.25rem;
   margin: 2rem;
   flex-wrap: wrap;
-
 }
 
 .buttonAction {
@@ -115,84 +111,82 @@
 }
 
 .heroSealPanel {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .logoGlow {
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle,
-            rgba(200, 155, 60, 0.18) 0%,
-            rgba(200, 155, 60, 0.08) 40%,
-            transparent 75%);
+  position: absolute;
+  width: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(200, 155, 60, 0.18) 0%,
+    rgba(200, 155, 60, 0.08) 40%,
+    transparent 75%
+  );
 
-    filter: blur(40px);
-    z-index: 1;
-
+  filter: blur(40px);
+  z-index: 1;
 }
 
 .heroLogo {
-    position: relative;
-    width: min(100%, 750px);
-    max-width: 450px;
-    border-radius: 50%;
-    filter:
-        drop-shadow(0 0 10px rgba(200, 155, 60, .25)) drop-shadow(0 0 25px rgba(200, 155, 60, .15));
+  position: relative;
+  width: min(100%, 750px);
+  max-width: 450px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px rgba(200, 155, 60, 0.25))
+    drop-shadow(0 0 25px rgba(200, 155, 60, 0.15));
 
-    z-index: 2;
+  z-index: 2;
 }
 
 .beverageLogo {
-    position: relative;
-    width: min(100%, 750px);
-    max-width: 450px;
-    aspect-ratio:auto;
-    border-radius: 25%;
-    filter:
-        drop-shadow(0 0 10px rgba(200, 155, 60, .25)) drop-shadow(0 0 25px rgba(200, 155, 60, .15));
+  position: relative;
+  width: min(100%, 750px);
+  max-width: 450px;
+  aspect-ratio: auto;
+  border-radius: 25%;
+  filter: drop-shadow(0 0 10px rgba(200, 155, 60, 0.25))
+    drop-shadow(0 0 25px rgba(200, 155, 60, 0.15));
 
-    z-index: 2;
-
+  z-index: 2;
 }
 
-
 @media (max-width: 1200px) {
-    .heroSection {
-        text-align: center;
-    }
+  .heroSection {
+    text-align: center;
+  }
 
-    .heroActions {
-        justify-content: center;
-        margin-top: 2rem;
-    }
+  .heroActions {
+    justify-content: center;
+    margin-top: 2rem;
+  }
 
-    .heroSealPanel {
-        margin-top: 3rem;
-    }
+  .heroSealPanel {
+    margin-top: 3rem;
+  }
 
-    .heroLogo {
-        width: min(100%, 300px);
-    }
+  .heroLogo {
+    width: min(100%, 300px);
+  }
 
-    .logoGlow {
-        width: 500px;
-        height: 500px;
-    }
+  .logoGlow {
+    width: 500px;
+  }
+  .subHeroSection {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 576px) {
-    .heroLogo {
-        width: min(100%, 220px);
-    }
-
-    .logoGlow {
-        width: 350px;
-        height: 350px;
-    }
+  .heroLogo {
+    width: min(100%, 220px);
+  }
+  .logoGlow {
+    width: 350px;
+  }
 }

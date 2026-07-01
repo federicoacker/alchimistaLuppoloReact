@@ -1,0 +1,17 @@
+.beer-search-bar{
+    background-color: var(--color-bg);
+    color: var(--color-cream);
+    margin-bottom: 4rem;
+    font-size:1.3rem;
+    display:inline-block;
+    height:3rem;
+    padding: 0 0.5rem;
+    border-radius:5px;
+    border:2px solid var(--color-gold-dark);
+    outline:none;
+}
+.beer-search-bar:focus{
+    color:var(--color-cream);
+    border:2px solid var(--color-gold);
+    outline:none;
+}

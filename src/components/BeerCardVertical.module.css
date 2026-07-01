@@ -10,19 +10,22 @@
   text-wrap: nowrap;
 }
 .beer-card {
-  background-color: transparent !important;
-  border-color: var(--color-border) !important;
+  height:100% !important;
+  background-color: var(--color-bg) !important;
+  border: 2px solid var(--color-gold-dark) !important;
+  box-shadow: 0 0 10px var(--color-gold-dark);
 }
 .beer-card-body {
+ 
   color: var(--color-cream) !important;
 }
 .beer-card-header {
   border-color: var(--color-border) !important;
 }
 .beer-description {
-  height: 150px;
-  overflow-y: scroll;
-  scrollbar-width: none;
+   height:80px;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .beer-card-footer {
   color: var(--color-cream) !important;
@@ -33,54 +36,71 @@
 }
 
 .icon-button {
-  padding: 0.7rem 1rem !important;
+  width: 52px;
+  height: 48px;
+  padding: 0 !important;
 }
+
 .text-button {
-  padding: 0.7rem 0.5rem !important;
+  min-width: 120px;
+  height: 48px;
+  padding: 0 1rem !important;
 }
+
 .beer-button {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
   background: transparent !important;
   color: var(--color-gold) !important;
   border: 1px solid var(--color-gold) !important;
-  border-radius: 4px;
+  border-radius: 6px !important;
   font-family: var(--font-body);
-  font-size: 0.75rem !important;
-  font-weight: 500;
+  font-size: 0.78rem !important;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .beer-button:hover {
   background: linear-gradient(
     135deg,
     var(--color-gold-light),
     var(--color-gold)
   ) !important;
-
   color: #1a120c !important;
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+.button-wrapper {
+  min-width: 110px;
+  height: 48px;
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .btn-quantity-action {
-  font-size: 1rem;
-
-  font-weight: bold;
-
-  padding: 0.5rem 0.5rem;
-
-  background-color: var(--color-bg);
-
-  color: var(--color-cream);
-
-  border: none;
-  padding: 0 0.5rem;  
-  border-radius: 4px;
-  margin: 0;
-}
-.button-wrapper {
+  height: 48px;
   display: flex;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: var(--color-gold);
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-quantity-action:hover {
@@ -89,13 +109,18 @@
     var(--color-gold-light),
     var(--color-gold)
   );
+  color: #1a120c;
 }
 
 .quantity-display {
+  height: 48px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--color-cream) !important;
   font-size: 1rem;
   font-weight: bold;
-  color: var(--color-cream) !important;
-  margin: 0 5px;
+  border-left: 1px solid rgba(200, 155, 60, 0.25);
+  border-right: 1px solid rgba(200, 155, 60, 0.25);
 }

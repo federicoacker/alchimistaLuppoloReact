@@ -91,7 +91,9 @@ main {
   padding: var(--section-padding);
   border: 2px solid var(--color-border);
   background: var(--section-background);
-  overflow: hidden;
+  overflow-y: auto;
+  clip-path: inset(0);
+  z-index: 10;
 }
 
 .section-frame::before {
@@ -117,6 +119,15 @@ select {
 .form-control:focus{
   border-color: var(--color-gold) !important;
   box-shadow: none !important;
+}
+
+.dropdown-menu.show{
+  width:100% !important;
+  top:100% !important;
+  transform: translate(0,0)!important;
+  background-color: var(--color-bg) !important;
+  border-color: var(--color-gold-dark) !important;
+  z-index: 9999;
 }
 
 @media screen and (min-width: 1600px) {
