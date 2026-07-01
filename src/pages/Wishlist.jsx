@@ -37,7 +37,9 @@ function WishlistPage() {
 
                 <header className={styles.tableHeader}>
                     <span></span>
+                    <span className={styles.imageWrapper}></span>
                     <span>Prodotto</span>
+                    <span className={styles.brewery}>Birreria</span>
                     <span className="text-center">Prezzo</span>
                 </header>
 
