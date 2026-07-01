@@ -12,17 +12,19 @@
 .beer-card {
   height:100% !important;
   background-color: transparent !important;
-  border-color: var(--color-border) !important;
+  border: 2px solid var(--color-gold-dark) !important;
 }
 .beer-card-body {
+ 
   color: var(--color-cream) !important;
 }
 .beer-card-header {
   border-color: var(--color-border) !important;
 }
 .beer-description {
-  overflow-y: scroll;
-  scrollbar-width: none;
+   height:80px;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .beer-card-footer {
   color: var(--color-cream) !important;
