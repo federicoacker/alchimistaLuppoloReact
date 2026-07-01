@@ -1,21 +1,43 @@
 .btn-quantity-action {
-    font-size: 1rem;
-
-    font-weight: bold;
-
-    padding: 0.5rem 0.5rem;
-
-    background-color: var(--color-bg);
-
-    color: var(--color-cream);
-
-    border: none;
-
-    border-radius: 4px;
-    margin:0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: var(--color-gold);
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.btn-quantity-action:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+  color: #1a120c;
+}
+
+.quantity-display {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--color-cream) !important;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-left: 1px solid rgba(200, 155, 60, 0.25);
+  border-right: 1px solid rgba(200, 155, 60, 0.25);
+}
+
 .button-wrapper {
-  width:calc(100% / 3);
+  width: calc(100% / 3);
   height: auto;
   display: flex;
   align-items: center;
@@ -37,56 +59,35 @@
   overflow: hidden;
 }
 
-.btn-quantity-action:hover {
-    background:linear-gradient(
-    135deg,
-    var(--color-gold-light),
-    var(--color-gold)
-    );
-}
-
-
-.quantity-display {
-    display:flex;
-    width:2rem;
-    align-items:center;
-    justify-content:center;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--color-cream) !important;
-    margin: 0 5px;
-}
-
 .color-title {
-    width:70%;
-    color: var(--color-cream);
-    flex-grow:1;
-    padding: 0 0.5rem;
-
+  width: 70%;
+  color: var(--color-cream);
+  flex-grow: 1;
+  padding: 0 0.5rem;
 }
 
 .color-text {
-    text-align:center;
-    padding:0.5rem 0.5rem;
-    color: var(--color-cream);
+  text-align: center;
+  padding: 0.5rem 0.5rem;
+  color: var(--color-cream);
 }
 .price-text {
-    width:calc(100% / 3);
+  width: calc(100% / 3);
 }
 
-.price-table{
-    width:100%;
-    padding: 0.5rem 0.5rem !important;
+.price-table {
+  width: 100%;
+  padding: 0.5rem 0.5rem !important;
 }
-.table-main-row{
-    border-right:1px solid var(--color-border);
-}
-
-.main-price{
-    color: var(--color-bg);
-    background-color: var(--color-gold);
+.table-main-row {
+  border-right: 1px solid var(--color-border);
 }
 
-.product-cart{
-    padding:1rem 1rem !important;
+.main-price {
+  color: var(--color-bg);
+  background-color: var(--color-gold);
+}
+
+.product-cart {
+  padding: 1rem 1rem !important;
 }

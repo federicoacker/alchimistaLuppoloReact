@@ -165,8 +165,8 @@
   border: 1px solid var(--color-gold);
   padding: 0 0.5rem;
   border-radius: 4px;
-  width:3rem;
-  aspect-ratio:1;
+  width: 3rem;
+  aspect-ratio: 1;
 
   font-family: var(--font-body);
   font-size: 1rem;
@@ -183,25 +183,43 @@
   text-transform: capitalize;
 }
 
-.btn-quantity-action {
-  font-size: 1rem;
-  width: 3rem;
-  aspect-ratio: 1;
-  font-weight: bold;
-  padding: 0.5rem 0.5rem;
-
-  background-color: var(--color-bg);
-
-  color: var(--color-cream);
-
-  border: 1px solid var(--color-border);
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  margin: 0;
-}
 .button-wrapper {
+  min-width: auto;
+  height: auto;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.button-wrapper:has(.quantity-display) {
+  min-width: 92px;
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.btn-quantity-action {
+  display: flex;
+  height:100%;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: var(--color-gold);
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-quantity-action:hover {
@@ -210,19 +228,23 @@
     var(--color-gold-light),
     var(--color-gold)
   );
+  color: #1a120c;
 }
 
 .quantity-display {
   display: flex;
+  height:100%;
   align-items: center;
-  font-size: 1rem;
-  font-weight: bold;
-  padding:0 0.5rem;
+  justify-content: center;
+  margin: 0;
   color: var(--color-cream) !important;
-  margin: 0 5px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-left: 1px solid rgba(200, 155, 60, 0.25);
+  border-right: 1px solid rgba(200, 155, 60, 0.25);
 }
-.button-container{
-    min-height:3rem;
+.button-container {
+  min-height: 3rem;
 }
 
 @media (max-width: 991px) {
