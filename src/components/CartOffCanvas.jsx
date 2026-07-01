@@ -22,7 +22,6 @@ function CartOffCanvas({ setIsLuppolinoOpen }) {
                 <Offcanvas.Title className={styles["cart-title"]}>Carrello</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                <section className={styles["cart-section"]}>
                     {cartItems.length === 0 && (
                         <div className={styles["empty-cart-container"]}>
                             <h2 className={styles["empty-cart-text"]}>Il tuo carrello è vuoto...</h2>
