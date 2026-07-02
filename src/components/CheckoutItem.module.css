@@ -1,20 +1,8 @@
 .item {
-  display: grid;
-  grid-template-columns:
-    40px
-    /* X */
-    0.5fr
-    /* immagine */
-    0.7fr
-    /* nome */
-    2.3fr
-    /* birrificio */
-    0.3fr
-    /* prezzo */
-    0.3fr
-    /* carrello */
-    0.5fr;
+  display: flex;
   align-items: center;
+  justify-content:space-around;
+  flex-wrap:wrap;
   padding: 1rem;
   gap: 1.5rem;
   border-bottom: 2px solid rgba(200, 155, 60, 0.12);
@@ -74,18 +62,42 @@
   
 }
 
-.quantityControls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
+.btn-quantity-action {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: var(--color-gold);
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.quantity {
-    width: 2rem;          /* oppure 32px */
-    text-align: center;
-    font-weight: 600;
-    color: var(--color-gold);
+.btn-quantity-action:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-light),
+    var(--color-gold)
+  );
+  color: #1a120c;
+}
+
+.quantity-display {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--color-cream) !important;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-left: 1px solid rgba(200, 155, 60, 0.25);
+  border-right: 1px solid rgba(200, 155, 60, 0.25);
 }
 
 .iconButton {
@@ -111,9 +123,31 @@
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.25) !important;
 }
 
+.button-wrapper {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+.button-wrapper:has(.quantity-display) {
+  min-width: 92px;
+  height: 42px;
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  overflow: hidden;
+}
 
 
-@media (max-width: 768px) {
+
+@media (max-width: 1200px) {
 
   .imageWrapper,
   .brewery {
@@ -121,16 +155,6 @@
   }
 
   .item {
-    grid-template-columns:
-      20px
-      /* X */
-      1.4fr
-      /* nome */
-      0.3fr
-      /* prezzo */
-      0.5fr
-      /* carrello */
-      0.5fr;
     gap: 1rem;
     padding: 0;
   }
@@ -145,16 +169,13 @@
  
   .price,
   .quantityControls{
-    display: none;
-    
+    display: flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
   }
-
  
   .item {
-    grid-template-columns:
-      15px
-      0.7fr
-      0.4fr;
+
     gap: 0.5rem;
     padding: 0;
   }
