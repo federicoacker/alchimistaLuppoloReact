@@ -1,7 +1,7 @@
 .item {
   display: grid;
   grid-template-columns:
-    40px
+    0.3fr
     /* X */
     0.5fr
     /* immagine */
