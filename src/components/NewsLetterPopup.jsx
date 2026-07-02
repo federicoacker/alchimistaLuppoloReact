@@ -29,7 +29,7 @@ function NewsLetterPopup() {
                 </Modal.Body>
                 <Modal.Footer className={styles["modal-footer"]}>
                     <Button variant="secondary" onClick={handleClose} className={styles["close-button"]}>
-                        Close
+                        Chiudi
                     </Button>
                 </Modal.Footer>
             </Modal>

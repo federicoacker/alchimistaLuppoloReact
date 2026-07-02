@@ -49,7 +49,7 @@ function CartOffCanvas({ setIsLuppolinoOpen }) {
                                     </tr>
                                     <tr className={styles["cart-row"]}>
                                         <td className={styles["cart-tag"]}>
-                                            Prezzo di Shipping
+                                            Prezzo di Spedizione
                                         </td>
                                         <td className={styles["price-tag"]}>
                                             &euro; {shippingPrice.toFixed(2).replace(".", ",")}
